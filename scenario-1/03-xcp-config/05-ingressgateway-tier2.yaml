@@ -1,0 +1,29 @@
+# IngressGateway: the Tier2 gateway on cluster-1. It receives the passthrough
+# stream from the Tier1 gateway.
+#
+# A `tls` server with ONLY a `route` (and no TLS cert/termination block) is a
+# TLS-passthrough server: it SNI-matches on echo.tetrate.io and TCP-proxies
+# the still-encrypted bytes to the backend. The echo pod terminates TLS.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: IngressGateway
+metadata:
+  name: echo-t2-gw
+  namespace: xcp-system
+  labels:
+    xcp.tetrate.io/workspace: passthrough-ws
+    xcp.tetrate.io/gatewayGroup: tier2-gg
+spec:
+  workloadSelector:
+    namespace: echo
+    labels:
+      app: echo-gateway
+  tls:
+    - name: echo
+      port: 17443                 # listener port (matches Tier1 + Tier2 LB)
+      hostname: echo.tetrate.io    # SNI to match
+      route:
+        # <namespace>/<service-fqdn> of the echo backend, and its TLS port.
+        host: echo/echo.echo.svc.cluster.local
+        port: 9443

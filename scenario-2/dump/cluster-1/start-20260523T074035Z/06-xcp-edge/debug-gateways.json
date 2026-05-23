@@ -1,0 +1,16 @@
+{
+  "GatewayInfo": [
+    {
+      "WorkloadSelector": {
+        "app": "echo-term-gateway"
+      },
+      "Hosts": [
+        "echo-term.tetrate.io"
+      ],
+      "Protocol": "HTTP",
+      "Port": 8080,
+      "GatewayName": "echo-t2-term-gw",
+      "GatewayType": "tier2 gateway"
+    }
+  ]
+}

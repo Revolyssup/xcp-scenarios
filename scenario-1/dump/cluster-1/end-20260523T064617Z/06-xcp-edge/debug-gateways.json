@@ -1,0 +1,16 @@
+{
+  "GatewayInfo": [
+    {
+      "WorkloadSelector": {
+        "app": "echo-gateway"
+      },
+      "Hosts": [
+        "echo.tetrate.io"
+      ],
+      "Protocol": "TLS",
+      "Port": 17443,
+      "GatewayName": "echo-t2-gw",
+      "GatewayType": "tier2 gateway"
+    }
+  ]
+}

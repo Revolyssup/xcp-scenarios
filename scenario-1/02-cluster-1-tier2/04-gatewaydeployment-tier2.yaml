@@ -1,0 +1,29 @@
+# GatewayDeployment for the Tier2 ingress gateway data plane on cluster-1.
+# Provisions the Envoy Deployment + LoadBalancer Service in the "echo"
+# namespace. The XCP IngressGateway config (03-xcp-config) programs its
+# passthrough listener.
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: GatewayDeployment
+metadata:
+  name: echo-gateway
+  namespace: istio-system
+spec:
+  namespace: echo
+  revision: stable
+  kubeSpec:
+    deployment:
+      # Matched by IngressGateway.spec.workloadSelector.labels.
+      labels:
+        app: echo-gateway
+    service:
+      type: LoadBalancer
+      ports:
+        # 17443 = TLS-passthrough listener the Tier1 gateway forwards to.
+        - name: tls-echo
+          port: 17443
+          targetPort: 17443
+        - name: status-port
+          port: 15021
+          targetPort: 15021

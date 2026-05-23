@@ -1,0 +1,29 @@
+# Edge certificate for echo-term.tetrate.io.
+#
+# Lives on cluster-0 in the Tier1 namespace because the Tier1 gateway is the
+# component that TERMINATES TLS here. cert-manager mints a self-signed cert
+# into Secret "echo-term-edge-tls", which Tier1ExternalServer.tls.secretName
+# references.
+#
+# Apply to: cluster-0  (kubectl --kubeconfig ~/.kube/cluster-0)
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned
+  namespace: tier1-term
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: echo-term-edge-tls
+  namespace: tier1-term
+spec:
+  secretName: echo-term-edge-tls
+  commonName: echo-term.tetrate.io
+  dnsNames:
+    - echo-term.tetrate.io
+  issuerRef:
+    name: selfsigned
+    kind: Issuer

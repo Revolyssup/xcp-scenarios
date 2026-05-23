@@ -1,0 +1,68 @@
+{
+  "tier1-term": [
+    {
+      "name": "allow",
+      "gvk": {
+        "group": "security.istio.io",
+        "version": "v1",
+        "kind": "AuthorizationPolicy"
+      }
+    },
+    {
+      "name": "default",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "Sidecar"
+      }
+    },
+    {
+      "name": "default-allow-tier1-echo-term-gw-external-batch0",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1alpha3",
+        "kind": "EnvoyFilter"
+      }
+    },
+    {
+      "name": "default-upstream-traffic-setting",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1alpha3",
+        "kind": "EnvoyFilter"
+      }
+    },
+    {
+      "name": "tier1-echo-term-gw",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "Gateway"
+      }
+    },
+    {
+      "name": "tier1-echo-term-gw-echo",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "VirtualService"
+      }
+    },
+    {
+      "name": "tier1-term-gg-default-upstream-traffic-setting",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1alpha3",
+        "kind": "EnvoyFilter"
+      }
+    },
+    {
+      "name": "tier1-tier1-echo-term-gwecho-term-tetrate-io",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "DestinationRule"
+      }
+    }
+  ]
+}

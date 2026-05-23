@@ -1,0 +1,27 @@
+# GatewayDeployment for the Tier1 gateway data plane on cluster-0.
+# Distinct workload labels from scenario-1 so the two scenarios can coexist
+# (XCP allows only one Tier1Gateway per workload selector).
+#
+# Apply to: cluster-0  (kubectl --kubeconfig ~/.kube/cluster-0)
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: GatewayDeployment
+metadata:
+  name: tier1-term-gateway
+  namespace: istio-system
+spec:
+  namespace: tier1-term
+  revision: stable
+  kubeSpec:
+    deployment:
+      labels:
+        app: tier1-term-gateway
+    service:
+      type: LoadBalancer
+      ports:
+        # External HTTPS port — Tier1 terminates TLS here.
+        - name: https-echo
+          port: 18443
+          targetPort: 18443
+        - name: status-port
+          port: 15021
+          targetPort: 15021

@@ -1,0 +1,34 @@
+# GatewayDeployment is an XCP *install* CRD reconciled by xcp-operator-edge.
+# It provisions the Tier1 gateway data plane: a Deployment (Envoy) + a
+# LoadBalancer Service in the "tier1" namespace.
+#
+# This only creates the *pods*. The XCP Tier1Gateway config (03-xcp-config)
+# is what programs Envoy with the actual passthrough listener.
+#
+# Apply to: cluster-0  (kubectl --kubeconfig ~/.kube/cluster-0)
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: GatewayDeployment
+metadata:
+  name: tier1-gateway
+  namespace: istio-system
+spec:
+  # Target namespace where the gateway Deployment + Service are created.
+  namespace: tier1
+  # istiod revision that injects/configures this gateway proxy.
+  revision: stable
+  kubeSpec:
+    deployment:
+      # This label is matched by Tier1Gateway.spec.workloadSelector.labels.
+      labels:
+        app: tier1-gateway
+    service:
+      type: LoadBalancer
+      ports:
+        # 17443 = the TLS-passthrough listener the external client connects to.
+        - name: tls-echo
+          port: 17443
+          targetPort: 17443
+        # Istio gateway readiness/health port.
+        - name: status-port
+          port: 15021
+          targetPort: 15021

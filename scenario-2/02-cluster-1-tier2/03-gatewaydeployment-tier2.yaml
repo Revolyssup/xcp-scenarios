@@ -1,0 +1,26 @@
+# GatewayDeployment for the Tier2 gateway data plane on cluster-1.
+# Receives traffic from Tier1 via Istio east-west auto-passthrough on 15443.
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: GatewayDeployment
+metadata:
+  name: echo-term-gateway
+  namespace: istio-system
+spec:
+  namespace: echo-term
+  revision: stable
+  kubeSpec:
+    deployment:
+      labels:
+        app: echo-term-gateway
+    service:
+      type: LoadBalancer
+      ports:
+        # East-west auto-passthrough port: Tier1 → Tier2 mesh mTLS arrives here.
+        - name: tls
+          port: 15443
+          targetPort: 15443
+        - name: status-port
+          port: 15021
+          targetPort: 15021

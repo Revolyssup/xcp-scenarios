@@ -1,0 +1,35 @@
+# IngressGateway for the TERMINATING scenario.
+#
+# An "http" block with NO tls field means: this gateway expects already-
+# decrypted traffic. The Tier1 has terminated public TLS and forwards over
+# Istio mesh mTLS (auto-passthrough on 15443, ALPN istio) — XCP wires that
+# up automatically when this hostname is also declared on a Tier1ExternalServer
+# whose clusters include this cluster.
+#
+# The route forwards to the plain-HTTP echo workload at port 80
+# (Service port; targetPort 8080 in the Deployment). The Tier2 gateway →
+# echo sidecar hop is mesh mTLS automatically because the workload is meshed.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: IngressGateway
+metadata:
+  name: echo-t2-term-gw
+  namespace: xcp-system
+  labels:
+    xcp.tetrate.io/workspace: term-ws
+    xcp.tetrate.io/gatewayGroup: tier2-term-gg
+spec:
+  workloadSelector:
+    namespace: echo-term
+    labels:
+      app: echo-term-gateway
+  http:
+    - name: echo
+      port: 8080
+      hostname: echo-term.tetrate.io
+      routing:
+        rules:
+          - route:
+              host: echo-term/echo-term.echo-term.svc.cluster.local
+              port: 80

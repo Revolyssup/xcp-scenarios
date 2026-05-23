@@ -1,0 +1,60 @@
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-0"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-1"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Cluster\",\"metadata\":{\"annotations\":{},\"name\":\"cluster-1\",\"namespace\":\"xcp-system\"},\"spec\":{\"istioTrustDomain\":\"cluster.local\"}}\n"
+  }
+}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Workspace"
+  name: "xc-ws"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Workspace\",\"metadata\":{\"annotations\":{},\"name\":\"xc-ws\",\"namespace\":\"xcp-system\"},\"spec\":{\"namespaceSelector\":{\"names\":[\"cluster-0/client-c0\",\"cluster-1/backend-c1\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "WorkspaceSetting"
+  name: "xc-ws-settings"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "xc-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"WorkspaceSetting\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/workspace\":\"xc-ws\"},\"name\":\"xc-ws-settings\",\"namespace\":\"xcp-system\"},\"spec\":{\"defaultEastWestGatewaySettings\":[{\"exposedServices\":[{\"serviceLabels\":{\"app\":\"backend\"}}],\"workloadSelector\":{\"labels\":{\"app\":\"ew-gateway\"},\"namespace\":\"backend-c1\"}}]}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"

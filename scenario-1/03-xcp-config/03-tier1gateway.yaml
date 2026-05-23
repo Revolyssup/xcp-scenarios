@@ -1,0 +1,31 @@
+# Tier1Gateway: the front door. It runs on cluster-0 and distributes traffic
+# DOWN to the Tier2 ingress gateway of cluster-1.
+#
+# passthroughServers => TLS passthrough: the Tier1 Envoy does NOT terminate
+# TLS. It only reads the SNI (echo.tetrate.io) from the ClientHello and
+# forwards the encrypted stream to the chosen cluster's Tier2 gateway.
+# Because it is passthrough, there is no `port`/`tls` cert config here.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: Tier1Gateway
+metadata:
+  name: tier1-echo-gw
+  namespace: xcp-system
+  labels:
+    xcp.tetrate.io/workspace: passthrough-ws
+    xcp.tetrate.io/gatewayGroup: tier1-gg
+spec:
+  # Binds this config to the gateway pods created by the Tier1
+  # GatewayDeployment (app=tier1-gateway in namespace tier1).
+  workloadSelector:
+    namespace: tier1
+    labels:
+      app: tier1-gateway
+  passthroughServers:
+    - name: echo
+      port: 17443                 # external listener port on the Tier1 LB
+      hostname: echo.tetrate.io    # SNI used to route the passthrough
+      clusters:
+        - name: cluster-1         # forward to cluster-1's Tier2 gateway
+          weight: 100

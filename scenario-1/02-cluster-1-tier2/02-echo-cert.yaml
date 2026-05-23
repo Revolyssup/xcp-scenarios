@@ -1,0 +1,28 @@
+# TLS passthrough means NOTHING in the path decrypts the request except the
+# final backend. So the echo backend itself must terminate TLS. This uses
+# cert-manager (already installed in the cluster) to mint a self-signed
+# certificate for echo.tetrate.io into the Secret "echo-tls".
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned
+  namespace: echo
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: echo-tls
+  namespace: echo
+spec:
+  # cert-manager writes the leaf cert + key into this Secret.
+  secretName: echo-tls
+  commonName: echo.tetrate.io
+  dnsNames:
+    - echo.tetrate.io
+  issuerRef:
+    name: selfsigned
+    kind: Issuer

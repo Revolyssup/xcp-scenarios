@@ -1,0 +1,33 @@
+# Tier1Gateway for the TERMINATING scenario.
+#
+# externalServers (vs scenario-1's passthroughServers) is the key change:
+#   * The Tier1 Envoy TERMINATES the client's TLS on :18443 using the
+#     edge cert in Secret echo-term-edge-tls (cluster-0/tier1-term).
+#   * After termination, traffic is forwarded over Istio mTLS on port 15443
+#     to the Tier2 cluster's east-west gateway — no client key material is
+#     ever sent to Tier2 or the workload.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: Tier1Gateway
+metadata:
+  name: tier1-echo-term-gw
+  namespace: xcp-system
+  labels:
+    xcp.tetrate.io/workspace: term-ws
+    xcp.tetrate.io/gatewayGroup: tier1-term-gg
+spec:
+  workloadSelector:
+    namespace: tier1-term
+    labels:
+      app: tier1-term-gateway
+  externalServers:
+    - name: echo
+      port: 18443
+      hostname: echo-term.tetrate.io
+      tls:
+        mode: SIMPLE
+        secretName: echo-term-edge-tls
+      clusters:
+        - name: cluster-1
+          weight: 100

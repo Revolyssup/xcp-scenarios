@@ -1,0 +1,15 @@
+# XCP Workspace: the top-level boundary that groups the namespaces taking
+# part in this scenario. Names are "<cluster>/<namespace>".
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+#           (kubectl --kubeconfig ~/.kube/cluster-0 -n xcp-system)
+apiVersion: xcp.tetrate.io/v2
+kind: Workspace
+metadata:
+  name: passthrough-ws
+  namespace: xcp-system
+spec:
+  namespaceSelector:
+    names:
+      - cluster-0/tier1   # Tier1 gateway namespace
+      - cluster-1/echo    # Tier2 gateway + echo backend namespace

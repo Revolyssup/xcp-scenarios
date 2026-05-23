@@ -1,0 +1,9 @@
+# Backend namespace on cluster-1. Sidecar injection enabled — the
+# cross-cluster mTLS chain terminates at the backend's sidecar (which then
+# forwards plaintext to whoami over loopback).
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: backend-c1
+  labels:
+    istio.io/rev: stable

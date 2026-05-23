@@ -1,0 +1,58 @@
+2026-05-23T14:31:36+05:30	Normal	ReplicaSet/backend-86f5b4bc7b	SuccessfulCreate	Created pod: backend-86f5b4bc7b-6btcm
+2026-05-23T14:31:36+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Scheduled	Successfully assigned backend-c1/backend-86f5b4bc7b-6btcm to cluster-1-control-plane
+2026-05-23T14:31:36+05:30	Normal	Deployment/backend	ScalingReplicaSet	Scaled up replica set backend-86f5b4bc7b from 0 to 1
+2026-05-23T14:31:37+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Created	Created container: istio-proxy
+2026-05-23T14:31:37+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-23T14:31:37+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-23T14:31:37+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Started	Started container istio-proxy
+2026-05-23T14:31:37+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Started	Started container istio-init
+2026-05-23T14:31:37+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Created	Created container: istio-init
+2026-05-23T14:31:39+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Pulled	Container image "docker.io/traefik/whoami:v1.10" already present on machine
+2026-05-23T14:31:39+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Created	Created container: whoami
+2026-05-23T14:31:39+05:30	Normal	Pod/backend-86f5b4bc7b-6btcm	Started	Started container whoami
+2026-05-23T14:34:50+05:30	Normal	ReplicaSet/ew-gateway-5cb758976	SuccessfulCreate	Created pod: ew-gateway-5cb758976-2669v
+2026-05-23T14:34:50+05:30	Normal	Service/ew-gateway	IPAllocated	Assigned IP ["172.18.255.176"]
+2026-05-23T14:34:50+05:30	Normal	Pod/ew-gateway-5cb758976-2669v	Created	Created container: istio-proxy
+2026-05-23T14:34:50+05:30	Normal	Deployment/ew-gateway	ScalingReplicaSet	Scaled up replica set ew-gateway-5cb758976 from 0 to 1
+2026-05-23T14:34:50+05:30	Normal	Pod/ew-gateway-5cb758976-2669v	Started	Started container istio-proxy
+2026-05-23T14:34:50+05:30	Normal	Pod/ew-gateway-5cb758976-2669v	Scheduled	Successfully assigned backend-c1/ew-gateway-5cb758976-2669v to cluster-1-control-plane
+2026-05-23T14:34:50+05:30	Normal	Pod/ew-gateway-5cb758976-2669v	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-23T14:34:50+05:30	Normal	Pod/ew-gateway-5cb758976-2669v	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 8ms (8ms including waiting). Image size: 58863518 bytes.
+2026-05-23T14:34:51+05:30	Normal	Service/ew-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"
+2026-05-23T14:35:04+05:30	Warning	HorizontalPodAutoscaler/ew-gateway	FailedGetResourceMetric	failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-23T14:35:05+05:30	Warning	HorizontalPodAutoscaler/ew-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-23T14:39:55+05:30	Normal	Pod/ew-gateway-5cb758976-2gr2p	Scheduled	Successfully assigned backend-c1/ew-gateway-5cb758976-2gr2p to cluster-1-control-plane
+2026-05-23T14:39:55+05:30	Normal	Deployment/ew-gateway	ScalingReplicaSet	Scaled up replica set ew-gateway-5cb758976 from 0 to 1
+2026-05-23T14:39:55+05:30	Normal	Pod/ew-gateway-5cb758976-2gr2p	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-23T14:39:55+05:30	Normal	Pod/ew-gateway-5cb758976-2gr2p	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 8ms (8ms including waiting). Image size: 58863518 bytes.
+2026-05-23T14:39:55+05:30	Normal	Pod/ew-gateway-5cb758976-2gr2p	Created	Created container: istio-proxy
+2026-05-23T14:39:55+05:30	Normal	Service/ew-gateway	IPAllocated	Assigned IP ["172.18.255.176"]
+2026-05-23T14:39:55+05:30	Normal	ReplicaSet/ew-gateway-5cb758976	SuccessfulCreate	Created pod: ew-gateway-5cb758976-2gr2p
+2026-05-23T14:39:56+05:30	Normal	Pod/ew-gateway-5cb758976-2gr2p	Started	Started container istio-proxy
+2026-05-23T14:40:05+05:30	Normal	Pod/ew-gateway-5cb758976-2669v	Killing	Stopping container istio-proxy
+2026-05-23T14:40:06+05:30	Warning	Pod/ew-gateway-5cb758976-2669v	Unhealthy	Readiness probe failed: HTTP probe failed with statuscode: 503
+2026-05-23T14:42:40+05:30	Normal	ReplicaSet/ew-gateway-56c789cc74	SuccessfulCreate	Created pod: ew-gateway-56c789cc74-ttkrn
+2026-05-23T14:42:40+05:30	Normal	Deployment/ew-gateway	ScalingReplicaSet	Scaled up replica set ew-gateway-56c789cc74 from 0 to 1
+2026-05-23T14:42:40+05:30	Normal	Pod/ew-gateway-56c789cc74-ttkrn	Scheduled	Successfully assigned backend-c1/ew-gateway-56c789cc74-ttkrn to cluster-1-control-plane
+2026-05-23T14:42:41+05:30	Normal	Pod/ew-gateway-56c789cc74-ttkrn	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 7ms (8ms including waiting). Image size: 58863518 bytes.
+2026-05-23T14:42:41+05:30	Normal	Deployment/ew-gateway	ScalingReplicaSet	Scaled down replica set ew-gateway-5cb758976 from 1 to 0
+2026-05-23T14:42:41+05:30	Normal	Pod/ew-gateway-56c789cc74-ttkrn	Created	Created container: istio-proxy
+2026-05-23T14:42:41+05:30	Normal	Pod/ew-gateway-56c789cc74-ttkrn	Started	Started container istio-proxy
+2026-05-23T14:42:41+05:30	Normal	Pod/ew-gateway-56c789cc74-ttkrn	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-23T14:42:51+05:30	Normal	ReplicaSet/ew-gateway-5cb758976	SuccessfulDelete	Deleted pod: ew-gateway-5cb758976-2gr2p
+2026-05-23T14:42:51+05:30	Normal	Pod/ew-gateway-5cb758976-2gr2p	Killing	Stopping container istio-proxy
+2026-05-23T14:42:56+05:30	Warning	Pod/ew-gateway-5cb758976-2gr2p	Unhealthy	Readiness probe failed: HTTP probe failed with statuscode: 503
+2026-05-23T14:47:45+05:30	Normal	ReplicaSet/ew-gateway-698bcf4fb5	SuccessfulCreate	Created pod: ew-gateway-698bcf4fb5-zmnpx
+2026-05-23T14:47:45+05:30	Normal	Pod/ew-gateway-698bcf4fb5-zmnpx	Scheduled	Successfully assigned backend-c1/ew-gateway-698bcf4fb5-zmnpx to cluster-1-control-plane
+2026-05-23T14:47:45+05:30	Normal	Deployment/ew-gateway	ScalingReplicaSet	Scaled up replica set ew-gateway-698bcf4fb5 from 0 to 1
+2026-05-23T14:47:46+05:30	Warning	Pod/ew-gateway-698bcf4fb5-zmnpx	Unhealthy	Readiness probe failed: Get "http://10.20.0.34:15021/healthz/ready": dial tcp 10.20.0.34:15021: connect: connection refused
+2026-05-23T14:47:46+05:30	Normal	Pod/ew-gateway-698bcf4fb5-zmnpx	Started	Started container istio-proxy
+2026-05-23T14:47:46+05:30	Normal	Pod/ew-gateway-698bcf4fb5-zmnpx	Created	Created container: istio-proxy
+2026-05-23T14:47:46+05:30	Normal	Pod/ew-gateway-698bcf4fb5-zmnpx	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 7ms (7ms including waiting). Image size: 58863518 bytes.
+2026-05-23T14:47:46+05:30	Normal	Pod/ew-gateway-698bcf4fb5-zmnpx	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-23T14:47:47+05:30	Normal	Deployment/ew-gateway	ScalingReplicaSet	Scaled down replica set ew-gateway-56c789cc74 from 1 to 0
+2026-05-23T14:47:57+05:30	Normal	ReplicaSet/ew-gateway-56c789cc74	SuccessfulDelete	Deleted pod: ew-gateway-56c789cc74-ttkrn
+2026-05-23T14:47:57+05:30	Normal	Pod/ew-gateway-56c789cc74-ttkrn	Killing	Stopping container istio-proxy
+2026-05-23T14:48:05+05:30	Warning	HorizontalPodAutoscaler/ew-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+2026-05-23T14:48:05+05:30	Warning	HorizontalPodAutoscaler/ew-gateway	FailedGetResourceMetric	failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+2026-05-23T14:48:07+05:30	Normal	Service/ew-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"

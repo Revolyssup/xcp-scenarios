@@ -1,0 +1,58 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"IngressGateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"tier2-term-gg","xcp.tetrate.io/workspace":"term-ws"},"name":"echo-t2-term-gw","namespace":"xcp-system"},"spec":{"http":[{"hostname":"echo-term.tetrate.io","name":"echo","port":8080,"routing":{"rules":[{"route":{"host":"echo-term/echo-term.echo-term.svc.cluster.local","port":80}}]}}],"workloadSelector":{"labels":{"app":"echo-term-gateway"},"namespace":"echo-term"}}}
+    xcp.tetrate.io/contentHash: 96c5e597e3b0e45741fe5d22a27e958a
+  creationTimestamp: "2026-05-23T07:30:13Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: tier2-term-gg
+    xcp.tetrate.io/workspace: term-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:exportTo: {}
+        f:gateways: {}
+        f:hosts: {}
+        f:http: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-23T07:30:13Z"
+  name: vs-echo-term-tetrate-io
+  namespace: echo-term
+  resourceVersion: "269022"
+  uid: d060bab9-ee63-49f6-86e1-79172ce04e11
+spec:
+  exportTo:
+  - .
+  gateways:
+  - echo-term/echo-t2-term-gw
+  hosts:
+  - echo-term.tetrate.io
+  http:
+  - match:
+    - port: 8080
+    - port: 15443
+    name: echo-t2-term-gw-echo-0
+    route:
+    - destination:
+        host: echo-term.echo-term.svc.cluster.local
+        port:
+          number: 80
+      weight: 100

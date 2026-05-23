@@ -1,0 +1,44 @@
+{
+  "backend-c1": [
+    {
+      "name": "default",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "Sidecar"
+      }
+    },
+    {
+      "name": "default-upstream-traffic-setting",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1alpha3",
+        "kind": "EnvoyFilter"
+      }
+    },
+    {
+      "name": "dr-ew-backend-backend-c1-svc-cluster-local",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "DestinationRule"
+      }
+    },
+    {
+      "name": "ewgen-xc-ws-0",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "Gateway"
+      }
+    },
+    {
+      "name": "vs-xc-ws-0",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "VirtualService"
+      }
+    }
+  ]
+}

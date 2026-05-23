@@ -1,0 +1,8 @@
+# Namespace that hosts the Tier1 gateway data plane on cluster-0 for the
+# TERMINATING scenario (TLS is decrypted at the Tier1 edge).
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tier1-term
+  labels:
+    istio.io/rev: stable

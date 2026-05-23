@@ -1,0 +1,16 @@
+{
+  "GatewayInfo": [
+    {
+      "WorkloadSelector": {
+        "app": "tier1-term-gateway"
+      },
+      "Hosts": [
+        "echo-term.tetrate.io"
+      ],
+      "Protocol": "HTTP",
+      "Port": 18443,
+      "GatewayName": "tier1-echo-term-gw",
+      "GatewayType": "tier1 gateway"
+    }
+  ]
+}

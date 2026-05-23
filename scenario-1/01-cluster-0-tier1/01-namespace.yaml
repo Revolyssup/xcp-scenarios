@@ -1,0 +1,8 @@
+# Namespace that hosts the Tier1 gateway data plane on cluster-0.
+# The istio.io/rev label ties this namespace to the "stable" istiod revision.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tier1
+  labels:
+    istio.io/rev: stable

@@ -1,0 +1,9 @@
+# Caller namespace on cluster-0. The istio.io/rev label enables sidecar
+# injection on the curl client pod — required for the sidecar to consult
+# the cross-cluster ServiceEntry that XCP auto-generates for the backend.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: client-c0
+  labels:
+    istio.io/rev: stable

@@ -1,0 +1,8 @@
+# Namespace on cluster-1 that hosts BOTH the Tier2 gateway data plane and the
+# echo backend for the TERMINATING scenario.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: echo-term
+  labels:
+    istio.io/rev: stable

@@ -1,0 +1,44 @@
+# Dedicated east-west gateway for cluster-1.
+#
+# This is what makes scenario-3 self-contained: we don't rely on any gateway
+# left over from scenario-1/2. Setting type=EASTWEST tells XCP to provision
+# the pod with ONLY port 15443 (ISTIO mTLS auto-passthrough), wrap it in a
+# LoadBalancer Service, and stamp it with the labels XCP/Istio look for
+# (platform.tetrate.io/eastwest=enabled, topology.istio.io/network=...).
+#
+# The pod is deployed inside backend-c1 so tearing down this scenario
+# (deleting the namespace) also tears down the gateway.
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+# Install CRs (GatewayDeployment) are reconciled only when they live in the
+# namespace xcp-operator-edge watches — istio-system. The pod itself runs
+# in backend-c1 via spec.namespace.
+#
+# NOTE on `type`: in this XCP build, `type: EASTWEST` ships incomplete —
+# the Service ends up with 80/443 but NOT 15443, so cross-cluster routing
+# breaks. `type: UNIFIED` (the default) deploys a pod that exposes 80, 443
+# AND 15443 (tls-istio-mtls), and XCP/Istio still program the 15443
+# AUTO_PASSTHROUGH east-west listener on it. Functionally equivalent for
+# our demo; the trade-off is a slightly larger gateway surface than a
+# pure-EW one.
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: GatewayDeployment
+metadata:
+  name: ew-gateway
+  namespace: istio-system    # the operator only watches install CRs here
+spec:
+  namespace: backend-c1      # the pod still runs alongside the backend
+  revision: stable
+  type: EASTWEST             # only port 15443 (+ status-port) on the Service
+  kubeSpec:
+    deployment:
+      # Matched by WorkspaceSetting.defaultEastWestGatewaySettings.workloadSelector.
+      labels:
+        app: ew-gateway
+    # The service: block must be present (even empty) — the operator webhook
+    # bails out of its port-merge logic if kubeSpec.service is nil and the
+    # service ends up with helm defaults (80/443) instead of 15443. With
+    # this stanza in place AND type=EASTWEST, the webhook adds ONLY 15443
+    # (ensureMultiClusterPort) and skips 80/443 (eastwestonly branch).
+    service:
+      type: LoadBalancer

@@ -1,0 +1,8 @@
+# Namespace on cluster-1 that hosts BOTH the Tier2 ingress gateway data plane
+# and the echo backend workload.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: echo
+  labels:
+    istio.io/rev: stable

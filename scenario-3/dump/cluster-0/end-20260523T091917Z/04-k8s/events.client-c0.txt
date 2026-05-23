@@ -1,0 +1,12 @@
+2026-05-23T14:31:24+05:30	Normal	Pod/client-56b675d94f-gpv5b	Scheduled	Successfully assigned client-c0/client-56b675d94f-gpv5b to cluster-0-control-plane
+2026-05-23T14:31:24+05:30	Normal	ReplicaSet/client-56b675d94f	SuccessfulCreate	Created pod: client-56b675d94f-gpv5b
+2026-05-23T14:31:24+05:30	Normal	Deployment/client	ScalingReplicaSet	Scaled up replica set client-56b675d94f from 0 to 1
+2026-05-23T14:31:25+05:30	Normal	Pod/client-56b675d94f-gpv5b	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-23T14:31:25+05:30	Normal	Pod/client-56b675d94f-gpv5b	Created	Created container: istio-init
+2026-05-23T14:31:25+05:30	Normal	Pod/client-56b675d94f-gpv5b	Started	Started container istio-init
+2026-05-23T14:31:25+05:30	Normal	Pod/client-56b675d94f-gpv5b	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-23T14:31:25+05:30	Normal	Pod/client-56b675d94f-gpv5b	Created	Created container: istio-proxy
+2026-05-23T14:31:25+05:30	Normal	Pod/client-56b675d94f-gpv5b	Started	Started container istio-proxy
+2026-05-23T14:31:27+05:30	Normal	Pod/client-56b675d94f-gpv5b	Pulled	Container image "curlimages/curl:8.10.1" already present on machine
+2026-05-23T14:31:27+05:30	Normal	Pod/client-56b675d94f-gpv5b	Created	Created container: curl
+2026-05-23T14:31:27+05:30	Normal	Pod/client-56b675d94f-gpv5b	Started	Started container curl

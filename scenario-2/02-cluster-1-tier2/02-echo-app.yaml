@@ -1,0 +1,60 @@
+# The echo backend for the TERMINATING scenario.
+#
+# Contrast with scenario-1:
+#  * Speaks plain HTTP on :8080 — no --cert / --key.
+#  * No echo-tls Secret in this namespace.
+#  * Sidecar injection is the default (namespace is istio.io/rev: stable, no
+#    "sidecar.istio.io/inject: false" annotation). The Tier2 gateway → echo
+#    pod hop is therefore mesh mTLS, and the Tier1 → Tier2 hop is the Istio
+#    east-west auto-passthrough on 15443. Public TLS terminates ONCE at Tier1.
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: echo-term
+  namespace: echo-term
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-term
+  namespace: echo-term
+  labels:
+    app: echo-term
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-term
+  template:
+    metadata:
+      labels:
+        app: echo-term
+    spec:
+      serviceAccountName: echo-term
+      containers:
+        - name: whoami
+          image: docker.io/traefik/whoami:v1.10
+          args:
+            - --port=8080
+            - --name=echo-term-cluster-1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-term
+  namespace: echo-term
+  labels:
+    app: echo-term
+spec:
+  selector:
+    app: echo-term
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP

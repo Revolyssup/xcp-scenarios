@@ -1,0 +1,97 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 9b357fff99c4e803829740d998407280
+    xcp.tetrate.io/created-by-installer: "true"
+  creationTimestamp: "2026-05-20T18:17:32Z"
+  generation: 1
+  labels:
+    install.xcp.tetrate.io/owner-kind: EdgeXcp
+    install.xcp.tetrate.io/owner-name: edgexcp
+    install.xcp.tetrate.io/owner-version: v1alpha1
+    istio.io/rev: stable
+  managedFields:
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:xcp.tetrate.io/contentHash: {}
+          f:xcp.tetrate.io/created-by-installer: {}
+        f:labels:
+          f:install.xcp.tetrate.io/owner-kind: {}
+          f:install.xcp.tetrate.io/owner-name: {}
+          f:install.xcp.tetrate.io/owner-version: {}
+          f:istio.io/rev: {}
+        f:ownerReferences:
+          k:{"uid":"6bff1010-9580-42d7-807d-3156050aef87"}: {}
+      f:spec:
+        f:configPatches: {}
+        f:workloadSelector:
+          f:labels:
+            f:istio: {}
+    manager: xcp-operator-manager
+    operation: Apply
+    time: "2026-05-20T18:17:32Z"
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-20T18:17:36Z"
+  name: global-tcp-keepalive-envoy-filter
+  namespace: istio-system
+  ownerReferences:
+  - apiVersion: install.xcp.tetrate.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: EdgeXcp
+    name: edgexcp
+    uid: 6bff1010-9580-42d7-807d-3156050aef87
+  resourceVersion: "2772"
+  uid: 9970f8c2-f411-410d-8ea4-48e96c5206b7
+spec:
+  configPatches:
+  - applyTo: LISTENER
+    match:
+      context: GATEWAY
+    patch:
+      operation: MERGE
+      value:
+        socket_options:
+        - description: enable keep-alive
+          int_value: 1
+          level: 1
+          name: 9
+          state: STATE_PREBIND
+        - description: idle time before first keep-alive probe is sent
+          int_value: 30
+          level: 6
+          name: 4
+          state: STATE_PREBIND
+        - description: keep-alive interval
+          int_value: 30
+          level: 6
+          name: 5
+          state: STATE_PREBIND
+        - description: keep-alive probes count
+          int_value: 10
+          level: 6
+          name: 6
+          state: STATE_PREBIND
+  workloadSelector:
+    labels:
+      istio: ingressgateway
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133

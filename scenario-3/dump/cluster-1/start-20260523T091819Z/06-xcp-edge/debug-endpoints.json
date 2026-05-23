@@ -1,0 +1,173 @@
+{
+  "all_by_address": {
+    "10.20.0.10": {
+      "service": "cert-manager-webhook.cert-manager.svc.cluster.local",
+      "subset": "v1.11.0",
+      "namespace": "cert-manager",
+      "injected": false,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    },
+    "10.20.0.11": {
+      "service": "xcp-operator-edge.istio-system.svc.cluster.local",
+      "subset": "",
+      "namespace": "istio-system",
+      "injected": false,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    },
+    "10.20.0.12": {
+      "service": "istiod-stable.istio-system.svc.cluster.local",
+      "subset": "1.0.0",
+      "namespace": "istio-system",
+      "injected": false,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    },
+    "10.20.0.13": {
+      "service": "xcp-edge-internal.istio-system.svc.cluster.local",
+      "subset": "",
+      "namespace": "istio-system",
+      "injected": false,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    },
+    "10.20.0.27": {
+      "service": "echo-term.echo-term.svc.cluster.local",
+      "subset": "",
+      "namespace": "echo-term",
+      "injected": true,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    },
+    "10.20.0.28": {
+      "service": "echo-term-gateway.echo-term.svc.cluster.local",
+      "subset": "stable",
+      "namespace": "echo-term",
+      "injected": true,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": true,
+      "is_service_configured_for_east_west": false
+    },
+    "10.20.0.30": {
+      "service": "backend.backend-c1.svc.cluster.local",
+      "subset": "",
+      "namespace": "backend-c1",
+      "injected": true,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": true
+    },
+    "10.20.0.34": {
+      "service": "ew-gateway.backend-c1.svc.cluster.local",
+      "subset": "stable",
+      "namespace": "backend-c1",
+      "injected": true,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": true,
+      "is_service_configured_for_east_west": true
+    },
+    "10.20.0.7": {
+      "service": "metallb-webhook-service.metallb-system.svc.cluster.local",
+      "subset": "",
+      "namespace": "metallb-system",
+      "injected": false,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    },
+    "10.20.0.9": {
+      "service": "cert-manager.cert-manager.svc.cluster.local",
+      "subset": "v1.11.0",
+      "namespace": "cert-manager",
+      "injected": false,
+      "ambient_mode": false,
+      "locality": "us-east1/us-east1-B/subzone-x",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    },
+    "172.18.0.6": {
+      "service": "kubernetes.default.svc.cluster.local",
+      "subset": "",
+      "namespace": "",
+      "injected": false,
+      "ambient_mode": false,
+      "locality": "",
+      "is_gateway": false,
+      "is_service_configured_for_east_west": false
+    }
+  },
+  "ambient_services": [],
+  "injected_services": [
+    "echo-term-gateway.echo-term.svc.cluster.local",
+    "echo-term.echo-term.svc.cluster.local",
+    "backend.backend-c1.svc.cluster.local",
+    "ew-gateway.backend-c1.svc.cluster.local"
+  ],
+  "service_to_endpoints": {
+    "backend.backend-c1.svc.cluster.local": [
+      "10.20.0.30"
+    ],
+    "cert-manager-webhook.cert-manager.svc.cluster.local": [
+      "10.20.0.10"
+    ],
+    "cert-manager.cert-manager.svc.cluster.local": [
+      "10.20.0.9"
+    ],
+    "echo-term-gateway.echo-term.svc.cluster.local": [
+      "10.20.0.28"
+    ],
+    "echo-term.echo-term.svc.cluster.local": [
+      "10.20.0.27"
+    ],
+    "ew-gateway.backend-c1.svc.cluster.local": [
+      "10.20.0.34"
+    ],
+    "istiod-stable.istio-system.svc.cluster.local": [
+      "10.20.0.12"
+    ],
+    "kubernetes.default.svc.cluster.local": [
+      "172.18.0.6"
+    ],
+    "metallb-webhook-service.metallb-system.svc.cluster.local": [
+      "10.20.0.7"
+    ],
+    "xcp-edge-internal.istio-system.svc.cluster.local": [
+      "10.20.0.13"
+    ],
+    "xcp-operator-edge.istio-system.svc.cluster.local": [
+      "10.20.0.11"
+    ]
+  },
+  "service_to_subsets": {
+    "cert-manager-webhook.cert-manager.svc.cluster.local": [
+      "v1.11.0"
+    ],
+    "cert-manager.cert-manager.svc.cluster.local": [
+      "v1.11.0"
+    ],
+    "echo-term-gateway.echo-term.svc.cluster.local": [
+      "stable"
+    ],
+    "ew-gateway.backend-c1.svc.cluster.local": [
+      "stable"
+    ],
+    "istiod-stable.istio-system.svc.cluster.local": [
+      "1.0.0"
+    ]
+  }
+}

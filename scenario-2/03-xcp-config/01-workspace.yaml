@@ -1,0 +1,15 @@
+# XCP Workspace for the TERMINATING scenario. Distinct from passthrough-ws so
+# scenario-1 and scenario-2 can coexist (each namespace belongs to exactly one
+# Workspace).
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: xcp.tetrate.io/v2
+kind: Workspace
+metadata:
+  name: term-ws
+  namespace: xcp-system
+spec:
+  namespaceSelector:
+    names:
+      - cluster-0/tier1-term
+      - cluster-1/echo-term

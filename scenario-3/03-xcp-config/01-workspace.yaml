@@ -1,0 +1,20 @@
+# XCP Workspace covering both the caller (cluster-0/client-c0) and the
+# backend (cluster-1/backend-c1).
+#
+# Workspace inclusion is what causes XCP to propagate cluster state
+# between the two clusters: services declared in backend-c1 become visible
+# in cluster-0 as auto-generated ServiceEntries, with endpoints pointing at
+# cluster-1's east-west gateway LB IP — that's the trigger that makes the
+# client sidecar dial across the network boundary.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: xcp.tetrate.io/v2
+kind: Workspace
+metadata:
+  name: xc-ws
+  namespace: xcp-system
+spec:
+  namespaceSelector:
+    names:
+      - cluster-0/client-c0
+      - cluster-1/backend-c1

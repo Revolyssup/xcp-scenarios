@@ -1,0 +1,28 @@
+2026-05-23T12:01:51+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-gn2sg	Scheduled	Successfully assigned echo/echo-gateway-5f4f69f4cf-gn2sg to cluster-1-control-plane
+2026-05-23T12:01:51+05:30	Normal	Deployment/echo-gateway	ScalingReplicaSet	Scaled up replica set echo-gateway-5f4f69f4cf from 1 to 2
+2026-05-23T12:01:51+05:30	Normal	HorizontalPodAutoscaler/echo-gateway	SuccessfulRescale	New size: 2; reason: cpu resource utilization (percentage of request) above target
+2026-05-23T12:01:51+05:30	Normal	ReplicaSet/echo-gateway-5f4f69f4cf	SuccessfulCreate	Created pod: echo-gateway-5f4f69f4cf-gn2sg
+2026-05-23T12:01:51+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-gn2sg	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-23T12:01:52+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-gn2sg	Started	Started container istio-proxy
+2026-05-23T12:01:52+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-gn2sg	Created	Created container: istio-proxy
+2026-05-23T12:01:52+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-gn2sg	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 41ms (41ms including waiting). Image size: 58863518 bytes.
+2026-05-23T12:09:15+05:30	Normal	Deployment/echo-gateway	ScalingReplicaSet	Scaled down replica set echo-gateway-5f4f69f4cf from 2 to 1
+2026-05-23T12:09:15+05:30	Normal	HorizontalPodAutoscaler/echo-gateway	SuccessfulRescale	New size: 1; reason: All metrics below target
+2026-05-23T12:09:25+05:30	Normal	ReplicaSet/echo-gateway-5f4f69f4cf	SuccessfulDelete	Deleted pod: echo-gateway-5f4f69f4cf-gn2sg
+2026-05-23T12:09:25+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-gn2sg	Killing	Stopping container istio-proxy
+2026-05-23T12:09:31+05:30	Normal	Service/echo-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"
+2026-05-23T12:14:58+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Scheduled	Successfully assigned echo/echo-6d455455d9-mjsm9 to cluster-1-control-plane
+2026-05-23T12:14:58+05:30	Normal	Deployment/echo	ScalingReplicaSet	Scaled up replica set echo-6d455455d9 from 0 to 1
+2026-05-23T12:14:58+05:30	Normal	ReplicaSet/echo-6d455455d9	SuccessfulCreate	Created pod: echo-6d455455d9-mjsm9
+2026-05-23T12:14:59+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-23T12:14:59+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Started	Started container istio-proxy
+2026-05-23T12:14:59+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Created	Created container: istio-proxy
+2026-05-23T12:14:59+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Started	Started container istio-init
+2026-05-23T12:14:59+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Created	Created container: istio-init
+2026-05-23T12:14:59+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-23T12:15:01+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Created	Created container: whoami
+2026-05-23T12:15:01+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Pulled	Container image "docker.io/traefik/whoami:v1.10" already present on machine
+2026-05-23T12:15:01+05:30	Normal	Pod/echo-6d455455d9-mjsm9	Started	Started container whoami
+2026-05-23T12:15:02+05:30	Normal	ReplicaSet/echo-c68bdcc5d	SuccessfulDelete	Deleted pod: echo-c68bdcc5d-srvzv
+2026-05-23T12:15:02+05:30	Normal	Pod/echo-c68bdcc5d-srvzv	Killing	Stopping container whoami
+2026-05-23T12:15:02+05:30	Normal	Deployment/echo	ScalingReplicaSet	Scaled down replica set echo-c68bdcc5d from 1 to 0

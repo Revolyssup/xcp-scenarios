@@ -1,0 +1,38 @@
+# A long-running curl pod in cluster-0/client-c0. We'll `kubectl exec` into
+# it to dial the backend Service that lives in cluster-1.
+#
+# The sidecar is injected by virtue of the namespace label
+# (istio.io/rev: stable). With the sidecar in place, the call to
+# backend.backend-c1.svc.cluster.local will be intercepted, resolved against
+# the XCP-generated cross-cluster ServiceEntry, and tunneled through the
+# east-west gateway on cluster-1.
+#
+# Apply to: cluster-0  (kubectl --kubeconfig ~/.kube/cluster-0)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: client
+  namespace: client-c0
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: client-c0
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      serviceAccountName: client
+      containers:
+        - name: curl
+          image: curlimages/curl:8.10.1
+          command: ["sleep", "infinity"]

@@ -1,0 +1,69 @@
+# The echo backend: traefik/whoami serving HTTPS on :9443 using the
+# self-signed cert from the "echo-tls" Secret (see 02-echo-cert.yaml).
+#
+# NOTE: the pod runs WITHOUT an Istio sidecar (sidecar.istio.io/inject: false).
+# In a TLS-passthrough path the Tier2 gateway forwards the still-encrypted
+# byte stream straight to this pod, and whoami terminates the client's TLS.
+# A sidecar would only add an interception layer with nothing to do here.
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: echo
+  namespace: echo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo
+  namespace: echo
+  labels:
+    app: echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo
+  template:
+    metadata:
+      labels:
+        app: echo
+    spec:
+      serviceAccountName: echo
+      containers:
+        - name: whoami
+          image: docker.io/traefik/whoami:v1.10
+          args:
+            - --port=9443                 # serve on 9443
+            - --cert=/certs/tls.crt       # presence of cert+key => HTTPS
+            - --key=/certs/tls.key
+            - --name=echo-cluster-1       # printed in the response body
+          ports:
+            - containerPort: 9443
+              protocol: TCP
+          volumeMounts:
+            - name: tls
+              mountPath: /certs
+              readOnly: true
+      volumes:
+        - name: tls
+          secret:
+            secretName: echo-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo
+  namespace: echo
+  labels:
+    app: echo
+spec:
+  selector:
+    app: echo
+  ports:
+    # The Tier2 IngressGateway routes passthrough traffic to this port.
+    - name: tls-echo
+      port: 9443
+      targetPort: 9443
+      protocol: TCP

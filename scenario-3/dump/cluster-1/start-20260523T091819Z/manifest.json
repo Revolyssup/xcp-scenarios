@@ -1,0 +1,78 @@
+{
+  "timestamp": "2026-05-23T09:18:19Z",
+  "query": {
+    "hostname": "backend.backend-c1.svc.cluster.local",
+    "namespace": "backend-c1"
+  },
+  "resolved_context": {
+    "service_name": "backend",
+    "cluster_role": "workload",
+    "cluster_role_reason": "local Service backend-c1/backend with 1 backing pod(s)",
+    "service_found": true,
+    "backing_pods": [
+      "backend-c1/backend-86f5b4bc7b-6btcm"
+    ],
+    "gateway_pods": [
+      "backend-c1/ew-gateway-698bcf4fb5-zmnpx",
+      "echo-term/echo-term-gateway-6bc8b5ffdd-lq86b"
+    ],
+    "istiod_pods": [
+      "istio-system/istiod-stable-b4c7c467b-2sqsx"
+    ],
+    "edge_pods": [
+      "istio-system/edge-bdb796b6f-xxdp2"
+    ],
+    "matched_crs": [
+      "VirtualService backend-c1/vs-xc-ws-0",
+      "Gateway backend-c1/ewgen-xc-ws-0",
+      "DestinationRule backend-c1/dr-ew-backend-backend-c1-svc-cluster-local",
+      "EnvoyFilter backend-c1/default-upstream-traffic-setting",
+      "EnvoyFilter istio-system/global-forward-xfcc-15443",
+      "EnvoyFilter istio-system/global-gw-best-practice",
+      "EnvoyFilter istio-system/global-mx-downstream-egress-gateway-filter",
+      "EnvoyFilter istio-system/global-mx-downstream-gateway-filter",
+      "EnvoyFilter istio-system/global-periodical-access-log",
+      "EnvoyFilter istio-system/global-request-id-propagation",
+      "EnvoyFilter istio-system/global-tcp-keepalive-envoy-filter",
+      "EnvoyFilter istio-system/global-xfcc-extractor-sidecar",
+      "EnvoyFilter istio-system/global-xfcc-guard-15443"
+    ],
+    "xcp_config_crs": [
+      "Workspace istio-system/xc-ws",
+      "WorkspaceSetting istio-system/xc-ws-settings",
+      "GlobalSetting istio-system/global"
+    ]
+  },
+  "collectors": {
+    "envoy": {
+      "layer": "01-envoy",
+      "status": "ok",
+      "files": 15
+    },
+    "istio-config": {
+      "layer": "02-istio-config",
+      "status": "ok",
+      "files": 13
+    },
+    "istiod": {
+      "layer": "05-istiod",
+      "status": "ok",
+      "files": 8
+    },
+    "k8s": {
+      "layer": "04-k8s",
+      "status": "ok",
+      "files": 4
+    },
+    "xcp-config": {
+      "layer": "03-xcp-config",
+      "status": "ok",
+      "files": 3
+    },
+    "xcp-edge": {
+      "layer": "06-xcp-edge",
+      "status": "ok",
+      "files": 9
+    }
+  }
+}

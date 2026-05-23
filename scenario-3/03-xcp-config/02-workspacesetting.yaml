@@ -1,0 +1,28 @@
+# WorkspaceSetting that designates THIS scenario's east-west gateway as the
+# bridge for cross-cluster routing inside xc-ws.
+#
+# The EastWestGateway entry has two parts:
+#  * workloadSelector — points at the GatewayDeployment we just provisioned
+#    (app=ew-gateway in backend-c1). XCP will program its 15443 listener.
+#  * exposedServices  — which services in the workspace get cross-cluster
+#    ServiceEntries auto-generated on remote clusters. We match by the label
+#    app=backend, which our Service in 02-backend.yaml carries.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: xcp.tetrate.io/v2
+kind: WorkspaceSetting
+metadata:
+  name: xc-ws-settings
+  namespace: xcp-system
+  labels:
+    # MUST match the Workspace's name — that's how XCP ties the setting to it.
+    xcp.tetrate.io/workspace: xc-ws
+spec:
+  defaultEastWestGatewaySettings:
+    - workloadSelector:
+        namespace: backend-c1
+        labels:
+          app: ew-gateway
+      exposedServices:
+        - serviceLabels:
+            app: backend

@@ -1,0 +1,105 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: a283c7233f8eb80745076d902de85c84
+    xcp.tetrate.io/created-by-installer: "true"
+  creationTimestamp: "2026-05-20T18:17:32Z"
+  generation: 1
+  labels:
+    install.xcp.tetrate.io/owner-kind: EdgeXcp
+    install.xcp.tetrate.io/owner-name: edgexcp
+    install.xcp.tetrate.io/owner-version: v1alpha1
+    istio.io/rev: stable
+  managedFields:
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:xcp.tetrate.io/contentHash: {}
+          f:xcp.tetrate.io/created-by-installer: {}
+        f:labels:
+          f:install.xcp.tetrate.io/owner-kind: {}
+          f:install.xcp.tetrate.io/owner-name: {}
+          f:install.xcp.tetrate.io/owner-version: {}
+          f:istio.io/rev: {}
+        f:ownerReferences:
+          k:{"uid":"6bff1010-9580-42d7-807d-3156050aef87"}: {}
+      f:spec:
+        f:configPatches: {}
+        f:workloadSelector:
+          f:labels:
+            f:istio: {}
+    manager: xcp-operator-manager
+    operation: Apply
+    time: "2026-05-20T18:17:32Z"
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-20T18:17:36Z"
+  name: global-gw-best-practice
+  namespace: istio-system
+  ownerReferences:
+  - apiVersion: install.xcp.tetrate.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: EdgeXcp
+    name: edgexcp
+    uid: 6bff1010-9580-42d7-807d-3156050aef87
+  resourceVersion: "2777"
+  uid: e1f0969f-f2db-4c6f-b7cf-a6e85d7d4186
+spec:
+  configPatches:
+  - applyTo: NETWORK_FILTER
+    match:
+      context: GATEWAY
+      listener:
+        filterChain:
+          filter:
+            name: envoy.filters.network.http_connection_manager
+    patch:
+      operation: MERGE
+      value:
+        typed_config:
+          '@type': type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+          common_http_protocol_options:
+            idle_timeout: 3600s
+          http2_protocol_options:
+            initial_connection_window_size: 1048576
+            initial_stream_window_size: 65536
+            max_concurrent_streams: 100
+          normalize_path: true
+          path_with_escaped_slashes_action: UNESCAPE_AND_REDIRECT
+          use_remote_address: true
+  - applyTo: CLUSTER
+    match:
+      context: GATEWAY
+    patch:
+      operation: MERGE
+      value:
+        per_connection_buffer_limit_bytes: 32768
+  - applyTo: LISTENER
+    match:
+      context: GATEWAY
+    patch:
+      operation: MERGE
+      value:
+        per_connection_buffer_limit_bytes: 32768
+  workloadSelector:
+    labels:
+      istio: ingressgateway
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133

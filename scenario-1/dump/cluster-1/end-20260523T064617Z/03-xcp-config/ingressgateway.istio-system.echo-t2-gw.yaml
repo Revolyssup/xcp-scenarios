@@ -1,0 +1,53 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: IngressGateway
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"IngressGateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"tier2-gg","xcp.tetrate.io/workspace":"passthrough-ws"},"name":"echo-t2-gw","namespace":"xcp-system"},"spec":{"tls":[{"hostname":"echo.tetrate.io","name":"echo","port":17443,"route":{"host":"echo/echo.echo.svc.cluster.local","port":9443}}],"workloadSelector":{"labels":{"app":"echo-gateway"},"namespace":"echo"}}}
+    xcp.tetrate.io/contentHash: 46b8d1caea4e8217bb91855e623caed7
+  creationTimestamp: "2026-05-22T14:08:31Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/gatewayGroup: tier2-gg
+    xcp.tetrate.io/workspace: passthrough-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:tls: {}
+        f:workloadSelector:
+          .: {}
+          f:labels:
+            .: {}
+            f:app: {}
+          f:namespace: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-22T14:08:31Z"
+  name: echo-t2-gw
+  namespace: istio-system
+  resourceVersion: "225225"
+  uid: 2c9ca90a-c772-438d-bd06-417dbb33e561
+spec:
+  tls:
+  - hostname: echo.tetrate.io
+    name: echo
+    port: 17443
+    route:
+      host: echo/echo.echo.svc.cluster.local
+      port: 9443
+  workloadSelector:
+    labels:
+      app: echo-gateway
+    namespace: echo

@@ -1,0 +1,60 @@
+# Plain HTTP backend on cluster-1 (whoami). No TLS, no certs — the mesh
+# handles encryption end-to-end via auto-mTLS:
+#   * client sidecar (cluster-0)
+#     ─ mesh-mTLS dial to cluster-1 east-west gw :15443 ─▶
+#   * east-west gateway (cluster-1)
+#     ─ SNI auto-passthrough ─▶
+#   * backend sidecar (cluster-1, :15006 inbound)
+#     ─ plaintext loopback ─▶
+#   * whoami :8080
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backend
+  namespace: backend-c1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: backend-c1
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      serviceAccountName: backend
+      containers:
+        - name: whoami
+          image: docker.io/traefik/whoami:v1.10
+          args:
+            - --port=8080
+            - --name=backend-cluster-1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: backend-c1
+  labels:
+    app: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
