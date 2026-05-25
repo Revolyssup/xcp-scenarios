@@ -1,0 +1,112 @@
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: EdgeXcp
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"install.xcp.tetrate.io/v1alpha1","kind":"EdgeXcp","metadata":{"annotations":{},"name":"edgexcp","namespace":"istio-system"},"spec":{"centralAuthJwt":{"centralCaSecret":"xcp-central-auth-ca","secret":"xcp-central-auth-jwt"},"centralAuthMode":"JWT","components":{"edgeServer":{"kubeSpec":{"deployment":{"env":[{"name":"XCP_DEBOUNCE_AFTER","value":"1s"},{"name":"XCP_DEBOUNCE_MAX","value":"10s"},{"name":"XCP_CLUSTER_STATE_DEBOUNCE_AFTER","value":"1s"},{"name":"XCP_CLUSTER_STATE_DEBOUNCE_MAX","value":"10s"},{"name":"ENABLE_GATEWAY_CONFIG_DIAGNOSTIC_INFO","value":"true"},{"name":"ENABLE_XCP_CONFIG_STATUS","value":"true"},{"name":"ENABLE_ENHANCED_EAST_WEST_ROUTING","value":"true"}]},"overlays":[{"kind":"Deployment","name":"edge","patches":[{"path":"spec.template.spec.containers.[name:edge].image","value":"localhost:5000/xcpd:ashish"},{"path":"spec.template.spec.containers.[name:edge].imagePullPolicy","value":"Always"}]}]}},"istio":{"centralProvidedCaCert":true,"enableConfigStatus":true,"trustDomain":"cluster.local"}},"enableHttpMeshInternalIdentityPropagation":true,"hub":"localhost:5000","isolationBoundaries":[{"name":"global","revisions":[{"name":"stable"}]}],"istioTrustDomain":"cluster.local","logLevels":"all:debug","tier1Cluster":false,"xcpCentralHost":"xcp-central.xcp-system.svc.cluster.local:9080","xcpEdgeClusterName":"cluster-0","xcpMulticlusterNamespace":"xcp-multicluster"}}
+  creationTimestamp: "2026-05-20T18:17:31Z"
+  finalizers:
+  - edgexcps.install.xcp.tetrate.io/edgexcp-cleanup
+  generation: 2
+  managedFields:
+  - apiVersion: install.xcp.tetrate.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:centralAuthJwt:
+          .: {}
+          f:centralCaSecret: {}
+          f:secret: {}
+        f:centralAuthMode: {}
+        f:components:
+          .: {}
+          f:edgeServer:
+            .: {}
+            f:kubeSpec:
+              .: {}
+              f:deployment:
+                .: {}
+                f:env: {}
+              f:overlays: {}
+          f:istio:
+            .: {}
+            f:centralProvidedCaCert: {}
+            f:enableConfigStatus: {}
+            f:trustDomain: {}
+        f:enableHttpMeshInternalIdentityPropagation: {}
+        f:hub: {}
+        f:isolationBoundaries: {}
+        f:istioTrustDomain: {}
+        f:logLevels: {}
+        f:xcpCentralHost: {}
+        f:xcpEdgeClusterName: {}
+        f:xcpMulticlusterNamespace: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-20T18:17:31Z"
+  - apiVersion: install.xcp.tetrate.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .: {}
+          v:"edgexcps.install.xcp.tetrate.io/edgexcp-cleanup": {}
+    manager: operator
+    operation: Update
+    time: "2026-05-20T18:17:31Z"
+  name: edgexcp
+  namespace: istio-system
+  resourceVersion: "2610"
+  uid: 6bff1010-9580-42d7-807d-3156050aef87
+spec:
+  centralAuthJwt:
+    centralCaSecret: xcp-central-auth-ca
+    secret: xcp-central-auth-jwt
+  centralAuthMode: JWT
+  components:
+    edgeServer:
+      kubeSpec:
+        deployment:
+          env:
+          - name: XCP_DEBOUNCE_AFTER
+            value: 1s
+          - name: XCP_DEBOUNCE_MAX
+            value: 10s
+          - name: XCP_CLUSTER_STATE_DEBOUNCE_AFTER
+            value: 1s
+          - name: XCP_CLUSTER_STATE_DEBOUNCE_MAX
+            value: 10s
+          - name: ENABLE_GATEWAY_CONFIG_DIAGNOSTIC_INFO
+            value: "true"
+          - name: ENABLE_XCP_CONFIG_STATUS
+            value: "true"
+          - name: ENABLE_ENHANCED_EAST_WEST_ROUTING
+            value: "true"
+        overlays:
+        - kind: Deployment
+          name: edge
+          patches:
+          - path: spec.template.spec.containers.[name:edge].image
+            value: localhost:5000/xcpd:ashish
+          - path: spec.template.spec.containers.[name:edge].imagePullPolicy
+            value: Always
+    istio:
+      centralProvidedCaCert: true
+      enableConfigStatus: true
+      trustDomain: cluster.local
+  enableHttpMeshInternalIdentityPropagation: true
+  hub: localhost:5000
+  isolationBoundaries:
+  - name: global
+    revisions:
+    - name: stable
+  istioTrustDomain: cluster.local
+  logLevels: all:debug
+  xcpCentralHost: xcp-central.xcp-system.svc.cluster.local:9080
+  xcpEdgeClusterName: cluster-0
+  xcpMulticlusterNamespace: xcp-multicluster

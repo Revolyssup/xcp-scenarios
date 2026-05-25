@@ -13,11 +13,14 @@ client ── HTTPS :18443 ─────────────▶│     (ce
                                                       │    ALPN istio)
                                                       ▼
                                      ┌── echo-term/echo-term-gateway ─────┐
-                                     │   * auto-passthrough :15443         │
-                                     │   * routes by hostname/SNI to       │
-                                     │     internal http server :8080      │
+                                     │   * IngressGateway (NOT an E/W gw)  │
+                                     │   * Listener :15443 — TERMINATES    │
+                                     │     the inbound mTLS, runs HCM,     │
+                                     │     routes by HTTP Host header to   │
+                                     │     echo-term.echo-term.svc :80     │
                                      └────────────────┬────────────────────┘
-                                                      │   (mesh mTLS,
+                                                      │   (fresh upstream
+                                                      │    mesh mTLS,
                                                       │    auto-mTLS)
                                                       ▼
                                      ┌── echo-term/echo-term pod ──────────┐
@@ -27,7 +30,16 @@ client ── HTTPS :18443 ─────────────▶│     (ce
 ```
 
 * Only the Tier1 gateway terminates the public TLS.
-* Every other hop is mesh mTLS (Istio auto-mTLS).
+* Every other hop is mesh mTLS, but **terminated and re-originated at each
+  L7 hop** — not one end-to-end mTLS tunnel. Two mTLS hops total:
+  tier1 → echo-term-gateway, and echo-term-gateway → echo-term sidecar.
+* `echo-term-gateway` is **not** an east-west gateway. It's a regular
+  XCP `IngressGateway`. Tier1 reaches it on `:15443` because the
+  cross-cluster `ServiceEntry` for `echo-term.tetrate.io` has
+  `location: MESH_INTERNAL` with an endpoint at `<lb-ip>:15443` and a
+  SPIFFE SAN — that combination makes the Tier1 sidecar originate Istio
+  mTLS to that endpoint. XCP auto-provisions the matching `:15443`
+  HCM listener on the IngressGateway pod for the hostname.
 * The workload has **no cert, no TLS code**.
 
 ## Apply order

@@ -1,0 +1,103 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"xcp.tetrate.io/v2","kind":"Workspace","metadata":{"annotations":{},"name":"term-ws","namespace":"xcp-system"},"spec":{"namespaceSelector":{"names":["cluster-0/tier1-term","cluster-1/echo-term"]}}}
+    xcp.tetrate.io/contentHash: 14645e3efdd68386f959e9db371e7301
+  creationTimestamp: "2026-05-25T10:50:01Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:configPatches: {}
+        f:priority: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-25T10:50:01Z"
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-25T10:50:02Z"
+  name: default-upstream-traffic-setting
+  namespace: echo-term
+  resourceVersion: "459518"
+  uid: 48e29af8-c4c7-4304-8994-e6573582db81
+spec:
+  configPatches:
+  - applyTo: CLUSTER
+    match:
+      context: SIDECAR_OUTBOUND
+      proxy:
+        proxyVersion: ^1\.(22|24|28)(\.\d+)?(-.*)?$
+    patch:
+      operation: MERGE
+      value:
+        '@type': type.googleapis.com/envoy.config.cluster.v3.Cluster
+        common_lb_config:
+          healthy_panic_threshold: {}
+        outlier_detection:
+          consecutive_gateway_failure: 10
+          enforcing_consecutive_5xx: 0
+          enforcing_consecutive_gateway_failure: 100
+          max_ejection_percent: 100
+  - applyTo: HTTP_ROUTE
+    match:
+      context: SIDECAR_OUTBOUND
+      proxy:
+        proxyVersion: ^1\.(22|24|28)(\.\d+)?(-.*)?$
+      routeConfiguration:
+        vhost:
+          route:
+            action: ROUTE
+    patch:
+      operation: MERGE
+      value:
+        '@type': type.googleapis.com/envoy.config.route.v3.Route
+        route:
+          retry_policy:
+            host_selection_retry_max_attempts: "5"
+            num_retries: 2
+            retriable_status_codes:
+            - 503
+            retry_host_predicate:
+            - name: envoy.retry_host_predicates.previous_hosts
+              typed_config:
+                '@type': type.googleapis.com/envoy.extensions.retry.host.previous_hosts.v3.PreviousHostsPredicate
+            retry_on: reset,connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes
+  priority: 100
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133

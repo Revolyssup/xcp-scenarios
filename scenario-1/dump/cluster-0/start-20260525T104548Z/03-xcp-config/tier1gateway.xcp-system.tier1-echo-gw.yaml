@@ -1,0 +1,51 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: Tier1Gateway
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Tier1Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"tier1-gg","xcp.tetrate.io/workspace":"passthrough-ws"},"name":"tier1-echo-gw","namespace":"xcp-system"},"spec":{"passthroughServers":[{"clusters":[{"name":"cluster-1","weight":100}],"hostname":"echo.tetrate.io","name":"echo","port":17443}],"workloadSelector":{"labels":{"app":"tier1-gateway"},"namespace":"tier1"}}}
+  creationTimestamp: "2026-05-25T10:44:24Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/gatewayGroup: tier1-gg
+    xcp.tetrate.io/workspace: passthrough-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:passthroughServers: {}
+        f:workloadSelector:
+          .: {}
+          f:labels:
+            .: {}
+            f:app: {}
+          f:namespace: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-25T10:44:24Z"
+  name: tier1-echo-gw
+  namespace: xcp-system
+  resourceVersion: "617960"
+  uid: 8275ce31-2a81-4b33-8a2e-bc1b74bcc631
+spec:
+  passthroughServers:
+  - clusters:
+    - name: cluster-1
+      weight: 100
+    hostname: echo.tetrate.io
+    name: echo
+    port: 17443
+  workloadSelector:
+    labels:
+      app: tier1-gateway
+    namespace: tier1

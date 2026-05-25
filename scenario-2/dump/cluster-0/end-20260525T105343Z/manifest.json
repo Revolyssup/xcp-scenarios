@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-05-25T10:53:43Z",
+  "query": {
+    "hostname": "echo-term.tetrate.io",
+    "namespace": "tier1-term"
+  },
+  "resolved_context": {
+    "service_name": "echo-term",
+    "cluster_role": "tier1",
+    "cluster_role_reason": "matched Tier1Gateway CR istio-system/tier1-echo-term-gw",
+    "service_found": false,
+    "backing_pods": [],
+    "gateway_pods": [
+      "tier1-term/tier1-term-gateway-86f85c75f8-pxtbd"
+    ],
+    "istiod_pods": [
+      "istio-system/istiod-stable-65bd95ccc-pqdvh"
+    ],
+    "edge_pods": [
+      "istio-system/edge-668cdd6dc9-r9jpw"
+    ],
+    "matched_crs": [
+      "VirtualService tier1-term/tier1-echo-term-gw-echo",
+      "Gateway tier1-term/tier1-echo-term-gw",
+      "DestinationRule tier1-term/tier1-tier1-echo-term-gwecho-term-tetrate-io",
+      "DestinationRule xcp-multicluster/global-gateway-echo-term-tetrate-io",
+      "ServiceEntry xcp-multicluster/global-gateway-echo-term-tetrate-io",
+      "EnvoyFilter tier1-term/default-allow-tier1-echo-term-gw-external-batch0",
+      "EnvoyFilter tier1-term/default-upstream-traffic-setting",
+      "EnvoyFilter tier1-term/tier1-term-gg-default-upstream-traffic-setting",
+      "EnvoyFilter istio-system/global-forward-xfcc-15443",
+      "EnvoyFilter istio-system/global-gw-best-practice",
+      "EnvoyFilter istio-system/global-mx-downstream-egress-gateway-filter",
+      "EnvoyFilter istio-system/global-mx-downstream-gateway-filter",
+      "EnvoyFilter istio-system/global-periodical-access-log",
+      "EnvoyFilter istio-system/global-request-id-propagation",
+      "EnvoyFilter istio-system/global-tcp-keepalive-envoy-filter",
+      "EnvoyFilter istio-system/global-xfcc-extractor-sidecar",
+      "EnvoyFilter istio-system/global-xfcc-guard-15443",
+      "IstioOperator istio-system/xcp-iop-stable",
+      "IstioOperator istio-system/xcpgw-tier1-term-gateway"
+    ],
+    "xcp_config_crs": [
+      "Workspace istio-system/term-ws",
+      "Workspace xcp-system/term-ws",
+      "GlobalSetting istio-system/global",
+      "GlobalSetting xcp-system/global",
+      "GatewayGroup istio-system/tier1-term-gg",
+      "GatewayGroup xcp-system/tier1-term-gg",
+      "GatewayGroup xcp-system/tier2-term-gg",
+      "IngressGateway xcp-system/echo-t2-term-gw",
+      "Tier1Gateway istio-system/tier1-echo-term-gw",
+      "Tier1Gateway xcp-system/tier1-echo-term-gw",
+      "EdgeXcp istio-system/edgexcp"
+    ],
+    "istiod_revisions": [
+      "stable"
+    ]
+  },
+  "collectors": {
+    "envoy": {
+      "layer": "01-envoy",
+      "status": "ok",
+      "files": 5
+    },
+    "istio-config": {
+      "layer": "02-istio-config",
+      "status": "ok",
+      "files": 19
+    },
+    "istiod": {
+      "layer": "05-istiod",
+      "status": "ok",
+      "files": 8
+    },
+    "k8s": {
+      "layer": "04-k8s",
+      "status": "ok",
+      "files": 1
+    },
+    "xcp-config": {
+      "layer": "03-xcp-config",
+      "status": "ok",
+      "files": 11
+    },
+    "xcp-edge": {
+      "layer": "06-xcp-edge",
+      "status": "ok",
+      "files": 9
+    }
+  }
+}

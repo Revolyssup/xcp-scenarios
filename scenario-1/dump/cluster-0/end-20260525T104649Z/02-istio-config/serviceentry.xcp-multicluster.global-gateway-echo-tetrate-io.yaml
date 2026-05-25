@@ -1,0 +1,85 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: a3a6c32b61408f9c19b6661ddfe4827c
+  creationTimestamp: "2026-05-25T10:44:33Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:addresses: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-25T10:44:33Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:exportTo: {}
+        f:hosts: {}
+        f:location: {}
+        f:ports:
+          .: {}
+          k:{"name":"tls-17443"}:
+            .: {}
+            f:name: {}
+            f:number: {}
+            f:protocol: {}
+        f:resolution: {}
+        f:subjectAltNames: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-25T10:44:33Z"
+  name: global-gateway-echo-tetrate-io
+  namespace: xcp-multicluster
+  resourceVersion: "618013"
+  uid: b8d29f89-7e90-4aa2-be69-3e8ccc532acd
+spec:
+  endpoints:
+  - address: 172.18.255.175
+    labels:
+      xcp.tetrate.io/cluster: cluster-1
+      xcp.tetrate.io/echo-sv-cl: "true"
+      xcp.tetrate.io/hops: "0"
+      xcp.tetrate.io/service: echo-gateway.echo.svc.cluster.local
+      xcp.tetrate.io/serviceType: remoteGateway
+      xcp.tetrate.io/svc-port-17443: "true"
+      xcp.tetrate.io/tier1-echo-gw-gw-cl: "true"
+    locality: us-east1/us-east1-B/subzone-x
+    network: nw-cluster-1
+    ports:
+      tls-17443: 17443
+  exportTo:
+  - '*'
+  hosts:
+  - echo.tetrate.io
+  location: MESH_INTERNAL
+  ports:
+  - name: tls-17443
+    number: 17443
+    protocol: TLS
+  resolution: STATIC
+  subjectAltNames:
+  - spiffe://cluster.local/ns/echo/sa/echo-gateway-service-account
+status:
+  addresses:
+  - host: echo.tetrate.io
+    value: 240.240.0.6
+  - host: echo.tetrate.io
+    value: 2001:2::6

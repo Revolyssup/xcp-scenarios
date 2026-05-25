@@ -1,0 +1,42 @@
+apiVersion: xcp.tetrate.io/v2
+kind: WorkspaceSetting
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"xcp.tetrate.io/v2","kind":"WorkspaceSetting","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/workspace":"xc-ws"},"name":"xc-ws-settings","namespace":"xcp-system"},"spec":{"defaultEastWestGatewaySettings":[{"exposedServices":[{"serviceLabels":{"app":"backend"}}],"workloadSelector":{"labels":{"app":"ew-gateway"},"namespace":"backend-c1"}}]}}
+    xcp.tetrate.io/contentHash: c849a72e3c0bf9b4408d35e4eb3c49b0
+  creationTimestamp: "2026-05-25T10:54:59Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/workspace: xc-ws
+  managedFields:
+  - apiVersion: xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:defaultEastWestGatewaySettings: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-25T10:54:59Z"
+  name: xc-ws-settings
+  namespace: istio-system
+  resourceVersion: "620685"
+  uid: 5fd5229b-be9d-43fa-83ae-0eaa94873fed
+spec:
+  defaultEastWestGatewaySettings:
+  - exposedServices:
+    - serviceLabels:
+        app: backend
+    workloadSelector:
+      labels:
+        app: ew-gateway
+      namespace: backend-c1

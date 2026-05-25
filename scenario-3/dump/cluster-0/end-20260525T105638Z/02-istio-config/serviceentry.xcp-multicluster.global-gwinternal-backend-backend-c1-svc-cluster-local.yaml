@@ -1,0 +1,81 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 57279d68e0007be7c838af98ccfd6e86
+    xcp.tetrate.io/service: backend.backend-c1.svc.cluster.local
+    xcp.tetrate.io/serviceNamespace: backend-c1
+  creationTimestamp: "2026-05-25T10:55:04Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:addresses: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-25T10:55:04Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+          f:xcp.tetrate.io/service: {}
+          f:xcp.tetrate.io/serviceNamespace: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:exportTo: {}
+        f:hosts: {}
+        f:location: {}
+        f:ports:
+          .: {}
+          k:{"name":"http"}:
+            .: {}
+            f:name: {}
+            f:number: {}
+            f:protocol: {}
+        f:resolution: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-25T10:55:04Z"
+  name: global-gwinternal-backend-backend-c1-svc-cluster-local
+  namespace: xcp-multicluster
+  resourceVersion: "620718"
+  uid: 53199b7e-e47f-417c-bc2b-3f79ae375d8d
+spec:
+  endpoints:
+  - address: 172.18.255.175
+    labels:
+      security.istio.io/tlsMode: istio
+      xcp.tetrate.io/cluster: cluster-1
+    locality: us-east1/us-east1-B/subzone-x
+    network: nw-cluster-1
+    ports:
+      http: 15443
+  exportTo:
+  - '*'
+  hosts:
+  - backend.backend-c1.svc.cluster.local
+  location: MESH_INTERNAL
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  resolution: STATIC
+status:
+  addresses:
+  - host: backend.backend-c1.svc.cluster.local
+    value: 240.240.0.8
+  - host: backend.backend-c1.svc.cluster.local
+    value: 2001:2::8

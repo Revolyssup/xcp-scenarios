@@ -1,3 +1,0 @@
-[]
-
-✔ No validation issues found when analyzing namespace: client-c0.

@@ -1,0 +1,52 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Tier1Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"tier1-gg","xcp.tetrate.io/workspace":"passthrough-ws"},"name":"tier1-echo-gw","namespace":"xcp-system"},"spec":{"passthroughServers":[{"clusters":[{"name":"cluster-1","weight":100}],"hostname":"echo.tetrate.io","name":"echo","port":17443}],"workloadSelector":{"labels":{"app":"tier1-gateway"},"namespace":"tier1"}}}
+    xcp.tetrate.io/contentHash: 0c3f252b3f9817487b387c0e7502e512
+  creationTimestamp: "2026-05-25T10:44:26Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: tier1-gg
+    xcp.tetrate.io/workspace: passthrough-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:servers: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-25T10:44:26Z"
+  name: tier1-echo-gw
+  namespace: tier1
+  resourceVersion: "617972"
+  uid: f23e23cb-b17d-4cef-b8c8-c5b14e51a780
+spec:
+  selector:
+    app: tier1-gateway
+  servers:
+  - hosts:
+    - tier1/echo.tetrate.io
+    name: echo
+    port:
+      name: tls-echo
+      number: 17443
+      protocol: TLS
+    tls: {}

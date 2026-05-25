@@ -1,0 +1,484 @@
+- Extra: null
+  Spec:
+    eastWestServiceNamespacesChanged: false
+    gwHostNamespaces:
+    - gatewayGroup: tier1-gg
+      name: tier1
+      services:
+      - annotations:
+          metallb.io/ip-allocated-from-pool: default
+          xcp.tetrate.io/contentHash: ad1063fd70e3787a604b9bba380bad6a
+          xcp.tetrate.io/created-by-installer: "true"
+          xcp.tetrate.io/gateway-owner: tier1-gateway
+        canonicalName: tier1-gateway
+        hostname: echo.tetrate.io
+        isolationBoundary: global
+        kubernetesExternalAddresses:
+        - 172.18.255.156
+        kubernetesServiceFqdn: tier1-gateway.tier1.svc.cluster.local
+        kubernetesServiceIp: 10.255.10.172
+        labels:
+          app: tier1-gateway
+          istio.io/rev: stable
+          operator.istio.io/version: 1.28.3-9aa2ee3271-distroless
+          platform.tetrate.io/component: gateways
+          platform.tetrate.io/eastwest: enabled
+          platform.tetrate.io/egress: enabled
+          platform.tetrate.io/gateway-type: unified
+          platform.tetrate.io/ingress: enabled
+          platform.xcp.tetrate.io/application: xcp-unified-gateway
+          platform.xcp.tetrate.io/component: gateways
+          platform.xcp.tetrate.io/plane: data
+          topology.istio.io/network: nw-cluster-0
+        locality: us-east1/us-east1-A/subzone-1
+        name: tier1-gateway
+        namespace: tier1
+        numKubernetesEndpoints: 1
+        ports:
+        - name: tls
+          number: 17443
+          protocol: TLS
+        selector:
+          app: tier1-gateway
+          istio: ingressgateway
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/tier1/sa/tier1-gateway-service-account
+        state: CONTROLLED
+        subsets:
+        - stable
+        tier1GatewayHost: true
+    gwHostNamespacesChanged: true
+    istioTrustDomain: cluster.local
+    network: nw-cluster-0
+    state:
+      clusterUid: 3c79532d-841c-4e9b-9a58-ff7a4559c078
+      discoveredLocality: {}
+      istioVersions:
+      - 1.28.3-9aa2ee3271-distroless
+      lastSyncTime: "2026-05-25T10:44:27.728460847Z"
+      metadata: "null"
+      mode: CONTROL
+      monotonicVersion:
+        counter:
+        - 363
+        epoch:
+        - 414
+        - 1187164380
+      provider: kind
+      xcpVersion: v0.0.0-unofficial
+  Status: null
+  creationTimestamp: "0001-01-01T00:00:00Z"
+  name: cluster-0
+  namespace: istio-system
+  type:
+    group: xcp.tetrate.io
+    kind: Cluster
+    version: v2
+- Extra: null
+  Spec:
+    eastWestServiceNamespacesChanged: false
+    gwHostNamespaces:
+    - name: echo
+      services:
+      - annotations:
+          metallb.io/ip-allocated-from-pool: default
+          xcp.tetrate.io/contentHash: 20cfe88b85970c50e0d5c84fd3812015
+          xcp.tetrate.io/created-by-installer: "true"
+          xcp.tetrate.io/gateway-owner: echo-gateway
+        canonicalName: echo-gateway
+        gatewayHost: true
+        hostname: echo.tetrate.io
+        isolationBoundary: global
+        kubernetesExternalAddresses:
+        - 172.18.255.175
+        kubernetesServiceFqdn: echo-gateway.echo.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.110
+        labels:
+          app: echo-gateway
+          istio.io/rev: stable
+          operator.istio.io/version: 1.28.3-9aa2ee3271-distroless
+          platform.tetrate.io/component: gateways
+          platform.tetrate.io/eastwest: enabled
+          platform.tetrate.io/egress: enabled
+          platform.tetrate.io/gateway-type: unified
+          platform.tetrate.io/ingress: enabled
+          platform.xcp.tetrate.io/application: xcp-unified-gateway
+          platform.xcp.tetrate.io/component: gateways
+          platform.xcp.tetrate.io/plane: data
+          topology.istio.io/network: nw-cluster-1
+        locality: us-east1/us-east1-B/subzone-x
+        name: echo-gateway
+        namespace: echo
+        numKubernetesEndpoints: 1
+        ports:
+        - name: tls
+          number: 17443
+          protocol: TLS
+        selector:
+          app: echo-gateway
+          istio: ingressgateway
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/echo/sa/echo-gateway-service-account
+        state: CONTROLLED
+        subsets:
+        - stable
+    gwHostNamespacesChanged: false
+    istioTrustDomain: cluster.local
+    locality: {}
+    namespaces:
+    - istio:
+        istioInjection: ISTIO_INJECTION_DISABLED
+      labels:
+        kubernetes.io/metadata.name: cert-manager
+      name: cert-manager
+      services:
+      - hostname: cert-manager-webhook.cert-manager.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.149
+        labels:
+          app: webhook
+          app.kubernetes.io/component: webhook
+          app.kubernetes.io/instance: cert-manager
+          app.kubernetes.io/name: webhook
+          app.kubernetes.io/version: v1.11.0
+        locality: us-east1/us-east1-B/subzone-x
+        meshExternal: true
+        name: cert-manager-webhook
+        namespace: cert-manager
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 10250
+          name: https
+          number: 443
+        selector:
+          app.kubernetes.io/component: webhook
+          app.kubernetes.io/instance: cert-manager
+          app.kubernetes.io/name: webhook
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/cert-manager/sa/cert-manager-webhook
+        state: EXTERNAL
+        subsets:
+        - v1.11.0
+      - hostname: cert-manager.cert-manager.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.114
+        labels:
+          app: cert-manager
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/instance: cert-manager
+          app.kubernetes.io/name: cert-manager
+          app.kubernetes.io/version: v1.11.0
+        locality: us-east1/us-east1-B/subzone-x
+        meshExternal: true
+        name: cert-manager
+        namespace: cert-manager
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 9402
+          name: tcp-prometheus-servicemonitor
+          number: 9402
+        selector:
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/instance: cert-manager
+          app.kubernetes.io/name: cert-manager
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/cert-manager/sa/cert-manager
+        state: EXTERNAL
+        subsets:
+        - v1.11.0
+    - istio:
+        istioInjection: ISTIO_INJECTION_DISABLED
+      labels:
+        kubernetes.io/metadata.name: default
+      name: default
+      services:
+      - hostname: kubernetes.default.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.1
+        labels:
+          component: apiserver
+          provider: kubernetes
+        meshExternal: true
+        name: kubernetes
+        namespace: default
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 6443
+          name: https
+          number: 443
+        serviceRegistry: Kubernetes
+        state: EXTERNAL
+    - istio:
+        istioInjection: ISTIO_INJECTION_ENABLED
+        istioRevision: stable
+      labels:
+        istio.io/rev: stable
+        kubernetes.io/metadata.name: echo
+      name: echo
+      services:
+      - annotations:
+          metallb.io/ip-allocated-from-pool: default
+          xcp.tetrate.io/contentHash: 20cfe88b85970c50e0d5c84fd3812015
+          xcp.tetrate.io/created-by-installer: "true"
+          xcp.tetrate.io/gateway-owner: echo-gateway
+        canonicalName: echo-gateway
+        hostname: echo-gateway.echo.svc.cluster.local
+        isolationBoundary: global
+        kubernetesExternalAddresses:
+        - 172.18.255.175
+        kubernetesServiceIp: 10.255.20.110
+        labels:
+          app: echo-gateway
+          istio.io/rev: stable
+          operator.istio.io/version: 1.28.3-9aa2ee3271-distroless
+          platform.tetrate.io/component: gateways
+          platform.tetrate.io/eastwest: enabled
+          platform.tetrate.io/egress: enabled
+          platform.tetrate.io/gateway-type: unified
+          platform.tetrate.io/ingress: enabled
+          platform.xcp.tetrate.io/application: xcp-unified-gateway
+          platform.xcp.tetrate.io/component: gateways
+          platform.xcp.tetrate.io/plane: data
+          topology.istio.io/network: nw-cluster-1
+        locality: us-east1/us-east1-B/subzone-x
+        name: echo-gateway
+        namespace: echo
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 17443
+          name: tls-echo
+          number: 17443
+        - endpointPort: 15021
+          name: status-port
+          number: 15021
+        - endpointPort: 15443
+          name: tls-istio-mtls
+          number: 15443
+        selector:
+          app: echo-gateway
+          istio: ingressgateway
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/echo/sa/echo-gateway-service-account
+        state: CONTROLLED
+        subsets:
+        - stable
+      - annotations:
+          metallb.io/ip-allocated-from-pool: default
+          xcp.tetrate.io/contentHash: 20cfe88b85970c50e0d5c84fd3812015
+          xcp.tetrate.io/created-by-installer: "true"
+          xcp.tetrate.io/gateway-owner: echo-gateway
+        canonicalName: echo-gateway
+        gatewayHost: true
+        hostname: echo.tetrate.io
+        isolationBoundary: global
+        kubernetesExternalAddresses:
+        - 172.18.255.175
+        kubernetesServiceFqdn: echo-gateway.echo.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.110
+        labels:
+          app: echo-gateway
+          istio.io/rev: stable
+          operator.istio.io/version: 1.28.3-9aa2ee3271-distroless
+          platform.tetrate.io/component: gateways
+          platform.tetrate.io/eastwest: enabled
+          platform.tetrate.io/egress: enabled
+          platform.tetrate.io/gateway-type: unified
+          platform.tetrate.io/ingress: enabled
+          platform.xcp.tetrate.io/application: xcp-unified-gateway
+          platform.xcp.tetrate.io/component: gateways
+          platform.xcp.tetrate.io/plane: data
+          topology.istio.io/network: nw-cluster-1
+        locality: us-east1/us-east1-B/subzone-x
+        name: echo-gateway
+        namespace: echo
+        numKubernetesEndpoints: 1
+        ports:
+        - name: tls
+          number: 17443
+          protocol: TLS
+        selector:
+          app: echo-gateway
+          istio: ingressgateway
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/echo/sa/echo-gateway-service-account
+        state: CONTROLLED
+        subsets:
+        - stable
+      - canonicalName: echo
+        hostname: echo.echo.svc.cluster.local
+        isolationBoundary: global
+        kubernetesServiceIp: 10.255.20.102
+        labels:
+          app: echo
+        locality: us-east1/us-east1-B/subzone-x
+        name: echo
+        namespace: echo
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 9443
+          name: tls-echo
+          number: 9443
+        selector:
+          app: echo
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/echo/sa/echo
+        state: CONTROLLED
+    - istio:
+        istioInjection: ISTIO_INJECTION_DISABLED
+      labels:
+        kubernetes.io/metadata.name: istio-system
+        topology.istio.io/network: nw-cluster-1
+        xcp-edge-validation: enabled
+      name: istio-system
+      services:
+      - annotations:
+          xcp.tetrate.io/contentHash: ad146bcec7d0687d19067889da47b27d
+          xcp.tetrate.io/created-by-installer: "true"
+        hostname: istiod-stable.istio-system.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.22
+        labels:
+          app: istiod
+          app.kubernetes.io/instance: istio
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/name: istiod
+          app.kubernetes.io/part-of: istio
+          app.kubernetes.io/version: 1.0.0
+          helm.sh/chart: istiod-1.0.0
+          install.operator.istio.io/owning-resource: unknown
+          install.xcp.tetrate.io/owner-kind: EdgeXcp
+          install.xcp.tetrate.io/owner-name: edgexcp
+          install.xcp.tetrate.io/owner-version: v1alpha1
+          istio: pilot
+          istio.io/rev: stable
+          operator.istio.io/component: Pilot
+          operator.istio.io/version: 1.28.3-9aa2ee3271-distroless
+          release: istio
+        locality: us-east1/us-east1-B/subzone-x
+        meshExternal: true
+        name: istiod-stable
+        namespace: istio-system
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 15010
+          name: grpc-xds
+          number: 15010
+        - endpointPort: 15012
+          name: https-dns
+          number: 15012
+        - endpointPort: 15017
+          name: https-webhook
+          number: 443
+        - endpointPort: 15014
+          name: http-monitoring
+          number: 15014
+        selector:
+          app: istiod
+          istio.io/rev: stable
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/istio-system/sa/istiod-stable
+        state: EXTERNAL
+        subsets:
+        - 1.0.0
+      - annotations:
+          xcp.tetrate.io/contentHash: 844358db742a5213030964fa27a3dbaa
+          xcp.tetrate.io/created-by-installer: "true"
+        hostname: xcp-edge-internal.istio-system.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.133
+        labels:
+          app: edge
+          install.xcp.tetrate.io/owner-kind: EdgeXcp
+          install.xcp.tetrate.io/owner-name: edgexcp
+          install.xcp.tetrate.io/owner-version: v1alpha1
+        locality: us-east1/us-east1-B/subzone-x
+        meshExternal: true
+        name: xcp-edge-internal
+        namespace: istio-system
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 8443
+          name: webhook
+          number: 443
+        - endpointPort: 8080
+          name: monitoring
+          number: 8080
+        selector:
+          app: edge
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/istio-system/sa/xcp-edge
+        state: EXTERNAL
+      - hostname: xcp-operator-edge.istio-system.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.83
+        labels:
+          app: xcp-operator
+        locality: us-east1/us-east1-B/subzone-x
+        meshExternal: true
+        name: xcp-operator-edge
+        namespace: istio-system
+        numKubernetesEndpoints: 1
+        ports:
+        - endpointPort: 8383
+          name: http-metrics
+          number: 8383
+        - endpointPort: 8443
+          name: webhook
+          number: 443
+        selector:
+          app: xcp-operator
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/istio-system/sa/xcp-operator-edge
+        state: EXTERNAL
+    - istio:
+        istioInjection: ISTIO_INJECTION_DISABLED
+      labels:
+        kubernetes.io/metadata.name: metallb-system
+        pod-security.kubernetes.io/audit: privileged
+        pod-security.kubernetes.io/enforce: privileged
+        pod-security.kubernetes.io/warn: privileged
+      name: metallb-system
+      services:
+      - hostname: metallb-webhook-service.metallb-system.svc.cluster.local
+        kubernetesServiceIp: 10.255.20.126
+        meshExternal: true
+        name: metallb-webhook-service
+        namespace: metallb-system
+        ports:
+        - number: 443
+        selector:
+          component: controller
+        serviceRegistry: Kubernetes
+        spiffeId:
+        - spiffe://cluster.local/ns/metallb-system/sa/controller
+        state: EXTERNAL
+    network: nw-cluster-1
+    state:
+      clusterUid: 83aa762a-6fa5-4901-87de-eafab6ab72b4
+      discoveredLocality:
+        region: us-east1
+      istioVersions:
+      - 1.28.3-9aa2ee3271-distroless
+      metadata: "null"
+      mode: CONTROL
+      monotonicVersion:
+        counter:
+        - 433
+        epoch:
+        - 414
+        - 1184632947
+      provider: kind
+      xcpVersion: v0.0.0-unofficial
+    tier1Cluster: false
+  Status: null
+  creationTimestamp: "0001-01-01T00:00:00Z"
+  name: cluster-1
+  namespace: istio-system
+  type:
+    group: xcp.tetrate.io
+    kind: Cluster
+    version: v2

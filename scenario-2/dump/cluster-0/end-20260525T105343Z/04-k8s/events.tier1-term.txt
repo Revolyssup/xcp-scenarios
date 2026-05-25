@@ -1,0 +1,24 @@
+2026-05-25T16:19:37+05:30	Normal	CertificateRequest/echo-term-edge-tls-72m5c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-25T16:19:37+05:30	Normal	CertificateRequest/echo-term-edge-tls-72m5c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-25T16:19:37+05:30	Normal	CertificateRequest/echo-term-edge-tls-72m5c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-25T16:19:37+05:30	Normal	CertificateRequest/echo-term-edge-tls-72m5c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-25T16:19:37+05:30	Normal	CertificateRequest/echo-term-edge-tls-72m5c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-25T16:19:37+05:30	Normal	CertificateRequest/echo-term-edge-tls-72m5c	cert-manager.io	Certificate request has been approved by cert-manager.io
+2026-05-25T16:19:37+05:30	Normal	CertificateRequest/echo-term-edge-tls-72m5c	CertificateIssued	Certificate fetched from issuer successfully
+2026-05-25T16:19:37+05:30	Normal	Certificate/echo-term-edge-tls	Issuing	Issuing certificate as Secret does not exist
+2026-05-25T16:19:37+05:30	Normal	Certificate/echo-term-edge-tls	Generated	Stored new private key in temporary Secret resource "echo-term-edge-tls-hks9k"
+2026-05-25T16:19:37+05:30	Normal	Certificate/echo-term-edge-tls	Requested	Created new CertificateRequest resource "echo-term-edge-tls-72m5c"
+2026-05-25T16:19:37+05:30	Normal	Certificate/echo-term-edge-tls	Issuing	The certificate has been successfully issued
+2026-05-25T16:19:52+05:30	Normal	Service/tier1-term-gateway	IPAllocated	Assigned IP ["172.18.255.156"]
+2026-05-25T16:19:52+05:30	Normal	ReplicaSet/tier1-term-gateway-86f85c75f8	SuccessfulCreate	Created pod: tier1-term-gateway-86f85c75f8-pxtbd
+2026-05-25T16:19:52+05:30	Normal	Deployment/tier1-term-gateway	ScalingReplicaSet	Scaled up replica set tier1-term-gateway-86f85c75f8 from 0 to 1
+2026-05-25T16:19:52+05:30	Normal	Pod/tier1-term-gateway-86f85c75f8-pxtbd	Scheduled	Successfully assigned tier1-term/tier1-term-gateway-86f85c75f8-pxtbd to cluster-0-control-plane
+2026-05-25T16:19:53+05:30	Normal	Pod/tier1-term-gateway-86f85c75f8-pxtbd	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-25T16:19:53+05:30	Normal	Pod/tier1-term-gateway-86f85c75f8-pxtbd	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 7ms (7ms including waiting). Image size: 58863518 bytes.
+2026-05-25T16:19:53+05:30	Normal	Pod/tier1-term-gateway-86f85c75f8-pxtbd	Created	Created container: istio-proxy
+2026-05-25T16:19:53+05:30	Normal	Pod/tier1-term-gateway-86f85c75f8-pxtbd	Started	Started container istio-proxy
+2026-05-25T16:19:53+05:30	Normal	Service/tier1-term-gateway	nodeAssigned	announcing from node "cluster-0-control-plane" with protocol "layer2"
+2026-05-25T16:20:07+05:30	Warning	HorizontalPodAutoscaler/tier1-term-gateway	FailedGetResourceMetric	failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-25T16:20:07+05:30	Warning	HorizontalPodAutoscaler/tier1-term-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-25T16:20:22+05:30	Warning	HorizontalPodAutoscaler/tier1-term-gateway	FailedGetResourceMetric	failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+2026-05-25T16:20:22+05:30	Warning	HorizontalPodAutoscaler/tier1-term-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
