@@ -1,0 +1,85 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 61c83dd66f02157fddc557a89fb3e923
+  creationTimestamp: "2026-05-28T14:44:47Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:addresses: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-28T14:44:47Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:exportTo: {}
+        f:hosts: {}
+        f:location: {}
+        f:ports:
+          .: {}
+          k:{"name":"http"}:
+            .: {}
+            f:name: {}
+            f:number: {}
+            f:protocol: {}
+        f:resolution: {}
+        f:subjectAltNames: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:44:47Z"
+  name: global-gateway-echo-term-tetrate-io
+  namespace: xcp-multicluster
+  resourceVersion: "1310859"
+  uid: 6ec1d2e5-2408-4a29-b776-5010d51dd0a6
+spec:
+  endpoints:
+  - address: 172.18.255.175
+    labels:
+      xcp.tetrate.io/cluster: cluster-1
+      xcp.tetrate.io/echo-sv-cl: "true"
+      xcp.tetrate.io/hops: "0"
+      xcp.tetrate.io/service: echo-term-gateway.echo-term.svc.cluster.local
+      xcp.tetrate.io/serviceType: remoteGateway
+      xcp.tetrate.io/svc-port-80: "true"
+      xcp.tetrate.io/tier1-echo-term-gw-gw-cl: "true"
+    locality: us-east1/us-east1-B/subzone-x
+    network: nw-cluster-1
+    ports:
+      http: 15443
+  exportTo:
+  - '*'
+  hosts:
+  - echo-term.tetrate.io
+  location: MESH_INTERNAL
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  resolution: STATIC
+  subjectAltNames:
+  - spiffe://cluster.local/ns/echo-term/sa/echo-term-gateway-service-account
+status:
+  addresses:
+  - host: echo-term.tetrate.io
+    value: 240.240.0.12
+  - host: echo-term.tetrate.io
+    value: 2001:2::c

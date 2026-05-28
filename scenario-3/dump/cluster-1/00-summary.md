@@ -3,19 +3,19 @@
 - Hostname: `backend.backend-c1.svc.cluster.local`
 - Namespace: `backend-c1`
 - Requested window: `1m0s`
-- Window: 2026-05-25T10:55:36Z → 2026-05-25T10:56:37Z
+- Window: 2026-05-28T14:48:01Z → 2026-05-28T14:49:01Z
 
 ## Snapshots
 
-- START: `start-20260525T105536Z/` — taken 2026-05-25T10:55:36Z
-- END:   `end-20260525T105637Z/` — taken 2026-05-25T10:56:37Z
+- START: `start-20260528T144801Z/` — taken 2026-05-28T14:48:01Z
+- END:   `end-20260528T144901Z/` — taken 2026-05-28T14:49:01Z
 
-Each subdirectory is a complete minimal dump, identical in layout to a plain `--minimal` run (`01-envoy` … `06-xcp-edge`, `00-summary.md`, `manifest.json`).
+Each subdirectory is a complete minimal dump, identical in layout to a plain `collect-minimal` run (`01-envoy` … `06-xcp-edge`, `00-summary.md`, `manifest.json`).
 
 ## How to read the window
 
-1. **Logs** — open `start-20260525T105536Z/01-envoy/<pod>/proxy.log` and note its **last timestamp**. Then open `end-20260525T105637Z/01-envoy/<pod>/proxy.log` and read from that timestamp onward: those lines are what the proxy did during the window.
-2. **Envoy stats** — `end-20260525T105637Z/01-envoy/<pod>/stats.txt` minus `start-20260525T105536Z/01-envoy/<pod>/stats.txt` is the per-counter delta for the window (Envoy counters are monotonic).
+1. **Logs** — open `start-20260528T144801Z/01-envoy/<pod>/proxy.log` and note its **last timestamp**. Then open `end-20260528T144901Z/01-envoy/<pod>/proxy.log` and read from that timestamp onward: those lines are what the proxy did during the window.
+2. **Envoy stats** — `end-20260528T144901Z/01-envoy/<pod>/stats.txt` minus `start-20260528T144801Z/01-envoy/<pod>/stats.txt` is the per-counter delta for the window (Envoy counters are monotonic).
 3. **Config / CRs** — diff the `02-istio-config/` and `03-xcp-config/` layers between the two snapshots to see routing config that changed mid-window.
 
 ## Proxy continuity

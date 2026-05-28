@@ -1,0 +1,35 @@
+# GatewayDeployment provisioning the TRANSIT Tier1 gateway data plane on
+# cluster-1. The Service is a LoadBalancer because the inbound mesh-internal
+# mTLS from cluster-0 crosses the docker network and needs a routable LB IP
+# (kind clusters can't reach each other's pod IPs directly without the
+# routes we set up — and east-west traffic uses MetalLB LB IPs).
+#
+# No public ports here — only the auto-provisioned :15443 mesh-internal
+# port is meaningful. The status-port is for k8s readiness probes.
+#
+# Apply to: cluster-1  (kubectl --kubeconfig ~/.kube/cluster-1)
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: GatewayDeployment
+metadata:
+  name: transit-tier1-gateway
+  namespace: istio-system
+spec:
+  namespace: transit
+  revision: stable
+  kubeSpec:
+    deployment:
+      labels:
+        app: transit-tier1-gateway
+    service:
+      type: LoadBalancer
+      ports:
+        # 15443 = the Istio east-west / mesh-internal mTLS port. XCP
+        # auto-provisions a matching listener on the pod when the
+        # Tier1Gateway CR (04-xcp-config/05-tier1gateway-transit.yaml)
+        # declares an internalServer for the hostname.
+        - name: tls-mesh
+          port: 15443
+          targetPort: 15443
+        - name: status-port
+          port: 15021
+          targetPort: 15021

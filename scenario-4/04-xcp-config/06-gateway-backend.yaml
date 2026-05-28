@@ -1,0 +1,43 @@
+# Terminal Gateway on cluster-2.
+#
+# Hostname matches the **real Kubernetes Service FQDN** in this cluster
+# (echo.echo-tr.svc.cluster.local) — that's what makes the chain feel like
+# a regular cluster-local service call from the client's perspective.
+#
+# `port: 8080` is the listener port spec on the Gateway pod (any non-15443
+# integer works; XCP auto-provisions the actual :15443 mesh-mTLS listener
+# separately for inbound cross-cluster traffic). The serviceDestination
+# forwards the decrypted request to the real `echo` Service on its native
+# port 80 → echo pod's :8080 → whoami.
+#
+# Note: this Gateway exists for the transit machinery's sake. The transit
+# Gateway in cluster-1 generates a DR subset with labels like
+# `xcp.tetrate.io/svc-port-80: "true"`. Only an XCP-managed Gateway CR +
+# matching GatewayDeployment produces SE endpoints with those labels (the
+# bare-svc east-west / WorkspaceSetting path does not). Without this CR
+# the transit hop gets 503 UH no_healthy_upstream — confirmed by experiment.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: Gateway
+metadata:
+  name: transit-backend-gw
+  namespace: xcp-system
+  labels:
+    xcp.tetrate.io/workspace: transit-ws
+    xcp.tetrate.io/gatewayGroup: transit-backend-gg
+spec:
+  workloadSelector:
+    namespace: echo-tr
+    labels:
+      app: echo-tr-gateway
+  http:
+    - name: transit-backend
+      hostname: echo.echo-tr.svc.cluster.local
+      port: 8080
+      routing:
+        rules:
+          - route:
+              serviceDestination:
+                host: echo-tr/echo.echo-tr.svc.cluster.local
+                port: 80

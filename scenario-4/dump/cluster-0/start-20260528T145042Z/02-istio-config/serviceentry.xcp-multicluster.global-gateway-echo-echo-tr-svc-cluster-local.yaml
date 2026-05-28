@@ -1,0 +1,83 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: e0bb09f1f99e1ab90777ffc8a90b1310
+  creationTimestamp: "2026-05-28T14:50:19Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:addresses: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-28T14:50:19Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:exportTo: {}
+        f:hosts: {}
+        f:location: {}
+        f:ports:
+          .: {}
+          k:{"name":"http"}:
+            .: {}
+            f:name: {}
+            f:number: {}
+            f:protocol: {}
+        f:resolution: {}
+        f:subjectAltNames: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:50:19Z"
+  name: global-gateway-echo-echo-tr-svc-cluster-local
+  namespace: xcp-multicluster
+  resourceVersion: "1312344"
+  uid: 985b1110-b02d-46df-aa1e-163f3c987278
+spec:
+  endpoints:
+  - address: 172.18.255.175
+    labels:
+      xcp.tetrate.io/cluster: cluster-1
+      xcp.tetrate.io/hops: "1"
+      xcp.tetrate.io/service: transit-tier1-gateway.transit.svc.cluster.local
+      xcp.tetrate.io/serviceType: remoteGateway
+      xcp.tetrate.io/svc-port-80: "true"
+    locality: us-east1/us-east1-B/subzone-x
+    network: nw-cluster-1
+    ports:
+      http: 15443
+  exportTo:
+  - '*'
+  hosts:
+  - echo.echo-tr.svc.cluster.local
+  location: MESH_INTERNAL
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  resolution: STATIC
+  subjectAltNames:
+  - spiffe://cluster.local/ns/transit/sa/transit-tier1-gateway-service-account
+status:
+  addresses:
+  - host: echo.echo-tr.svc.cluster.local
+    value: 240.240.0.14
+  - host: echo.echo-tr.svc.cluster.local
+    value: 2001:2::e

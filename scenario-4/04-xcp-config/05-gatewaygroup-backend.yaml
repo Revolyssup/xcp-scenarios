@@ -1,0 +1,15 @@
+# GatewayGroup for the TERMINAL Gateway on cluster-2.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: GatewayGroup
+metadata:
+  name: transit-backend-gg
+  namespace: xcp-system
+  labels:
+    xcp.tetrate.io/workspace: transit-ws
+spec:
+  configMode: BRIDGED
+  namespaceSelector:
+    names:
+      - cluster-2/echo-tr

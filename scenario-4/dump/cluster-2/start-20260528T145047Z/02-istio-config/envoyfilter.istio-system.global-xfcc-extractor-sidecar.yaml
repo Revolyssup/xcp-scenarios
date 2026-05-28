@@ -1,0 +1,119 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 4916877700bfbecc6545dd434ce90fc6
+    xcp.tetrate.io/created-by-installer: "true"
+  creationTimestamp: "2026-05-27T07:04:50Z"
+  generation: 1
+  labels:
+    install.xcp.tetrate.io/owner-kind: EdgeXcp
+    install.xcp.tetrate.io/owner-name: edgexcp
+    install.xcp.tetrate.io/owner-version: v1alpha1
+    istio.io/rev: stable
+  managedFields:
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:xcp.tetrate.io/contentHash: {}
+          f:xcp.tetrate.io/created-by-installer: {}
+        f:labels:
+          f:install.xcp.tetrate.io/owner-kind: {}
+          f:install.xcp.tetrate.io/owner-name: {}
+          f:install.xcp.tetrate.io/owner-version: {}
+          f:istio.io/rev: {}
+        f:ownerReferences:
+          k:{"uid":"bbdc53e2-bd37-4613-8819-dcfb6b0bda3f"}: {}
+      f:spec:
+        f:configPatches: {}
+    manager: xcp-operator-manager
+    operation: Apply
+    time: "2026-05-27T07:04:50Z"
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-27T07:04:53Z"
+  name: global-xfcc-extractor-sidecar
+  namespace: istio-system
+  ownerReferences:
+  - apiVersion: install.xcp.tetrate.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: EdgeXcp
+    name: edgexcp
+    uid: bbdc53e2-bd37-4613-8819-dcfb6b0bda3f
+  resourceVersion: "2137"
+  uid: 1d4e46bd-9039-43c5-8090-bcfbf2c7de1e
+spec:
+  configPatches:
+  - applyTo: HTTP_FILTER
+    match:
+      context: SIDECAR_INBOUND
+      listener:
+        filterChain:
+          filter:
+            name: envoy.filters.network.http_connection_manager
+    patch:
+      operation: INSERT_FIRST
+      value:
+        name: istio-system.global--xfcc-extractor-sidecar
+        typed_config:
+          '@type': type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
+          default_source_code:
+            inline_string: |
+              function envoy_on_request(request_handle)
+                -- 1. Get XFCC Header
+                local xfcc_val = request_handle:headers():get("x-forwarded-client-cert")
+                if xfcc_val == nil or xfcc_val == "" then
+                  -- XFCC header is not found, skip extraction.
+                  return
+                end
+
+                -- 2. Get the first element before comma
+                local xfcc_origin_element = xfcc_val:match("([^,]+)")
+                if xfcc_origin_element == nil or xfcc_origin_element == "" then
+                  return
+                end
+
+                -- 3. Loop over elements split by ";"
+                -- We need to manually iterate to mimic split and validation
+                local start_idx = 1
+                local len = #xfcc_origin_element
+                while start_idx <= len do
+                  local end_idx = string.find(xfcc_origin_element, ";", start_idx)
+                  local element
+                  if end_idx == nil then
+                    element = string.sub(xfcc_origin_element, start_idx)
+                    start_idx = len + 1
+                  else
+                    element = string.sub(xfcc_origin_element, start_idx, end_idx - 1)
+                    start_idx = end_idx + 1
+                  end
+
+                  -- 4. Check if element starts with "URI="
+                  if string.sub(element, 1, 4) == "URI=" then
+                      local value = string.sub(element, 5)
+                      if value ~= nil and value ~= "" then
+                        request_handle:headers():replace("x-peer-client-identity", value)
+                      end
+                      return
+                  end
+                end
+                request_handle:logCritical("failed to parse xfcc header elements")
+              end
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133

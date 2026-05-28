@@ -1,0 +1,11 @@
+# Namespace that hosts the TRANSIT Tier1 gateway on cluster-1.
+#
+# This Tier1 receives mesh-internal mTLS connections from cluster-0's entry
+# Tier1 (port 15443) and forwards them onward to cluster-2's Tier2 gateway —
+# also over mesh-internal mTLS. It does NOT face the public internet.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: transit
+  labels:
+    istio.io/rev: stable

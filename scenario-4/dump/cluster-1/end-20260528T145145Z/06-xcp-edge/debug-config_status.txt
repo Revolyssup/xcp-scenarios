@@ -1,0 +1,110 @@
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "Gateway"
+  name: "transit-mid-gw"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/gatewayGroup"
+    value: "transit-mid-gg"
+  }
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "transit-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"Gateway\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/gatewayGroup\":\"transit-mid-gg\",\"xcp.tetrate.io/workspace\":\"transit-ws\"},\"name\":\"transit-mid-gw\",\"namespace\":\"xcp-system\"},\"spec\":{\"http\":[{\"hostname\":\"echo.echo-tr.svc.cluster.local\",\"name\":\"transit-hop\",\"routing\":{\"rules\":[{\"route\":{\"clusterDestination\":{\"clusters\":[{\"name\":\"cluster-2\",\"weight\":100}]}}}]},\"transit\":true}],\"workloadSelector\":{\"labels\":{\"app\":\"transit-tier1-gateway\"},\"namespace\":\"transit\"}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "GatewayGroup"
+  name: "transit-mid-gg"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "transit-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"GatewayGroup\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/workspace\":\"transit-ws\"},\"name\":\"transit-mid-gg\",\"namespace\":\"xcp-system\"},\"spec\":{\"configMode\":\"BRIDGED\",\"namespaceSelector\":{\"names\":[\"cluster-1/transit\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-0"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-1"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Cluster\",\"metadata\":{\"annotations\":{},\"name\":\"cluster-1\",\"namespace\":\"xcp-system\"},\"spec\":{\"istioTrustDomain\":\"cluster.local\"}}\n"
+  }
+}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-2"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "GlobalSetting"
+  name: "global"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"GlobalSetting\",\"metadata\":{\"annotations\":{},\"name\":\"global\",\"namespace\":\"xcp-system\"},\"spec\":{\"networkSettings\":{\"networkReachability\":{\"nw-cluster-0\":\"nw-cluster-1\",\"nw-cluster-1\":\"nw-cluster-0,nw-cluster-2\",\"nw-cluster-2\":\"nw-cluster-1\"}}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 8 target namespace(s): APPLIED in 1 namespace(s), TRANSLATION SKIPPED in 6 namespace(s), TRANSLATED BUT NOT MAPPED in 1 namespace(s)"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Workspace"
+  name: "transit-ws"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Workspace\",\"metadata\":{\"annotations\":{},\"name\":\"transit-ws\",\"namespace\":\"xcp-system\"},\"spec\":{\"namespaceSelector\":{\"names\":[\"cluster-0/client-tr\",\"cluster-1/transit\",\"cluster-2/echo-tr\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"

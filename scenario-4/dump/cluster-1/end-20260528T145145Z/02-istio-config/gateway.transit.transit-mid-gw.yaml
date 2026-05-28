@@ -1,0 +1,52 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"transit-mid-gg","xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-mid-gw","namespace":"xcp-system"},"spec":{"http":[{"hostname":"echo.echo-tr.svc.cluster.local","name":"transit-hop","routing":{"rules":[{"route":{"clusterDestination":{"clusters":[{"name":"cluster-2","weight":100}]}}}]},"transit":true}],"workloadSelector":{"labels":{"app":"transit-tier1-gateway"},"namespace":"transit"}}}
+    xcp.tetrate.io/contentHash: 03f291c573850346d822d15a2fa1a67d
+  creationTimestamp: "2026-05-28T14:50:15Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: transit-mid-gg
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:servers: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:50:15Z"
+  name: transit-mid-gw
+  namespace: transit
+  resourceVersion: "969744"
+  uid: e764d215-aaa9-49a8-a75a-73477950a37a
+spec:
+  selector:
+    app: transit-tier1-gateway
+  servers:
+  - hosts:
+    - transit/echo.echo-tr.svc.cluster.local
+    port:
+      name: mtls-transit-hop
+      number: 15443
+      protocol: HTTPS
+    tls:
+      mode: ISTIO_MUTUAL

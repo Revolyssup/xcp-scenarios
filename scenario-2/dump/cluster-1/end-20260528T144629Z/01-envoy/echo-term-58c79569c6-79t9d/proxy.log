@@ -1,0 +1,85 @@
+2026-05-28T14:44:42.659810Z	info	FLAG: --concurrency="0"
+2026-05-28T14:44:42.659820Z	info	FLAG: --domain="echo-term.svc.cluster.local"
+2026-05-28T14:44:42.659822Z	info	FLAG: --help="false"
+2026-05-28T14:44:42.659823Z	info	FLAG: --log_as_json="false"
+2026-05-28T14:44:42.659823Z	info	FLAG: --log_caller=""
+2026-05-28T14:44:42.659824Z	info	FLAG: --log_output_level="default:info"
+2026-05-28T14:44:42.659825Z	info	FLAG: --log_stacktrace_level="default:none"
+2026-05-28T14:44:42.659826Z	info	FLAG: --log_target="[stdout]"
+2026-05-28T14:44:42.659827Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2026-05-28T14:44:42.659828Z	info	FLAG: --outlierLogPath=""
+2026-05-28T14:44:42.659828Z	info	FLAG: --profiling="true"
+2026-05-28T14:44:42.659829Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2026-05-28T14:44:42.659830Z	info	FLAG: --proxyLogLevel="warning"
+2026-05-28T14:44:42.659830Z	info	FLAG: --serviceCluster="istio-proxy"
+2026-05-28T14:44:42.659831Z	info	FLAG: --stsPort="0"
+2026-05-28T14:44:42.659832Z	info	FLAG: --templateFile=""
+2026-05-28T14:44:42.659832Z	info	FLAG: --tokenManagerPlugin=""
+2026-05-28T14:44:42.659835Z	info	FLAG: --vklog="0"
+2026-05-28T14:44:42.659836Z	info	Version 1.28.3-3b82a7d635-3b82a7d6352fc165489aa5c5be1077c6b705b4c9-Clean
+2026-05-28T14:44:42.659978Z	info	Proxy role	ips=[10.20.0.45] type=sidecar id=echo-term-58c79569c6-79t9d.echo-term domain=echo-term.svc.cluster.local
+2026-05-28T14:44:42.660024Z	info	Apply proxy config from env {"discoveryAddress":"istiod-stable.istio-system.svc:15012","tracing":{"customTags":{"cluster":{"literal":{"value":"cluster-1"}}}},"proxyMetadata":{"EXIT_ON_ZERO_ACTIVE_CONNECTIONS":"true","ISTIO_META_DNS_CAPTURE":"true"},"holdApplicationUntilProxyStarts":true}
+
+2026-05-28T14:44:42.660663Z	info	cpu limit detected as 2, setting concurrency
+2026-05-28T14:44:42.661345Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod-stable.istio-system.svc:15012
+drainDuration: 45s
+holdApplicationUntilProxyStarts: true
+proxyAdminPort: 15000
+proxyMetadata:
+  EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+  ISTIO_META_DNS_CAPTURE: "true"
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  customTags:
+    cluster:
+      literal:
+        value: cluster-1
+
+2026-05-28T14:44:42.661355Z	info	JWT policy is third-party-jwt
+2026-05-28T14:44:42.661357Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2026-05-28T14:44:42.864359Z	info	Opening status port 15020
+2026-05-28T14:44:42.864393Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2026-05-28T14:44:42.866920Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2026-05-28T14:44:42.866952Z	info	Starting default Istio SDS Server
+2026-05-28T14:44:42.866959Z	info	CA Endpoint istiod-stable.istio-system.svc:15012, provider Citadel
+2026-05-28T14:44:42.866968Z	info	Using CA istiod-stable.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2026-05-28T14:44:42.867233Z	info	xdsproxy	Initializing with upstream address "istiod-stable.istio-system.svc:15012" and cluster "cluster-1"
+2026-05-28T14:44:42.867889Z	info	Pilot SAN: [istiod-stable.istio-system.svc]
+2026-05-28T14:44:42.868261Z	info	Starting proxy agent
+2026-05-28T14:44:42.868280Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --allow-unknown-static-fields -l warning --component-log-level misc:error --skip-deprecated-logs --concurrency 2]
+2026-05-28T14:44:42.871416Z	info	sds	Starting SDS grpc server
+2026-05-28T14:44:42.871440Z	info	sds	Starting SDS server for workload certificates, will listen on "var/run/secrets/workload-spiffe-uds/socket"
+2026-05-28T14:44:42.907571Z	info	xdsproxy	connected to delta upstream XDS server: istiod-stable.istio-system.svc:15012	id=1
+2026-05-28T14:44:42.915683Z	info	ads	ADS: new connection for node:1
+2026-05-28T14:44:42.917722Z	info	ads	ADS: new connection for node:2
+2026-05-28T14:44:42.955449Z	info	cache	generated new workload certificate	resourceName=default latency=87.511375ms ttl=23h59m59.044554114s
+2026-05-28T14:44:42.955471Z	info	cache	Root cert has changed, start rotating root cert
+2026-05-28T14:44:42.955496Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.044504614s
+2026-05-28T14:44:42.955511Z	info	cache	returned workload certificate from cache	ttl=23h59m59.044488823s
+2026-05-28T14:44:42.955729Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.044271156s
+2026-05-28T14:44:42.955796Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.044203614s
+2026-05-28T14:44:44.162075Z	info	Readiness succeeded in 1.504409084s
+2026-05-28T14:44:44.162335Z	info	Envoy proxy is ready
+[2026-05-28T14:45:12.975Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 1 1 "10.10.0.1,10.20.0.1" "curl/7.88.1" "423755da-447a-4cc7-9ae8-41e5f3c1871e" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:45:38.702Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "8b6bfc7e-8e34-90a9-8ce1-6591228657d2" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:45:41.777Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "5a17ade0-efef-482b-8b1e-c173da43fc67" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:45:44.856Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "15228ad6-6e9d-4db5-877b-57f82164b517" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:45:47.929Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "f81f7703-db1a-4d35-98d6-250ad9b90cca" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:45:51.005Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "5f7d585c-9908-41cf-a057-b32db49dc5d8" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:45:54.072Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "4dfa8d01-683c-479d-a466-cfbf7c75b2e7" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:45:57.151Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "eb0d3818-fc46-445b-a1af-315b6908a67e" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:00.223Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "ab5ef017-d4bc-43d5-8736-5d231b0bead8" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:03.291Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "7916f409-5d14-4110-bef1-c138f0464963" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:06.362Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "4ad324b7-6c8e-40d4-aaf4-e987caa13706" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:09.441Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "d7889b06-89f3-411b-8d22-d1e67ba59e78" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:12.508Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "a8f842e8-69f2-405d-9055-0cf97ba69f88" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:15.586Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "b7399fc3-f5d5-4c9c-8317-c8e7879039cd" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:18.664Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "1ec82b4e-e3dd-4520-8828-74580194e847" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default
+[2026-05-28T14:46:21.745Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 2386 0 0 "10.10.0.1,10.20.0.1" "curl/7.88.1" "95bf9492-cf7f-401f-9d4b-eb69dc1c1081" "echo-term.tetrate.io" "10.20.0.45:8080" inbound|8080||; 127.0.0.6:54511 10.20.0.45:8080 10.20.0.1:0 outbound_.80_._.echo-term.echo-term.svc.cluster.local default

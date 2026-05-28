@@ -1,0 +1,46 @@
+# Terminal Gateway data plane on cluster-2 — the pod that receives the
+# mesh-internal mTLS forwarded from cluster-1's transit Gateway and routes
+# HTTP to the real echo Kubernetes Service.
+#
+# Why this is a regular `GatewayDeployment` (not type=EASTWEST):
+#
+# The transit Gateway in cluster-1 generates a `DestinationRule` subset that
+# selects endpoints by labels including `xcp.tetrate.io/svc-port-N`. Only an
+# XCP-managed `Gateway` CR + matching `GatewayDeployment` produces endpoints
+# with those labels. The east-west / WorkspaceSetting-exposedServices path
+# (used in scenario-3) does NOT — its SE endpoints carry only `xcp.tetrate.io/cluster`
+# and `security.istio.io/tlsMode`, so the transit's subset finds no matching
+# endpoint and the upstream goes 503 UH (no healthy upstream).
+#
+# So the terminal hop in a transit chain MUST be a Gateway CR. The Gateway's
+# `serviceDestination` still points at the real cluster-local Service, so the
+# client's call to echo.echo-tr.svc.cluster.local does land on the real svc
+# at the end — the Gateway is just the intermediary that XCP requires for
+# the transit machinery's subset labelling.
+#
+# Apply to: cluster-2  (kubectl --kubeconfig ~/.kube/cluster-2)
+apiVersion: install.xcp.tetrate.io/v1alpha1
+kind: GatewayDeployment
+metadata:
+  name: echo-tr-gateway
+  namespace: istio-system
+spec:
+  namespace: echo-tr
+  revision: stable
+  kubeSpec:
+    deployment:
+      # Matched by the Gateway CR's spec.workloadSelector.labels
+      # in 04-xcp-config/06-gateway-backend.yaml.
+      labels:
+        app: echo-tr-gateway
+    service:
+      type: LoadBalancer
+      ports:
+        # 15443 = east-west / mesh-internal mTLS port. XCP auto-provisions
+        # the matching listener once the Gateway CR declares the hostname.
+        - name: tls-mesh
+          port: 15443
+          targetPort: 15443
+        - name: status-port
+          port: 15021
+          targetPort: 15021

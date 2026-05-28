@@ -1,0 +1,41 @@
+2026-05-28T20:03:04+05:30	Normal	ReplicaSet/echo-6d455455d9	SuccessfulCreate	Created pod: echo-6d455455d9-wbmll
+2026-05-28T20:03:04+05:30	Normal	Deployment/echo	ScalingReplicaSet	Scaled up replica set echo-6d455455d9 from 0 to 1
+2026-05-28T20:03:04+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-8q8gc	Scheduled	Successfully assigned echo/echo-gateway-5f4f69f4cf-8q8gc to cluster-1-control-plane
+2026-05-28T20:03:04+05:30	Normal	Pod/echo-6d455455d9-wbmll	Scheduled	Successfully assigned echo/echo-6d455455d9-wbmll to cluster-1-control-plane
+2026-05-28T20:03:04+05:30	Normal	Service/echo-gateway	IPAllocated	Assigned IP ["172.18.255.175"]
+2026-05-28T20:03:04+05:30	Normal	Deployment/echo-gateway	ScalingReplicaSet	Scaled up replica set echo-gateway-5f4f69f4cf from 0 to 1
+2026-05-28T20:03:04+05:30	Normal	ReplicaSet/echo-gateway-5f4f69f4cf	SuccessfulCreate	Created pod: echo-gateway-5f4f69f4cf-8q8gc
+2026-05-28T20:03:05+05:30	Warning	Pod/echo-gateway-5f4f69f4cf-8q8gc	Unhealthy	Readiness probe failed: Get "http://10.20.0.42:15021/healthz/ready": dial tcp 10.20.0.42:15021: connect: connection refused
+2026-05-28T20:03:05+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-8q8gc	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-28T20:03:05+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-8q8gc	Created	Created container: istio-proxy
+2026-05-28T20:03:05+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-8q8gc	Started	Started container istio-proxy
+2026-05-28T20:03:05+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-8q8gc	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 21ms (21ms including waiting). Image size: 58863518 bytes.
+2026-05-28T20:03:06+05:30	Normal	Service/echo-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"
+2026-05-28T20:03:19+05:30	Warning	HorizontalPodAutoscaler/echo-gateway	FailedGetResourceMetric	failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-28T20:03:19+05:30	Warning	HorizontalPodAutoscaler/echo-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-28T20:05:12+05:30	Warning	Pod/echo-6d455455d9-wbmll	FailedMount	MountVolume.SetUp failed for volume "tls" : secret "echo-tls" not found
+2026-05-28T20:06:37+05:30	Normal	Certificate/echo-tls	Issuing	Issuing certificate as Secret does not exist
+2026-05-28T20:06:38+05:30	Normal	CertificateRequest/echo-tls-f4n6c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-28T20:06:38+05:30	Normal	CertificateRequest/echo-tls-f4n6c	CertificateIssued	Certificate fetched from issuer successfully
+2026-05-28T20:06:38+05:30	Normal	Certificate/echo-tls	Issuing	The certificate has been successfully issued
+2026-05-28T20:06:38+05:30	Normal	Certificate/echo-tls	Requested	Created new CertificateRequest resource "echo-tls-f4n6c"
+2026-05-28T20:06:38+05:30	Normal	Certificate/echo-tls	Generated	Stored new private key in temporary Secret resource "echo-tls-lh4rr"
+2026-05-28T20:06:38+05:30	Normal	CertificateRequest/echo-tls-f4n6c	cert-manager.io	Certificate request has been approved by cert-manager.io
+2026-05-28T20:06:38+05:30	Normal	CertificateRequest/echo-tls-f4n6c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-28T20:06:38+05:30	Normal	CertificateRequest/echo-tls-f4n6c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-28T20:06:38+05:30	Normal	CertificateRequest/echo-tls-f4n6c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-28T20:06:38+05:30	Normal	CertificateRequest/echo-tls-f4n6c	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-05-28T20:06:47+05:30	Normal	ReplicaSet/echo-8ff8cff9c	SuccessfulCreate	Created pod: echo-8ff8cff9c-4j2x4
+2026-05-28T20:06:47+05:30	Normal	Deployment/echo	ScalingReplicaSet	Scaled up replica set echo-8ff8cff9c from 0 to 1
+2026-05-28T20:06:47+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Scheduled	Successfully assigned echo/echo-8ff8cff9c-4j2x4 to cluster-1-control-plane
+2026-05-28T20:06:48+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-28T20:06:48+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Created	Created container: istio-proxy
+2026-05-28T20:06:48+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Started	Started container istio-proxy
+2026-05-28T20:06:48+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Created	Created container: istio-init
+2026-05-28T20:06:48+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-28T20:06:48+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Started	Started container istio-init
+2026-05-28T20:06:50+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Pulled	Container image "docker.io/traefik/whoami:v1.10" already present on machine
+2026-05-28T20:06:50+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Created	Created container: whoami
+2026-05-28T20:06:50+05:30	Normal	Pod/echo-8ff8cff9c-4j2x4	Started	Started container whoami
+2026-05-28T20:06:51+05:30	Normal	ReplicaSet/echo-6d455455d9	SuccessfulDelete	Deleted pod: echo-6d455455d9-wbmll
+2026-05-28T20:06:51+05:30	Normal	Deployment/echo	ScalingReplicaSet	Scaled down replica set echo-6d455455d9 from 1 to 0

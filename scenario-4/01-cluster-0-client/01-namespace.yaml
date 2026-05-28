@@ -1,0 +1,13 @@
+# Client namespace on cluster-0. The istio.io/rev label enables sidecar
+# injection so the curl pod's sidecar can consult the XCP-generated
+# cross-cluster ServiceEntry for transit.tetrate.io.
+#
+# This is the *only* thing on cluster-0 for this scenario — there's no
+# entry Tier1 gateway, no public LB, no edge cert. The "transit" pattern
+# only needs the client to be in the mesh.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: client-tr
+  labels:
+    istio.io/rev: stable

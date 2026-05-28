@@ -1,0 +1,99 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Tier1Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"tier1-term-gg","xcp.tetrate.io/workspace":"term-ws"},"name":"tier1-echo-term-gw","namespace":"xcp-system"},"spec":{"externalServers":[{"clusters":[{"name":"cluster-1","weight":100}],"hostname":"echo-term.tetrate.io","name":"echo","port":18443,"tls":{"mode":"SIMPLE","secretName":"echo-term-edge-tls"}}],"workloadSelector":{"labels":{"app":"tier1-term-gateway"},"namespace":"tier1-term"}}}
+    xcp.tetrate.io/contentHash: e44f73c3029b6c0a95da5a7bda0236c7
+  creationTimestamp: "2026-05-28T14:44:43Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: tier1-term-gg
+    xcp.tetrate.io/workspace: term-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:configPatches: {}
+        f:priority: {}
+        f:workloadSelector:
+          .: {}
+          f:labels:
+            .: {}
+            f:app: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:44:43Z"
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-28T14:44:44Z"
+  name: default-allow-tier1-echo-term-gw-external-batch0
+  namespace: tier1-term
+  resourceVersion: "1310840"
+  uid: 8b4380e8-c751-4529-b3b1-6043b287d164
+spec:
+  configPatches:
+  - applyTo: HTTP_FILTER
+    match:
+      context: GATEWAY
+      listener:
+        filterChain:
+          filter:
+            name: envoy.filters.network.http_connection_manager
+            subFilter:
+              name: envoy.filters.http.rbac
+          sni: echo-term.tetrate.io
+        portNumber: 18443
+      proxy:
+        proxyVersion: ^1\.(22|24|28)(\.\d+)?(-.*)?$
+    patch:
+      operation: REPLACE
+      value:
+        name: envoy.filters.http.rbac
+        typed_config:
+          '@type': type.googleapis.com/envoy.extensions.filters.http.rbac.v3.RBAC
+          rules:
+            policies:
+              tier1-term-tier1-echo-term-gw-echo:
+                permissions:
+                - and_rules:
+                    rules:
+                    - or_rules:
+                        rules:
+                        - destination_port: 18443
+                principals:
+                - and_ids:
+                    ids:
+                    - any: true
+  priority: -2000
+  workloadSelector:
+    labels:
+      app: tier1-term-gateway
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133

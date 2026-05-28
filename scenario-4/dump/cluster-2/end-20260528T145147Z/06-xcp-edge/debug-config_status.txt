@@ -1,0 +1,94 @@
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-1"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-2"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Cluster\",\"metadata\":{\"annotations\":{},\"name\":\"cluster-2\",\"namespace\":\"xcp-system\"},\"spec\":{\"istioTrustDomain\":\"cluster.local\",\"network\":\"nw-cluster-2\"}}\n"
+  }
+}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Workspace"
+  name: "transit-ws"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Workspace\",\"metadata\":{\"annotations\":{},\"name\":\"transit-ws\",\"namespace\":\"xcp-system\"},\"spec\":{\"namespaceSelector\":{\"names\":[\"cluster-0/client-tr\",\"cluster-1/transit\",\"cluster-2/echo-tr\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "Gateway"
+  name: "transit-backend-gw"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/gatewayGroup"
+    value: "transit-backend-gg"
+  }
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "transit-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"Gateway\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/gatewayGroup\":\"transit-backend-gg\",\"xcp.tetrate.io/workspace\":\"transit-ws\"},\"name\":\"transit-backend-gw\",\"namespace\":\"xcp-system\"},\"spec\":{\"http\":[{\"hostname\":\"echo.echo-tr.svc.cluster.local\",\"name\":\"transit-backend\",\"port\":8080,\"routing\":{\"rules\":[{\"route\":{\"serviceDestination\":{\"host\":\"echo-tr/echo.echo-tr.svc.cluster.local\",\"port\":80}}}]}}],\"workloadSelector\":{\"labels\":{\"app\":\"echo-tr-gateway\"},\"namespace\":\"echo-tr\"}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "GatewayGroup"
+  name: "transit-backend-gg"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "transit-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"GatewayGroup\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/workspace\":\"transit-ws\"},\"name\":\"transit-backend-gg\",\"namespace\":\"xcp-system\"},\"spec\":{\"configMode\":\"BRIDGED\",\"namespaceSelector\":{\"names\":[\"cluster-2/echo-tr\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-0"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"

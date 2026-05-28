@@ -1,0 +1,13 @@
+2026-05-28T20:20:11+05:30	Normal	Pod/transit-tier1-gateway-9c6668f8-d4rxt	Scheduled	Successfully assigned transit/transit-tier1-gateway-9c6668f8-d4rxt to cluster-1-control-plane
+2026-05-28T20:20:11+05:30	Normal	Pod/transit-tier1-gateway-9c6668f8-d4rxt	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-28T20:20:11+05:30	Normal	Pod/transit-tier1-gateway-9c6668f8-d4rxt	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 10ms (10ms including waiting). Image size: 58863518 bytes.
+2026-05-28T20:20:11+05:30	Normal	Pod/transit-tier1-gateway-9c6668f8-d4rxt	Created	Created container: istio-proxy
+2026-05-28T20:20:11+05:30	Normal	Pod/transit-tier1-gateway-9c6668f8-d4rxt	Started	Started container istio-proxy
+2026-05-28T20:20:11+05:30	Normal	ReplicaSet/transit-tier1-gateway-9c6668f8	SuccessfulCreate	Created pod: transit-tier1-gateway-9c6668f8-d4rxt
+2026-05-28T20:20:11+05:30	Normal	Deployment/transit-tier1-gateway	ScalingReplicaSet	Scaled up replica set transit-tier1-gateway-9c6668f8 from 0 to 1
+2026-05-28T20:20:11+05:30	Normal	Service/transit-tier1-gateway	IPAllocated	Assigned IP ["172.18.255.175"]
+2026-05-28T20:20:12+05:30	Normal	Service/transit-tier1-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"
+2026-05-28T20:20:26+05:30	Warning	HorizontalPodAutoscaler/transit-tier1-gateway	FailedGetResourceMetric	failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-28T20:20:26+05:30	Warning	HorizontalPodAutoscaler/transit-tier1-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-28T20:20:41+05:30	Warning	HorizontalPodAutoscaler/transit-tier1-gateway	FailedGetResourceMetric	failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+2026-05-28T20:20:41+05:30	Warning	HorizontalPodAutoscaler/transit-tier1-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)

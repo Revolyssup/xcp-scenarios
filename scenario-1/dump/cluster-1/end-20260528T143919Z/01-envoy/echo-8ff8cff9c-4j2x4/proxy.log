@@ -1,0 +1,85 @@
+2026-05-28T14:36:48.912879Z	info	FLAG: --concurrency="0"
+2026-05-28T14:36:48.912895Z	info	FLAG: --domain="echo.svc.cluster.local"
+2026-05-28T14:36:48.912897Z	info	FLAG: --help="false"
+2026-05-28T14:36:48.912898Z	info	FLAG: --log_as_json="false"
+2026-05-28T14:36:48.912899Z	info	FLAG: --log_caller=""
+2026-05-28T14:36:48.912899Z	info	FLAG: --log_output_level="default:info"
+2026-05-28T14:36:48.912900Z	info	FLAG: --log_stacktrace_level="default:none"
+2026-05-28T14:36:48.912903Z	info	FLAG: --log_target="[stdout]"
+2026-05-28T14:36:48.912904Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2026-05-28T14:36:48.912905Z	info	FLAG: --outlierLogPath=""
+2026-05-28T14:36:48.912905Z	info	FLAG: --profiling="true"
+2026-05-28T14:36:48.912906Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2026-05-28T14:36:48.912907Z	info	FLAG: --proxyLogLevel="warning"
+2026-05-28T14:36:48.912907Z	info	FLAG: --serviceCluster="istio-proxy"
+2026-05-28T14:36:48.912908Z	info	FLAG: --stsPort="0"
+2026-05-28T14:36:48.912908Z	info	FLAG: --templateFile=""
+2026-05-28T14:36:48.912909Z	info	FLAG: --tokenManagerPlugin=""
+2026-05-28T14:36:48.912911Z	info	FLAG: --vklog="0"
+2026-05-28T14:36:48.912912Z	info	Version 1.28.3-3b82a7d635-3b82a7d6352fc165489aa5c5be1077c6b705b4c9-Clean
+2026-05-28T14:36:48.913217Z	info	Proxy role	ips=[10.20.0.44] type=sidecar id=echo-8ff8cff9c-4j2x4.echo domain=echo.svc.cluster.local
+2026-05-28T14:36:48.913253Z	info	Apply proxy config from env {"discoveryAddress":"istiod-stable.istio-system.svc:15012","tracing":{"customTags":{"cluster":{"literal":{"value":"cluster-1"}}}},"proxyMetadata":{"EXIT_ON_ZERO_ACTIVE_CONNECTIONS":"true","ISTIO_META_DNS_CAPTURE":"true"},"holdApplicationUntilProxyStarts":true}
+
+2026-05-28T14:36:48.914244Z	info	cpu limit detected as 2, setting concurrency
+2026-05-28T14:36:48.914434Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod-stable.istio-system.svc:15012
+drainDuration: 45s
+holdApplicationUntilProxyStarts: true
+proxyAdminPort: 15000
+proxyMetadata:
+  EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+  ISTIO_META_DNS_CAPTURE: "true"
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  customTags:
+    cluster:
+      literal:
+        value: cluster-1
+
+2026-05-28T14:36:48.914441Z	info	JWT policy is third-party-jwt
+2026-05-28T14:36:48.914442Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2026-05-28T14:36:49.116371Z	info	Opening status port 15020
+2026-05-28T14:36:49.116570Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2026-05-28T14:36:49.118411Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2026-05-28T14:36:49.118469Z	info	Starting default Istio SDS Server
+2026-05-28T14:36:49.118484Z	info	CA Endpoint istiod-stable.istio-system.svc:15012, provider Citadel
+2026-05-28T14:36:49.118493Z	info	Using CA istiod-stable.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2026-05-28T14:36:49.119754Z	info	xdsproxy	Initializing with upstream address "istiod-stable.istio-system.svc:15012" and cluster "cluster-1"
+2026-05-28T14:36:49.119836Z	info	sds	Starting SDS grpc server
+2026-05-28T14:36:49.119845Z	info	sds	Starting SDS server for workload certificates, will listen on "var/run/secrets/workload-spiffe-uds/socket"
+2026-05-28T14:36:49.120419Z	info	Pilot SAN: [istiod-stable.istio-system.svc]
+2026-05-28T14:36:49.122818Z	info	Starting proxy agent
+2026-05-28T14:36:49.122841Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --allow-unknown-static-fields -l warning --component-log-level misc:error --skip-deprecated-logs --concurrency 2]
+2026-05-28T14:36:49.152156Z	info	xdsproxy	connected to delta upstream XDS server: istiod-stable.istio-system.svc:15012	id=1
+2026-05-28T14:36:49.161043Z	info	ads	ADS: new connection for node:1
+2026-05-28T14:36:49.161278Z	info	ads	ADS: new connection for node:2
+2026-05-28T14:36:49.163644Z	info	cache	generated new workload certificate	resourceName=default latency=43.7655ms ttl=23h59m59.836359153s
+2026-05-28T14:36:49.163691Z	info	cache	Root cert has changed, start rotating root cert
+2026-05-28T14:36:49.163720Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.836280861s
+2026-05-28T14:36:49.163732Z	info	cache	returned workload certificate from cache	ttl=23h59m59.836270028s
+2026-05-28T14:36:49.163938Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.836062528s
+2026-05-28T14:36:49.164443Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.83555707s
+2026-05-28T14:36:50.173462Z	info	Readiness succeeded in 1.260714333s
+2026-05-28T14:36:50.173623Z	info	Envoy proxy is ready
+[2026-05-28T14:37:17.179Z] "- - -" 0 - - - "-" 1297 2415 14 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:47523 10.20.0.44:9443 10.20.0.42:45156 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:30.683Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:53211 10.20.0.44:9443 10.20.0.42:56824 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:33.749Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:53607 10.20.0.44:9443 10.20.0.42:56830 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:36.819Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:53271 10.20.0.44:9443 10.20.0.42:56840 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:39.892Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:44241 10.20.0.44:9443 10.20.0.42:50906 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:42.974Z] "- - -" 0 - - - "-" 1297 2393 4 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:41739 10.20.0.44:9443 10.20.0.42:50920 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:46.045Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:41493 10.20.0.44:9443 10.20.0.42:50926 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:49.112Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:33321 10.20.0.44:9443 10.20.0.42:48864 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:52.188Z] "- - -" 0 - - - "-" 1297 2415 5 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:33501 10.20.0.44:9443 10.20.0.42:48872 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:55.251Z] "- - -" 0 - - - "-" 1297 2415 2 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:44605 10.20.0.44:9443 10.20.0.42:48880 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:38:58.314Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:41695 10.20.0.44:9443 10.20.0.42:34820 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:39:01.383Z] "- - -" 0 - - - "-" 1297 2414 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:57715 10.20.0.44:9443 10.20.0.42:34832 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:39:04.455Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:35375 10.20.0.44:9443 10.20.0.42:34840 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:39:07.522Z] "- - -" 0 - - - "-" 1297 2415 6 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:48143 10.20.0.44:9443 10.20.0.42:34856 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:39:10.589Z] "- - -" 0 - - - "-" 1297 2392 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:59187 10.20.0.44:9443 10.20.0.42:36846 outbound_.9443_._.echo.echo.svc.cluster.local -
+[2026-05-28T14:39:13.674Z] "- - -" 0 - - - "-" 1297 2415 3 - "-" "-" "-" "-" "10.20.0.44:9443" inbound|9443||; 127.0.0.6:47005 10.20.0.44:9443 10.20.0.42:36856 outbound_.9443_._.echo.echo.svc.cluster.local -

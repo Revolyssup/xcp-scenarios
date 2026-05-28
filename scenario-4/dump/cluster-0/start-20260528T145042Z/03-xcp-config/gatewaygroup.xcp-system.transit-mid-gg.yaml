@@ -1,0 +1,39 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: GatewayGroup
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"GatewayGroup","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-mid-gg","namespace":"xcp-system"},"spec":{"configMode":"BRIDGED","namespaceSelector":{"names":["cluster-1/transit"]}}}
+  creationTimestamp: "2026-05-28T14:50:11Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:configMode: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-28T14:50:11Z"
+  name: transit-mid-gg
+  namespace: xcp-system
+  resourceVersion: "1312283"
+  uid: 35fcedda-4cf6-4023-a314-b6168fb876d7
+spec:
+  configMode: BRIDGED
+  namespaceSelector:
+    names:
+    - cluster-1/transit

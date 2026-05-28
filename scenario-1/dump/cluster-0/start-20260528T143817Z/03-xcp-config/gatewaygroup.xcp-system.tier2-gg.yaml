@@ -1,0 +1,39 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: GatewayGroup
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"GatewayGroup","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/workspace":"passthrough-ws"},"name":"tier2-gg","namespace":"xcp-system"},"spec":{"configMode":"BRIDGED","namespaceSelector":{"names":["cluster-1/echo"]}}}
+  creationTimestamp: "2026-05-28T14:33:04Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/workspace: passthrough-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:configMode: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-28T14:33:04Z"
+  name: tier2-gg
+  namespace: xcp-system
+  resourceVersion: "1307959"
+  uid: 7b7558ec-6596-468e-b481-443053b52e5d
+spec:
+  configMode: BRIDGED
+  namespaceSelector:
+    names:
+    - cluster-1/echo

@@ -1,0 +1,66 @@
+items:
+- addressType: IPv4
+  endpoints:
+  - addresses:
+    - 10.20.0.44
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: cluster-1-control-plane
+    targetRef:
+      kind: Pod
+      name: echo-8ff8cff9c-4j2x4
+      namespace: echo
+      uid: 1e6929af-d233-4bf9-a4cf-af5c31594e20
+    zone: us-east1-B
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-05-28T14:36:51Z"
+    creationTimestamp: "2026-05-28T14:33:04Z"
+    generateName: echo-
+    generation: 3
+    labels:
+      app: echo
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: echo
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"fa44b363-2f9c-440a-94bc-851bfde8b40d"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-05-28T14:36:51Z"
+    name: echo-db887
+    namespace: echo
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: echo
+      uid: fa44b363-2f9c-440a-94bc-851bfde8b40d
+    resourceVersion: "966929"
+    uid: f6ac7def-07ec-4ed8-8ca2-ab6459cf936a
+  ports:
+  - name: tls-echo
+    port: 9443
+    protocol: TCP
+metadata:
+  resourceVersion: "967352"

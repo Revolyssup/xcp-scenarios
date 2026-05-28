@@ -1,0 +1,8 @@
+{
+  "cluster-1": {
+    "echo-term.tetrate.io": {
+      "8080": "HTTP"
+    }
+  },
+  "cluster-2": {}
+}

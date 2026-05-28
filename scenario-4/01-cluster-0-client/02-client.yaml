@@ -1,0 +1,35 @@
+# Long-running curl pod in cluster-0/client-tr. We'll `kubectl exec` into it
+# to dial transit.tetrate.io. The sidecar (injected via the namespace label)
+# intercepts the call, looks up the cross-cluster ServiceEntry that XCP
+# generates for the hostname, and tunnels the request via Istio mesh mTLS
+# (port 15443) to the cluster-1 transit Gateway.
+#
+# Apply to: cluster-0  (kubectl --kubeconfig ~/.kube/cluster-0)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: client
+  namespace: client-tr
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: client-tr
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      serviceAccountName: client
+      containers:
+        - name: curl
+          image: curlimages/curl:8.10.1
+          command: ["sleep", "infinity"]

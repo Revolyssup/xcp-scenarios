@@ -1,0 +1,110 @@
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "Tier1Gateway"
+  name: "tier1-echo-gw"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/gatewayGroup"
+    value: "tier1-gg"
+  }
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "passthrough-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"Tier1Gateway\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/gatewayGroup\":\"tier1-gg\",\"xcp.tetrate.io/workspace\":\"passthrough-ws\"},\"name\":\"tier1-echo-gw\",\"namespace\":\"xcp-system\"},\"spec\":{\"passthroughServers\":[{\"clusters\":[{\"name\":\"cluster-1\",\"weight\":100}],\"hostname\":\"echo.tetrate.io\",\"name\":\"echo\",\"port\":17443}],\"workloadSelector\":{\"labels\":{\"app\":\"tier1-gateway\"},\"namespace\":\"tier1\"}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-0"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Cluster\",\"metadata\":{\"annotations\":{},\"name\":\"cluster-0\",\"namespace\":\"xcp-system\"},\"spec\":{\"istioTrustDomain\":\"cluster.local\"}}\n"
+  }
+}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-1"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-2"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "GlobalSetting"
+  name: "global"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"GlobalSetting\",\"metadata\":{\"annotations\":{},\"name\":\"global\",\"namespace\":\"xcp-system\"},\"spec\":{\"networkSettings\":{\"networkReachability\":{\"nw-cluster-0\":\"nw-cluster-1\",\"nw-cluster-1\":\"nw-cluster-0,nw-cluster-2\",\"nw-cluster-2\":\"nw-cluster-1\"}}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 9 target namespace(s): APPLIED in 1 namespace(s), TRANSLATION SKIPPED in 7 namespace(s), TRANSLATED BUT NOT MAPPED in 1 namespace(s)"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Workspace"
+  name: "passthrough-ws"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Workspace\",\"metadata\":{\"annotations\":{},\"name\":\"passthrough-ws\",\"namespace\":\"xcp-system\"},\"spec\":{\"namespaceSelector\":{\"names\":[\"cluster-0/tier1\",\"cluster-1/echo\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "GatewayGroup"
+  name: "tier1-gg"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "passthrough-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"GatewayGroup\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/workspace\":\"passthrough-ws\"},\"name\":\"tier1-gg\",\"namespace\":\"xcp-system\"},\"spec\":{\"configMode\":\"BRIDGED\",\"namespaceSelector\":{\"names\":[\"cluster-0/tier1\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"

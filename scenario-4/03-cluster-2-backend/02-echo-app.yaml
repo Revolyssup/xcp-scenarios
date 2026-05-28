@@ -1,0 +1,63 @@
+# Echo backend on cluster-2: traefik/whoami serving PLAIN HTTP on :8080.
+#
+# Unlike scenario-1 (where the backend terminated TLS itself), here TLS is
+# already terminated upstream at the entry Tier1 on cluster-0. Inside the
+# mesh every hop is Istio mTLS, but those are sidecar-to-sidecar / gateway-
+# to-sidecar — the application traffic itself is plain HTTP.
+#
+# The Service exposes the workload on :80; the sidecar makes that auto-mTLS
+# when called from the Tier2 IngressGateway.
+#
+# Apply to: cluster-2  (kubectl --kubeconfig ~/.kube/cluster-2)
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: echo
+  namespace: echo-tr
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo
+  namespace: echo-tr
+  labels:
+    app: echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo
+  template:
+    metadata:
+      labels:
+        app: echo
+    spec:
+      serviceAccountName: echo
+      containers:
+        - name: whoami
+          image: docker.io/traefik/whoami:v1.10
+          args:
+            - --port=8080
+            - --name=echo-cluster-2-transit
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo
+  namespace: echo-tr
+  labels:
+    # Matched by WorkspaceSetting.defaultEastWestGatewaySettings.exposedServices.serviceLabels
+    # in 04-xcp-config/05-workspacesetting.yaml — what makes XCP propagate
+    # this Service across the workspace and program the east-west listener.
+    app: echo
+spec:
+  selector:
+    app: echo
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP

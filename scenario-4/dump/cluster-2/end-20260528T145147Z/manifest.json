@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-05-28T14:51:47Z",
+  "query": {
+    "hostname": "echo.echo-tr.svc.cluster.local",
+    "namespace": "echo-tr"
+  },
+  "resolved_context": {
+    "service_name": "echo",
+    "cluster_role": "workload",
+    "cluster_role_reason": "local Service echo-tr/echo with 1 backing pod(s)",
+    "service_found": true,
+    "backing_pods": [
+      "echo-tr/echo-5fb5d66d6-d4f5s"
+    ],
+    "gateway_pods": [
+      "echo-tr/echo-tr-gateway-67dd96d555-vg7b7"
+    ],
+    "istiod_pods": [
+      "istio-system/istiod-stable-5bfdbff5cf-ddz5j"
+    ],
+    "edge_pods": [
+      "istio-system/edge-77cfc4c57f-pttq7"
+    ],
+    "matched_crs": [
+      "VirtualService echo-tr/vs-echo-echo-tr-svc-cluster-local",
+      "Gateway echo-tr/transit-backend-gw",
+      "DestinationRule xcp-multicluster/global-gateway-echo-echo-tr-svc-cluster-local",
+      "ServiceEntry xcp-multicluster/global-gateway-echo-echo-tr-svc-cluster-local",
+      "EnvoyFilter echo-tr/default-allow-transit-backend-gw-external-batch0",
+      "EnvoyFilter echo-tr/default-upstream-traffic-setting",
+      "EnvoyFilter echo-tr/transit-backend-gg-default-upstream-traffic-setting",
+      "EnvoyFilter istio-system/global-forward-xfcc-15443",
+      "EnvoyFilter istio-system/global-gw-best-practice",
+      "EnvoyFilter istio-system/global-mx-downstream-egress-gateway-filter",
+      "EnvoyFilter istio-system/global-mx-downstream-gateway-filter",
+      "EnvoyFilter istio-system/global-periodical-access-log",
+      "EnvoyFilter istio-system/global-request-id-propagation",
+      "EnvoyFilter istio-system/global-tcp-keepalive-envoy-filter",
+      "EnvoyFilter istio-system/global-xfcc-extractor-sidecar",
+      "EnvoyFilter istio-system/global-xfcc-guard-15443",
+      "IstioOperator istio-system/xcp-iop-stable",
+      "IstioOperator istio-system/xcpgw-echo-tr-gateway"
+    ],
+    "xcp_config_crs": [
+      "Workspace istio-system/transit-ws",
+      "GlobalSetting istio-system/global",
+      "GatewayGroup istio-system/transit-backend-gg",
+      "Gateway istio-system/transit-backend-gw",
+      "EdgeXcp istio-system/edgexcp"
+    ],
+    "istiod_revisions": [
+      "default",
+      "stable"
+    ]
+  },
+  "collectors": {
+    "envoy": {
+      "layer": "01-envoy",
+      "status": "ok",
+      "files": 10
+    },
+    "istio-config": {
+      "layer": "02-istio-config",
+      "status": "ok",
+      "files": 18
+    },
+    "istiod": {
+      "layer": "05-istiod",
+      "status": "ok",
+      "files": 9
+    },
+    "k8s": {
+      "layer": "04-k8s",
+      "status": "ok",
+      "files": 4
+    },
+    "xcp-config": {
+      "layer": "03-xcp-config",
+      "status": "ok",
+      "files": 5
+    },
+    "xcp-edge": {
+      "layer": "06-xcp-edge",
+      "status": "ok",
+      "files": 9
+    }
+  }
+}

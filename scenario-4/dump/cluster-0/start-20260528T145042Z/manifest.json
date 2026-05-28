@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-05-28T14:50:42Z",
+  "query": {
+    "hostname": "echo.echo-tr.svc.cluster.local",
+    "namespace": "client-tr"
+  },
+  "resolved_context": {
+    "service_name": "echo",
+    "cluster_role": "standalone",
+    "cluster_role_reason": "no local Service for hostname and no Tier1Gateway CR; may be a tier-1 cluster in classic mode — confirm via gateway config_dump",
+    "service_found": false,
+    "backing_pods": [],
+    "gateway_pods": [],
+    "istiod_pods": [
+      "istio-system/istiod-stable-65bd95ccc-pqdvh"
+    ],
+    "edge_pods": [
+      "istio-system/edge-668cdd6dc9-r9jpw"
+    ],
+    "matched_crs": [
+      "DestinationRule xcp-multicluster/global-gateway-echo-echo-tr-svc-cluster-local",
+      "ServiceEntry xcp-multicluster/global-gateway-echo-echo-tr-svc-cluster-local",
+      "EnvoyFilter client-tr/default-upstream-traffic-setting",
+      "EnvoyFilter istio-system/global-forward-xfcc-15443",
+      "EnvoyFilter istio-system/global-gw-best-practice",
+      "EnvoyFilter istio-system/global-mx-downstream-egress-gateway-filter",
+      "EnvoyFilter istio-system/global-mx-downstream-gateway-filter",
+      "EnvoyFilter istio-system/global-periodical-access-log",
+      "EnvoyFilter istio-system/global-request-id-propagation",
+      "EnvoyFilter istio-system/global-tcp-keepalive-envoy-filter",
+      "EnvoyFilter istio-system/global-xfcc-extractor-sidecar",
+      "EnvoyFilter istio-system/global-xfcc-guard-15443",
+      "IstioOperator istio-system/xcp-iop-stable"
+    ],
+    "xcp_config_crs": [
+      "Workspace istio-system/transit-ws",
+      "Workspace xcp-system/transit-ws",
+      "GlobalSetting istio-system/global",
+      "GlobalSetting xcp-system/global",
+      "GatewayGroup xcp-system/transit-backend-gg",
+      "GatewayGroup xcp-system/transit-mid-gg",
+      "Gateway xcp-system/transit-backend-gw",
+      "Gateway xcp-system/transit-mid-gw",
+      "EdgeXcp istio-system/edgexcp"
+    ]
+  },
+  "collectors": {
+    "envoy": {
+      "layer": "01-envoy",
+      "status": "empty",
+      "files": 0
+    },
+    "istio-config": {
+      "layer": "02-istio-config",
+      "status": "ok",
+      "files": 13
+    },
+    "istiod": {
+      "layer": "05-istiod",
+      "status": "ok",
+      "files": 7
+    },
+    "k8s": {
+      "layer": "04-k8s",
+      "status": "ok",
+      "files": 1
+    },
+    "xcp-config": {
+      "layer": "03-xcp-config",
+      "status": "ok",
+      "files": 9
+    },
+    "xcp-edge": {
+      "layer": "06-xcp-edge",
+      "status": "ok",
+      "files": 9
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# Workspace: top-level XCP boundary for this scenario. Lists every
+# <cluster>/<namespace> taking part. Distinct workspaces in scenarios 1-4
+# so they can coexist (each namespace can belong to only one Workspace).
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: xcp.tetrate.io/v2
+kind: Workspace
+metadata:
+  name: transit-ws
+  namespace: xcp-system
+spec:
+  namespaceSelector:
+    names:
+      - cluster-0/client-tr  # mesh-internal curl client (sidecar-injected)
+      - cluster-1/transit    # transit Gateway (http transit: true)
+      - cluster-2/echo-tr    # backend Gateway + echo workload

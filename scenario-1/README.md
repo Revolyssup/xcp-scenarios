@@ -145,26 +145,26 @@ during the window:
 ```sh
 # In one shell — cluster-0 (Tier1 + Central)
 KUBECONFIG=~/.kube/cluster-0 tctl --config ~/Desktop/tctl-admin.config.yaml \
-  collect --minimal \
+  collect-minimal \
   --hostname echo.tetrate.io --namespace echo \
-  --until 1m --disable-archive \
+  --duration 1m --disable-archive \
   -o ./scenario-1/dump/cluster-0
 
 # In a second shell — cluster-1 (Tier2 + echo backend)
 KUBECONFIG=~/.kube/cluster-1 tctl --config ~/Desktop/tctl-admin.config.yaml \
-  collect --minimal \
+  collect-minimal \
   --hostname echo.tetrate.io --namespace echo \
-  --until 1m --disable-archive \
+  --duration 1m --disable-archive \
   -o ./scenario-1/dump/cluster-1
 
 # During the 1-minute window, send the curl from "Verify" above
 # multiple times so the END snapshot captures matching access-log lines.
 ```
 
-`--minimal --hostname X --namespace Y` scopes the envoy capture to proxies
-that *own* the hostname `X` in namespace `Y`. Here that's the tier1 gateway
-(cluster-0/echo via the cross-cluster wiring) and the tier2 gateway + echo
-pod (cluster-1/echo).
+`collect-minimal --hostname X --namespace Y` scopes the envoy capture to
+proxies that *own* the hostname `X` in namespace `Y`. Here that's the tier1
+gateway (cluster-0/echo via the cross-cluster wiring) and the tier2 gateway
++ echo pod (cluster-1/echo).
 
 ## Teardown
 

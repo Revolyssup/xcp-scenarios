@@ -1,0 +1,35 @@
+apiVersion: xcp.tetrate.io/v2
+kind: Workspace
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"xcp.tetrate.io/v2","kind":"Workspace","metadata":{"annotations":{},"name":"passthrough-ws","namespace":"xcp-system"},"spec":{"namespaceSelector":{"names":["cluster-0/tier1","cluster-1/echo"]}}}
+    xcp.tetrate.io/contentHash: e5d3817c7d08543139c22f8de5bfec93
+  creationTimestamp: "2026-05-28T14:33:05Z"
+  generation: 1
+  managedFields:
+  - apiVersion: xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+      f:spec:
+        .: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:33:05Z"
+  name: passthrough-ws
+  namespace: istio-system
+  resourceVersion: "966172"
+  uid: 1f5b355f-a72a-478b-b51b-0b28c5dfc04d
+spec:
+  namespaceSelector:
+    names:
+    - cluster-0/tier1
+    - cluster-1/echo

@@ -1,0 +1,41 @@
+# Unified Gateway CR — the TRANSIT hop on cluster-1.
+#
+# Hostname is the **actual cluster-local Service FQDN** in cluster-2
+# (echo.echo-tr.svc.cluster.local), NOT a logical hostname. That's what makes
+# this scenario useful: the client just dials the Service by its k8s name and
+# XCP figures out the cross-cluster + transit routing.
+#
+# **`transit: true`** on the http server marks this as a forwarding hop:
+#   * `port` is ignored — XCP uses port 15443 (Istio mesh mTLS) instead.
+#   * `tls` is ignored — Istio mutual TLS secures the connection.
+#   * The server is only reachable from inside the mesh.
+#
+# The route forwards to cluster-2. Combined with the networkReachability rule
+# (cluster-0 cannot reach cluster-2 directly), this transit hop is the only
+# viable path from a sidecar in cluster-0 to the echo Service in cluster-2.
+#
+# Apply to: XCP Central -> cluster-0, namespace xcp-system
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: Gateway
+metadata:
+  name: transit-mid-gw
+  namespace: xcp-system
+  labels:
+    xcp.tetrate.io/workspace: transit-ws
+    xcp.tetrate.io/gatewayGroup: transit-mid-gg
+spec:
+  workloadSelector:
+    namespace: transit
+    labels:
+      app: transit-tier1-gateway
+  http:
+    - name: transit-hop
+      hostname: echo.echo-tr.svc.cluster.local
+      transit: true
+      routing:
+        rules:
+          - route:
+              clusterDestination:
+                clusters:
+                  - name: cluster-2
+                    weight: 100

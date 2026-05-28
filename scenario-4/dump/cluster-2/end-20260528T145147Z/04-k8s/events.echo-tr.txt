@@ -1,0 +1,25 @@
+2026-05-28T20:20:11+05:30	Normal	Deployment/echo-tr-gateway	ScalingReplicaSet	Scaled up replica set echo-tr-gateway-67dd96d555 from 0 to 1
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-tr-gateway-67dd96d555-vg7b7	Created	Created container: istio-proxy
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Created	Created container: istio-init
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Started	Started container istio-init
+2026-05-28T20:20:11+05:30	Normal	Service/echo-tr-gateway	IPAllocated	Assigned IP ["172.18.255.195"]
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Scheduled	Successfully assigned echo-tr/echo-5fb5d66d6-d4f5s to cluster-2-control-plane
+2026-05-28T20:20:11+05:30	Normal	ReplicaSet/echo-tr-gateway-67dd96d555	SuccessfulCreate	Created pod: echo-tr-gateway-67dd96d555-vg7b7
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-tr-gateway-67dd96d555-vg7b7	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-05-28T20:20:11+05:30	Normal	Deployment/echo	ScalingReplicaSet	Scaled up replica set echo-5fb5d66d6 from 0 to 1
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-tr-gateway-67dd96d555-vg7b7	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 11ms (11ms including waiting). Image size: 58863518 bytes.
+2026-05-28T20:20:11+05:30	Normal	ReplicaSet/echo-5fb5d66d6	SuccessfulCreate	Created pod: echo-5fb5d66d6-d4f5s
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-tr-gateway-67dd96d555-vg7b7	Scheduled	Successfully assigned echo-tr/echo-tr-gateway-67dd96d555-vg7b7 to cluster-2-control-plane
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-28T20:20:11+05:30	Normal	Pod/echo-tr-gateway-67dd96d555-vg7b7	Started	Started container istio-proxy
+2026-05-28T20:20:12+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Created	Created container: istio-proxy
+2026-05-28T20:20:12+05:30	Normal	Service/echo-tr-gateway	nodeAssigned	announcing from node "cluster-2-control-plane" with protocol "layer2"
+2026-05-28T20:20:12+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Started	Started container istio-proxy
+2026-05-28T20:20:12+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-28T20:20:14+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Pulled	Container image "docker.io/traefik/whoami:v1.10" already present on machine
+2026-05-28T20:20:14+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Started	Started container whoami
+2026-05-28T20:20:14+05:30	Normal	Pod/echo-5fb5d66d6-d4f5s	Created	Created container: whoami
+2026-05-28T20:20:26+05:30	Warning	HorizontalPodAutoscaler/echo-tr-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-28T20:20:26+05:30	Warning	HorizontalPodAutoscaler/echo-tr-gateway	FailedGetResourceMetric	failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-05-28T20:20:41+05:30	Warning	HorizontalPodAutoscaler/echo-tr-gateway	FailedGetResourceMetric	failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)
+2026-05-28T20:20:41+05:30	Warning	HorizontalPodAutoscaler/echo-tr-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)

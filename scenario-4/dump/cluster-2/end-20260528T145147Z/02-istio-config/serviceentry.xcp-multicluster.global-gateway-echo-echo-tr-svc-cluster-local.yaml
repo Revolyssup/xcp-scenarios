@@ -1,0 +1,83 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 6fb612dbb881e0dfdc18a579dc799fbb
+  creationTimestamp: "2026-05-28T14:50:13Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:addresses: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-28T14:50:13Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:exportTo: {}
+        f:hosts: {}
+        f:location: {}
+        f:ports:
+          .: {}
+          k:{"name":"http"}:
+            .: {}
+            f:name: {}
+            f:number: {}
+            f:protocol: {}
+        f:resolution: {}
+        f:subjectAltNames: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:50:13Z"
+  name: global-gateway-echo-echo-tr-svc-cluster-local
+  namespace: xcp-multicluster
+  resourceVersion: "321739"
+  uid: 0d8dca5f-c255-4821-aa6f-3edd52f581d0
+spec:
+  endpoints:
+  - address: 10.255.30.227
+    labels:
+      xcp.tetrate.io/cluster: cluster-2
+      xcp.tetrate.io/hops: "0"
+      xcp.tetrate.io/service: echo-tr-gateway.echo-tr.svc.cluster.local
+      xcp.tetrate.io/serviceType: localGateway
+      xcp.tetrate.io/svc-port-80: "true"
+    locality: us-west1/us-west1-A/subzone-1
+    network: nw-cluster-2
+    ports:
+      http: 15443
+  exportTo:
+  - '*'
+  hosts:
+  - echo.echo-tr.svc.cluster.local
+  location: MESH_INTERNAL
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  resolution: STATIC
+  subjectAltNames:
+  - spiffe://cluster.local/ns/echo-tr/sa/echo-tr-gateway-service-account
+status:
+  addresses:
+  - host: echo.echo-tr.svc.cluster.local
+    value: 240.240.0.6
+  - host: echo.echo-tr.svc.cluster.local
+    value: 2001:2::6

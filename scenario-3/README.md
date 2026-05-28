@@ -60,9 +60,9 @@ START → wait → END window, with curls fired in the middle):
 ```sh
 # Shell 1 — cluster-1 dump (captures the ew-gateway and backend sidecar)
 KUBECONFIG=~/.kube/cluster-1 tctl --config ~/Desktop/tctl-admin.config.yaml \
-  collect --minimal \
+  collect-minimal \
   --hostname backend.backend-c1.svc.cluster.local --namespace backend-c1 \
-  --until 1m --disable-archive \
+  --duration 1m --disable-archive \
   -o ./scenario-3/dump/cluster-1
 
 # Shell 2 — cluster-0 dump
@@ -71,9 +71,9 @@ KUBECONFIG=~/.kube/cluster-1 tctl --config ~/Desktop/tctl-admin.config.yaml \
 #   at the DESTINATION namespace (backend-c1) so tctl finds the hostname owner
 #   and includes the client sidecar in the capture. Same hostname both sides.
 KUBECONFIG=~/.kube/cluster-0 tctl --config ~/Desktop/tctl-admin.config.yaml \
-  collect --minimal \
+  collect-minimal \
   --hostname backend.backend-c1.svc.cluster.local --namespace backend-c1 \
-  --until 1m --disable-archive \
+  --duration 1m --disable-archive \
   -o ./scenario-3/dump/cluster-0
 
 # In a 3rd shell during the window, exec curl from the client pod a few times:

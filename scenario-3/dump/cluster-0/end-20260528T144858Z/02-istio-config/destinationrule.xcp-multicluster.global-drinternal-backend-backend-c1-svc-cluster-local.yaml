@@ -1,0 +1,68 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 5367225173cae00a68ca8b2de5c9db2a
+    xcp.tetrate.io/service: backend.backend-c1.svc.cluster.local
+    xcp.tetrate.io/serviceNamespace: backend-c1
+  creationTimestamp: "2026-05-28T14:47:30Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+          f:xcp.tetrate.io/service: {}
+          f:xcp.tetrate.io/serviceNamespace: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:host: {}
+        f:trafficPolicy:
+          .: {}
+          f:loadBalancer:
+            .: {}
+            f:localityLbSetting:
+              .: {}
+              f:enabled: {}
+              f:failoverPriority: {}
+          f:outlierDetection:
+            .: {}
+            f:consecutiveGatewayErrors: {}
+            f:maxEjectionPercent: {}
+          f:tls:
+            .: {}
+            f:mode: {}
+            f:subjectAltNames: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:47:30Z"
+  name: global-drinternal-backend-backend-c1-svc-cluster-local
+  namespace: xcp-multicluster
+  resourceVersion: "1311615"
+  uid: dfd29205-6db3-4a40-bdb6-d2487c5e7ada
+spec:
+  host: backend.backend-c1.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      localityLbSetting:
+        enabled: true
+        failoverPriority:
+        - topology.kubernetes.io/region
+        - topology.istio.io/network
+        - topology.kubernetes.io/zone
+        - topology.istio.io/subzone
+    outlierDetection:
+      consecutiveGatewayErrors: 10
+      maxEjectionPercent: 100
+    tls:
+      mode: ISTIO_MUTUAL
+      subjectAltNames:
+      - spiffe://cluster.local/ns/backend-c1/sa/backend

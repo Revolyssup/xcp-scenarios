@@ -1,0 +1,96 @@
+2026-05-28T14:50:11.641534Z	info	FLAG: --concurrency="0"
+2026-05-28T14:50:11.641590Z	info	FLAG: --domain="transit.svc.cluster.local"
+2026-05-28T14:50:11.641601Z	info	FLAG: --help="false"
+2026-05-28T14:50:11.641607Z	info	FLAG: --log_as_json="false"
+2026-05-28T14:50:11.641607Z	info	FLAG: --log_caller=""
+2026-05-28T14:50:11.641608Z	info	FLAG: --log_output_level="default:info"
+2026-05-28T14:50:11.641609Z	info	FLAG: --log_stacktrace_level="default:none"
+2026-05-28T14:50:11.641611Z	info	FLAG: --log_target="[stdout]"
+2026-05-28T14:50:11.641612Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2026-05-28T14:50:11.641613Z	info	FLAG: --outlierLogPath=""
+2026-05-28T14:50:11.641613Z	info	FLAG: --profiling="true"
+2026-05-28T14:50:11.641614Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2026-05-28T14:50:11.641615Z	info	FLAG: --proxyLogLevel="warning"
+2026-05-28T14:50:11.641615Z	info	FLAG: --serviceCluster="istio-proxy"
+2026-05-28T14:50:11.641616Z	info	FLAG: --stsPort="0"
+2026-05-28T14:50:11.641617Z	info	FLAG: --templateFile=""
+2026-05-28T14:50:11.641617Z	info	FLAG: --tokenManagerPlugin=""
+2026-05-28T14:50:11.641620Z	info	FLAG: --vklog="0"
+2026-05-28T14:50:11.641621Z	info	Version 1.28.3-3b82a7d635-3b82a7d6352fc165489aa5c5be1077c6b705b4c9-Clean
+2026-05-28T14:50:11.642027Z	info	Proxy role	ips=[10.20.0.49] type=router id=transit-tier1-gateway-9c6668f8-d4rxt.transit domain=transit.svc.cluster.local
+2026-05-28T14:50:11.642074Z	info	Apply proxy config from env {"discoveryAddress":"istiod-stable.istio-system.svc:15012","tracing":{"customTags":{"cluster":{"literal":{"value":"cluster-1"}}}},"proxyMetadata":{"EXIT_ON_ZERO_ACTIVE_CONNECTIONS":"true","ISTIO_META_DNS_CAPTURE":"true","ISTIO_META_XCP_FILTER_EAST_WEST_GATEWAY_CLUSTER_CONFIG":"true","ISTIO_PROXY_READINESS_PROBE_TIMEOUT":"10s"},"holdApplicationUntilProxyStarts":true}
+
+2026-05-28T14:50:11.643964Z	info	Apply proxy config from annotation 
+discoveryAddress: istiod-stable.istio-system.svc:15012
+holdApplicationUntilProxyStarts: true
+
+tracing:
+  
+  
+proxyMetadata:
+  
+  
+  ISTIO_META_XCP_FILTER_EAST_WEST_GATEWAY_CLUSTER_CONFIG: "true"
+  ISTIO_PROXY_READINESS_PROBE_TIMEOUT: 10s
+2026-05-28T14:50:11.644018Z	info	cpu limit detected as 2, setting concurrency
+2026-05-28T14:50:11.644203Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod-stable.istio-system.svc:15012
+drainDuration: 45s
+holdApplicationUntilProxyStarts: true
+proxyAdminPort: 15000
+proxyMetadata:
+  EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_XCP_FILTER_EAST_WEST_GATEWAY_CLUSTER_CONFIG: "true"
+  ISTIO_PROXY_READINESS_PROBE_TIMEOUT: 10s
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  customTags:
+    cluster:
+      literal:
+        value: cluster-1
+
+2026-05-28T14:50:11.644212Z	info	JWT policy is third-party-jwt
+2026-05-28T14:50:11.644213Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2026-05-28T14:50:11.847827Z	info	Starting default Istio SDS Server
+2026-05-28T14:50:11.847812Z	info	Opening status port 15020
+2026-05-28T14:50:11.847847Z	info	CA Endpoint istiod-stable.istio-system.svc:15012, provider Citadel
+2026-05-28T14:50:11.847857Z	info	Using CA istiod-stable.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2026-05-28T14:50:11.848446Z	info	xdsproxy	Initializing with upstream address "istiod-stable.istio-system.svc:15012" and cluster "cluster-1"
+2026-05-28T14:50:11.850054Z	info	Pilot SAN: [istiod-stable.istio-system.svc]
+2026-05-28T14:50:11.851698Z	info	Starting proxy agent
+2026-05-28T14:50:11.851717Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --allow-unknown-static-fields -l warning --component-log-level misc:error --skip-deprecated-logs --concurrency 2]
+2026-05-28T14:50:11.851313Z	info	sds	Starting SDS grpc server
+2026-05-28T14:50:11.853841Z	info	sds	Starting SDS server for workload certificates, will listen on "var/run/secrets/workload-spiffe-uds/socket"
+2026-05-28T14:50:11.880482Z	info	xdsproxy	connected to delta upstream XDS server: istiod-stable.istio-system.svc:15012	id=1
+2026-05-28T14:50:11.884946Z	info	cache	generated new workload certificate	resourceName=default latency=33.973958ms ttl=23h59m59.115056073s
+2026-05-28T14:50:11.884970Z	info	cache	Root cert has changed, start rotating root cert
+2026-05-28T14:50:11.884988Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.115012198s
+2026-05-28T14:50:12.128968Z	info	Readiness succeeded in 488.1395ms
+2026-05-28T14:50:12.129190Z	info	Envoy proxy is ready
+2026-05-28T14:50:15.816553Z	info	ads	ADS: new connection for node:1
+2026-05-28T14:50:15.816590Z	info	cache	returned workload certificate from cache	ttl=23h59m55.18341078s
+2026-05-28T14:50:15.817208Z	info	ads	ADS: new connection for node:2
+2026-05-28T14:50:15.817241Z	info	cache	returned workload trust anchor from cache	ttl=23h59m55.182759446s
+[2026-05-28T14:50:30.760Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 12 11 "10.20.0.1" "curl/8.10.1" "ef2ec6cd-c69b-44cf-95b9-db278bac1e57" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:50:58.180Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "77b9f5ce-cea8-4f0c-977d-4f302450af01" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:12995 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:01.272Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "ead9526b-3d31-4802-8786-b3242b3a8f52" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:04.366Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "dffc39af-3522-4023-996d-7f6a1761c01d" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:07.460Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "71fd3955-7fc1-4203-abcb-5575c2d83b2e" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:10.555Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "30bde619-da48-43aa-b8b9-fd9ce77196fd" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:12995 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:13.641Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "54188b99-3622-43e8-a9a2-1d3cdd71b9c9" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:16.733Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "d29938aa-3b00-484d-a1ef-5ba19d76a2da" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:19.835Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "a853244e-807c-493f-aea7-9c335a382569" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:22.933Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "52176e6f-f7cb-4941-90f3-b45cb23a1143" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:12995 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:26.015Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "6665db11-d2a1-4e5b-a3a2-c773fb370bfa" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:12995 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:29.109Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 2 2 "10.20.0.1" "curl/8.10.1" "7cd7050c-e2b6-49dc-b7e9-713a1b3480ee" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:32.214Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "18a9cba9-2561-4ec9-9ccc-a6d6ae394b84" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:35.309Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "f3200238-dde8-4487-a883-70f0e92575b7" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:38.403Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "d1a81a22-7992-40b6-8183-639b11de8bad" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:20820 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0
+[2026-05-28T14:51:41.515Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 3889 1 1 "10.20.0.1" "curl/8.10.1" "cea0230d-8da9-418c-b1ca-931c929900b4" "echo.echo-tr.svc.cluster.local" "172.18.255.195:15443" outbound|80|transit-mid-gw-transit-hop-internal-0|echo.echo-tr.svc.cluster.local; 10.20.0.49:41226 10.20.0.49:15443 10.20.0.1:12995 echo.echo-tr.svc.cluster.local transit-mid-gw-transit-hop-internal-0

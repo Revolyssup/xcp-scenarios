@@ -1,0 +1,94 @@
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "GatewayGroup"
+  name: "tier2-term-gg"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "term-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"GatewayGroup\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/workspace\":\"term-ws\"},\"name\":\"tier2-term-gg\",\"namespace\":\"xcp-system\"},\"spec\":{\"configMode\":\"BRIDGED\",\"namespaceSelector\":{\"names\":[\"cluster-1/echo-term\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "gateway.xcp.tetrate.io"
+  version: "v2"
+  kind: "IngressGateway"
+  name: "echo-t2-term-gw"
+  namespace: "istio-system"
+}
+metadata: {
+  labels: {
+    key: "xcp.tetrate.io/gatewayGroup"
+    value: "tier2-term-gg"
+  }
+  labels: {
+    key: "xcp.tetrate.io/workspace"
+    value: "term-ws"
+  }
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"gateway.xcp.tetrate.io/v2\",\"kind\":\"IngressGateway\",\"metadata\":{\"annotations\":{},\"labels\":{\"xcp.tetrate.io/gatewayGroup\":\"tier2-term-gg\",\"xcp.tetrate.io/workspace\":\"term-ws\"},\"name\":\"echo-t2-term-gw\",\"namespace\":\"xcp-system\"},\"spec\":{\"http\":[{\"hostname\":\"echo-term.tetrate.io\",\"name\":\"echo\",\"port\":8080,\"routing\":{\"rules\":[{\"route\":{\"host\":\"echo-term/echo-term.echo-term.svc.cluster.local\",\"port\":80}}]}}],\"workloadSelector\":{\"labels\":{\"app\":\"echo-term-gateway\"},\"namespace\":\"echo-term\"}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-0"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-1"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Cluster\",\"metadata\":{\"annotations\":{},\"name\":\"cluster-1\",\"namespace\":\"xcp-system\"},\"spec\":{\"istioTrustDomain\":\"cluster.local\"}}\n"
+  }
+}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Cluster"
+  name: "cluster-2"
+  namespace: "istio-system"
+}
+metadata: {}
+details: "Config Status for that config type has NOT been implemented yet"
+------
+config_id: {
+  group: "xcp.tetrate.io"
+  version: "v2"
+  kind: "Workspace"
+  name: "term-ws"
+  namespace: "istio-system"
+}
+metadata: {
+  annotations: {
+    key: "kubectl.kubernetes.io/last-applied-configuration"
+    value: "{\"apiVersion\":\"xcp.tetrate.io/v2\",\"kind\":\"Workspace\",\"metadata\":{\"annotations\":{},\"name\":\"term-ws\",\"namespace\":\"xcp-system\"},\"spec\":{\"namespaceSelector\":{\"names\":[\"cluster-0/tier1-term\",\"cluster-1/echo-term\"]}}}\n"
+  }
+}
+result: APPLIED
+details: "Status summary across 1 target namespace(s): APPLIED in 1 namespace(s)"

@@ -1,0 +1,60 @@
+{
+  "transit": [
+    {
+      "name": "allow",
+      "gvk": {
+        "group": "security.istio.io",
+        "version": "v1",
+        "kind": "AuthorizationPolicy"
+      }
+    },
+    {
+      "name": "default",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "Sidecar"
+      }
+    },
+    {
+      "name": "default-upstream-traffic-setting",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1alpha3",
+        "kind": "EnvoyFilter"
+      }
+    },
+    {
+      "name": "tier1-transit-mid-gwecho-echo-tr-svc-cluster-local",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "DestinationRule"
+      }
+    },
+    {
+      "name": "transit-mid-gg-default-upstream-traffic-setting",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1alpha3",
+        "kind": "EnvoyFilter"
+      }
+    },
+    {
+      "name": "transit-mid-gw",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "Gateway"
+      }
+    },
+    {
+      "name": "transit-mid-gw-transit-hop",
+      "gvk": {
+        "group": "networking.istio.io",
+        "version": "v1",
+        "kind": "VirtualService"
+      }
+    }
+  ]
+}

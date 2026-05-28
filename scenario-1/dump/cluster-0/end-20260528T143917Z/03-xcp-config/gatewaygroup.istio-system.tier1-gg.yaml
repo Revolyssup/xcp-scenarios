@@ -1,0 +1,39 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: GatewayGroup
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"GatewayGroup","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/workspace":"passthrough-ws"},"name":"tier1-gg","namespace":"xcp-system"},"spec":{"configMode":"BRIDGED","namespaceSelector":{"names":["cluster-0/tier1"]}}}
+    xcp.tetrate.io/contentHash: 77d4965a5d4b3c261a462b1b873f4ad8
+  creationTimestamp: "2026-05-28T14:33:05Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/workspace: passthrough-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T14:33:05Z"
+  name: tier1-gg
+  namespace: istio-system
+  resourceVersion: "1307967"
+  uid: c60f9c30-0438-453b-9a79-c3cef8b58965
+spec:
+  namespaceSelector:
+    names:
+    - cluster-0/tier1

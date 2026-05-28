@@ -1,0 +1,13 @@
+# Namespace on cluster-2 hosting BOTH the Tier2 IngressGateway data plane and
+# the echo backend workload.
+#
+# istio.io/rev=stable injects sidecars into pods in this namespace — the
+# echo workload gets a sidecar so that the Tier2-Gateway → echo hop is
+# automatic Istio mTLS (auto-mTLS). The gateway pod itself is created by
+# the GatewayDeployment and is NOT a sidecar-injected workload.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: echo-tr
+  labels:
+    istio.io/rev: stable

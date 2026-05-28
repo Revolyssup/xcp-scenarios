@@ -3,19 +3,19 @@
 - Hostname: `echo.tetrate.io`
 - Namespace: `echo`
 - Requested window: `1m0s`
-- Window: 2026-05-25T10:45:48Z → 2026-05-25T10:46:49Z
+- Window: 2026-05-28T14:38:17Z → 2026-05-28T14:39:17Z
 
 ## Snapshots
 
-- START: `start-20260525T104548Z/` — taken 2026-05-25T10:45:48Z
-- END:   `end-20260525T104649Z/` — taken 2026-05-25T10:46:49Z
+- START: `start-20260528T143817Z/` — taken 2026-05-28T14:38:17Z
+- END:   `end-20260528T143917Z/` — taken 2026-05-28T14:39:17Z
 
-Each subdirectory is a complete minimal dump, identical in layout to a plain `--minimal` run (`01-envoy` … `06-xcp-edge`, `00-summary.md`, `manifest.json`).
+Each subdirectory is a complete minimal dump, identical in layout to a plain `collect-minimal` run (`01-envoy` … `06-xcp-edge`, `00-summary.md`, `manifest.json`).
 
 ## How to read the window
 
-1. **Logs** — open `start-20260525T104548Z/01-envoy/<pod>/proxy.log` and note its **last timestamp**. Then open `end-20260525T104649Z/01-envoy/<pod>/proxy.log` and read from that timestamp onward: those lines are what the proxy did during the window.
-2. **Envoy stats** — `end-20260525T104649Z/01-envoy/<pod>/stats.txt` minus `start-20260525T104548Z/01-envoy/<pod>/stats.txt` is the per-counter delta for the window (Envoy counters are monotonic).
+1. **Logs** — open `start-20260528T143817Z/01-envoy/<pod>/proxy.log` and note its **last timestamp**. Then open `end-20260528T143917Z/01-envoy/<pod>/proxy.log` and read from that timestamp onward: those lines are what the proxy did during the window.
+2. **Envoy stats** — `end-20260528T143917Z/01-envoy/<pod>/stats.txt` minus `start-20260528T143817Z/01-envoy/<pod>/stats.txt` is the per-counter delta for the window (Envoy counters are monotonic).
 3. **Config / CRs** — diff the `02-istio-config/` and `03-xcp-config/` layers between the two snapshots to see routing config that changed mid-window.
 
 ## Proxy continuity

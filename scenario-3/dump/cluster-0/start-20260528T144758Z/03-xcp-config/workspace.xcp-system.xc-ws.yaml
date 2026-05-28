@@ -1,0 +1,33 @@
+apiVersion: xcp.tetrate.io/v2
+kind: Workspace
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"xcp.tetrate.io/v2","kind":"Workspace","metadata":{"annotations":{},"name":"xc-ws","namespace":"xcp-system"},"spec":{"namespaceSelector":{"names":["cluster-0/client-c0","cluster-1/backend-c1"]}}}
+  creationTimestamp: "2026-05-28T14:47:26Z"
+  generation: 1
+  managedFields:
+  - apiVersion: xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        .: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-28T14:47:26Z"
+  name: xc-ws
+  namespace: xcp-system
+  resourceVersion: "1311579"
+  uid: a592e04c-ed1c-4d8d-b5f0-abc249b24c22
+spec:
+  namespaceSelector:
+    names:
+    - cluster-0/client-c0
+    - cluster-1/backend-c1

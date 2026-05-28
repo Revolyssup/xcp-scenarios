@@ -1,7 +1,0 @@
-{
-  "cluster-1": {
-    "echo.tetrate.io": {
-      "17443": "TLS"
-    }
-  }
-}

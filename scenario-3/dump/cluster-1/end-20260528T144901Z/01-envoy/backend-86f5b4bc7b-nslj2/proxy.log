@@ -1,0 +1,84 @@
+2026-05-28T14:47:27.943769Z	info	FLAG: --concurrency="0"
+2026-05-28T14:47:27.943787Z	info	FLAG: --domain="backend-c1.svc.cluster.local"
+2026-05-28T14:47:27.943789Z	info	FLAG: --help="false"
+2026-05-28T14:47:27.943789Z	info	FLAG: --log_as_json="false"
+2026-05-28T14:47:27.943790Z	info	FLAG: --log_caller=""
+2026-05-28T14:47:27.943791Z	info	FLAG: --log_output_level="default:info"
+2026-05-28T14:47:27.943791Z	info	FLAG: --log_stacktrace_level="default:none"
+2026-05-28T14:47:27.943795Z	info	FLAG: --log_target="[stdout]"
+2026-05-28T14:47:27.943796Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2026-05-28T14:47:27.943796Z	info	FLAG: --outlierLogPath=""
+2026-05-28T14:47:27.943797Z	info	FLAG: --profiling="true"
+2026-05-28T14:47:27.943797Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2026-05-28T14:47:27.943798Z	info	FLAG: --proxyLogLevel="warning"
+2026-05-28T14:47:27.943799Z	info	FLAG: --serviceCluster="istio-proxy"
+2026-05-28T14:47:27.943799Z	info	FLAG: --stsPort="0"
+2026-05-28T14:47:27.943800Z	info	FLAG: --templateFile=""
+2026-05-28T14:47:27.943800Z	info	FLAG: --tokenManagerPlugin=""
+2026-05-28T14:47:27.943803Z	info	FLAG: --vklog="0"
+2026-05-28T14:47:27.943804Z	info	Version 1.28.3-3b82a7d635-3b82a7d6352fc165489aa5c5be1077c6b705b4c9-Clean
+2026-05-28T14:47:27.944329Z	info	Proxy role	ips=[10.20.0.47] type=sidecar id=backend-86f5b4bc7b-nslj2.backend-c1 domain=backend-c1.svc.cluster.local
+2026-05-28T14:47:27.944387Z	info	Apply proxy config from env {"discoveryAddress":"istiod-stable.istio-system.svc:15012","tracing":{"customTags":{"cluster":{"literal":{"value":"cluster-1"}}}},"proxyMetadata":{"EXIT_ON_ZERO_ACTIVE_CONNECTIONS":"true","ISTIO_META_DNS_CAPTURE":"true"},"holdApplicationUntilProxyStarts":true}
+
+2026-05-28T14:47:27.945321Z	info	cpu limit detected as 2, setting concurrency
+2026-05-28T14:47:27.945492Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod-stable.istio-system.svc:15012
+drainDuration: 45s
+holdApplicationUntilProxyStarts: true
+proxyAdminPort: 15000
+proxyMetadata:
+  EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+  ISTIO_META_DNS_CAPTURE: "true"
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  customTags:
+    cluster:
+      literal:
+        value: cluster-1
+
+2026-05-28T14:47:27.945499Z	info	JWT policy is third-party-jwt
+2026-05-28T14:47:27.945500Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2026-05-28T14:47:27.947262Z	info	dns	Starting local udp DNS server on 127.0.0.1:15053
+2026-05-28T14:47:27.947601Z	info	Opening status port 15020
+2026-05-28T14:47:27.949503Z	info	dns	Starting local tcp DNS server on 127.0.0.1:15053
+2026-05-28T14:47:27.949540Z	info	Starting default Istio SDS Server
+2026-05-28T14:47:27.949552Z	info	CA Endpoint istiod-stable.istio-system.svc:15012, provider Citadel
+2026-05-28T14:47:27.949561Z	info	Using CA istiod-stable.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2026-05-28T14:47:27.949862Z	info	xdsproxy	Initializing with upstream address "istiod-stable.istio-system.svc:15012" and cluster "cluster-1"
+2026-05-28T14:47:27.951302Z	info	Pilot SAN: [istiod-stable.istio-system.svc]
+2026-05-28T14:47:27.953188Z	info	Starting proxy agent
+2026-05-28T14:47:27.953206Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --allow-unknown-static-fields -l warning --component-log-level misc:error --skip-deprecated-logs --concurrency 2]
+2026-05-28T14:47:27.952839Z	info	sds	Starting SDS grpc server
+2026-05-28T14:47:27.955929Z	info	sds	Starting SDS server for workload certificates, will listen on "var/run/secrets/workload-spiffe-uds/socket"
+2026-05-28T14:47:27.970728Z	info	cache	generated new workload certificate	resourceName=default latency=19.900917ms ttl=23h59m59.029274246s
+2026-05-28T14:47:27.970748Z	info	cache	Root cert has changed, start rotating root cert
+2026-05-28T14:47:27.970766Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.029234288s
+2026-05-28T14:47:27.981670Z	info	xdsproxy	connected to delta upstream XDS server: istiod-stable.istio-system.svc:15012	id=1
+2026-05-28T14:47:27.989959Z	info	ads	ADS: new connection for node:1
+2026-05-28T14:47:27.990002Z	info	cache	returned workload certificate from cache	ttl=23h59m59.009999413s
+2026-05-28T14:47:27.990305Z	info	ads	ADS: new connection for node:2
+2026-05-28T14:47:27.990340Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.009661038s
+2026-05-28T14:47:28.967785Z	info	Readiness succeeded in 1.024929542s
+2026-05-28T14:47:28.967954Z	info	Envoy proxy is ready
+[2026-05-28T14:47:46.038Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "7c65b9c2-4179-4311-95af-7e6c7910a3e9" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:41560 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:12.182Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "b3ac8894-4b17-46d1-92e6-b9e3a927de85" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:41560 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:15.273Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "388997d7-c553-4d3e-9fd1-ce75ec7a4b16" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:18.374Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "f4d7da13-1363-4691-b374-2e8d38b173ab" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:21.473Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "ba15b554-c535-4f4f-a010-a0dc678d5514" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:24.570Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "c0145abd-e064-430e-96a6-899ccdb932fd" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:27.660Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "e5c78fb6-406f-4a31-8904-e46c6d9b8458" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:30.752Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "af85b496-c3d7-4501-bb4e-2bcb5fb0155e" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:33.845Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "c9ad2791-65cb-441a-afd5-5e340d5719e2" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:36.937Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "e45be2a8-f03b-4ff6-ac99-167684c4ecaa" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:40.038Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "fbf30950-af3a-407d-92ab-748459ac2a80" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:41560 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:43.132Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "a1dcc637-be7b-4510-a0bc-b226a7b70426" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:46.221Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "3a82f0d7-7ebd-4452-90a6-f3af4b441bbd" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:49.323Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "c809ba9a-4760-4a58-a06d-1222730b9880" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:52.421Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "5afcbcff-8514-431e-b330-a417ad816731" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default
+[2026-05-28T14:48:55.513Z] "GET / HTTP/1.1" 200 - via_upstream - "-" 0 636 0 0 "-" "curl/8.10.1" "6ca1c5be-e5b7-4fbb-a902-307c7f0d6d50" "backend.backend-c1.svc.cluster.local" "10.20.0.47:8080" inbound|8080||; 127.0.0.6:51313 10.20.0.47:8080 10.20.0.48:49916 outbound_.80_._.backend.backend-c1.svc.cluster.local default

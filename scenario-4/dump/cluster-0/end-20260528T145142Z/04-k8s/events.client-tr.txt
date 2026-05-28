@@ -1,0 +1,12 @@
+2026-05-28T20:20:10+05:30	Normal	Pod/client-56b675d94f-cbdzd	Scheduled	Successfully assigned client-tr/client-56b675d94f-cbdzd to cluster-0-control-plane
+2026-05-28T20:20:10+05:30	Normal	ReplicaSet/client-56b675d94f	SuccessfulCreate	Created pod: client-56b675d94f-cbdzd
+2026-05-28T20:20:10+05:30	Normal	Deployment/client	ScalingReplicaSet	Scaled up replica set client-56b675d94f from 0 to 1
+2026-05-28T20:20:11+05:30	Normal	Pod/client-56b675d94f-cbdzd	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-28T20:20:11+05:30	Normal	Pod/client-56b675d94f-cbdzd	Created	Created container: istio-init
+2026-05-28T20:20:11+05:30	Normal	Pod/client-56b675d94f-cbdzd	Started	Started container istio-init
+2026-05-28T20:20:11+05:30	Normal	Pod/client-56b675d94f-cbdzd	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-05-28T20:20:11+05:30	Normal	Pod/client-56b675d94f-cbdzd	Created	Created container: istio-proxy
+2026-05-28T20:20:11+05:30	Normal	Pod/client-56b675d94f-cbdzd	Started	Started container istio-proxy
+2026-05-28T20:20:13+05:30	Normal	Pod/client-56b675d94f-cbdzd	Pulled	Container image "curlimages/curl:8.10.1" already present on machine
+2026-05-28T20:20:13+05:30	Normal	Pod/client-56b675d94f-cbdzd	Created	Created container: curl
+2026-05-28T20:20:13+05:30	Normal	Pod/client-56b675d94f-cbdzd	Started	Started container curl

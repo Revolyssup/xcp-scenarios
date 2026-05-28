@@ -85,22 +85,22 @@ so the END's `01-envoy/.../proxy.log` carries the access-log lines):
 ```sh
 # Shell 1 — cluster-0 (terminates TLS at tier1-term-gateway)
 KUBECONFIG=~/.kube/cluster-0 tctl --config ~/Desktop/tctl-admin.config.yaml \
-  collect --minimal \
+  collect-minimal \
   --hostname echo-term.tetrate.io --namespace tier1-term \
-  --until 1m --disable-archive \
+  --duration 1m --disable-archive \
   -o ./scenario-2/dump/cluster-0
 
 # Shell 2 — cluster-1 (Tier2 + echo workload, both in echo-term ns)
 KUBECONFIG=~/.kube/cluster-1 tctl --config ~/Desktop/tctl-admin.config.yaml \
-  collect --minimal \
+  collect-minimal \
   --hostname echo-term.tetrate.io --namespace echo-term \
-  --until 1m --disable-archive \
+  --duration 1m --disable-archive \
   -o ./scenario-2/dump/cluster-1
 
 # In a 3rd shell during the 1-minute window, fire the curl from above
 # a few times (every 3s) so the END snapshot captures matching log entries.
 ```
 
-`--minimal --hostname X --namespace Y` scopes envoy capture to proxies that
+`collect-minimal --hostname X --namespace Y` scopes envoy capture to proxies that
 own hostname `X` in namespace `Y`. Each side uses its own namespace because
 each side has a gateway in that namespace serving the hostname.
