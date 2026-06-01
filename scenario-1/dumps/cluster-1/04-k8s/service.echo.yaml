@@ -1,0 +1,57 @@
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"echo"},"name":"echo","namespace":"echo"},"spec":{"ports":[{"name":"tls-echo","port":9443,"protocol":"TCP","targetPort":9443}],"selector":{"app":"echo"}}}
+  creationTimestamp: "2026-06-01T10:48:31Z"
+  labels:
+    app: echo
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":9443,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-06-01T10:48:31Z"
+  name: echo
+  namespace: echo
+  resourceVersion: "1543814"
+  uid: 9b8febb2-8df1-4c11-aaf1-b9013b7b5297
+spec:
+  clusterIP: 10.255.20.120
+  clusterIPs:
+  - 10.255.20.120
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: tls-echo
+    port: 9443
+    protocol: TCP
+    targetPort: 9443
+  selector:
+    app: echo
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

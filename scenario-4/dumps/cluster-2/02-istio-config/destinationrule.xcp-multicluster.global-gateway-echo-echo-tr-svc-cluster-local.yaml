@@ -1,0 +1,59 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 7bed2487fe354c62dc041a6a43452834
+  creationTimestamp: "2026-05-28T15:04:37Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:exportTo: {}
+        f:host: {}
+        f:trafficPolicy:
+          .: {}
+          f:portLevelSettings: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:37Z"
+  name: global-gateway-echo-echo-tr-svc-cluster-local
+  namespace: xcp-multicluster
+  resourceVersion: "324368"
+  uid: 8cbdd2a7-097e-4f03-ae1f-8ec93bdb9f8b
+spec:
+  exportTo:
+  - '*'
+  host: echo.echo-tr.svc.cluster.local
+  trafficPolicy:
+    portLevelSettings:
+    - connectionPool:
+        http:
+          useClientProtocol: true
+      loadBalancer:
+        localityLbSetting:
+          enabled: true
+          failoverPriority:
+          - topology.kubernetes.io/region
+          - topology.istio.io/network
+          - topology.kubernetes.io/zone
+          - topology.istio.io/subzone
+      outlierDetection:
+        consecutiveGatewayErrors: 10
+        maxEjectionPercent: 100
+      port:
+        number: 80
+      tls:
+        mode: ISTIO_MUTUAL
+        sni: echo.echo-tr.svc.cluster.local

@@ -1,0 +1,8 @@
+{
+  "cluster-1": {
+    "echo.echo-tr.svc.cluster.local": {
+      "80": "HTTP"
+    }
+  },
+  "cluster-2": {}
+}

@@ -1,0 +1,21 @@
+2026-06-01T16:20:01+05:30	Normal	ReplicaSet/backend-86f5b4bc7b	SuccessfulCreate	Created pod: backend-86f5b4bc7b-67flh
+2026-06-01T16:20:01+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-06-01T16:20:01+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Created	Created container: istio-init
+2026-06-01T16:20:01+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Started	Started container istio-init
+2026-06-01T16:20:01+05:30	Normal	Service/ew-gateway	IPAllocated	Assigned IP ["172.18.255.176"]
+2026-06-01T16:20:01+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Scheduled	Successfully assigned backend-c1/backend-86f5b4bc7b-67flh to cluster-1-control-plane
+2026-06-01T16:20:01+05:30	Normal	Deployment/ew-gateway	ScalingReplicaSet	Scaled up replica set ew-gateway-698bcf4fb5 from 0 to 1
+2026-06-01T16:20:01+05:30	Normal	ReplicaSet/ew-gateway-698bcf4fb5	SuccessfulCreate	Created pod: ew-gateway-698bcf4fb5-8pvh6
+2026-06-01T16:20:01+05:30	Normal	Pod/ew-gateway-698bcf4fb5-8pvh6	Scheduled	Successfully assigned backend-c1/ew-gateway-698bcf4fb5-8pvh6 to cluster-1-control-plane
+2026-06-01T16:20:01+05:30	Normal	Deployment/backend	ScalingReplicaSet	Scaled up replica set backend-86f5b4bc7b from 0 to 1
+2026-06-01T16:20:02+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Created	Created container: istio-proxy
+2026-06-01T16:20:02+05:30	Normal	Pod/ew-gateway-698bcf4fb5-8pvh6	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-06-01T16:20:02+05:30	Normal	Pod/ew-gateway-698bcf4fb5-8pvh6	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 9ms (9ms including waiting). Image size: 58863518 bytes.
+2026-06-01T16:20:02+05:30	Normal	Pod/ew-gateway-698bcf4fb5-8pvh6	Created	Created container: istio-proxy
+2026-06-01T16:20:02+05:30	Normal	Pod/ew-gateway-698bcf4fb5-8pvh6	Started	Started container istio-proxy
+2026-06-01T16:20:02+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-06-01T16:20:02+05:30	Normal	Service/ew-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"
+2026-06-01T16:20:03+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Started	Started container istio-proxy
+2026-06-01T16:20:04+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Created	Created container: whoami
+2026-06-01T16:20:04+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Pulled	Container image "docker.io/traefik/whoami:v1.10" already present on machine
+2026-06-01T16:20:05+05:30	Normal	Pod/backend-86f5b4bc7b-67flh	Started	Started container whoami

@@ -1,0 +1,110 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"transit-backend-gg","xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-backend-gw","namespace":"xcp-system"},"spec":{"http":[{"hostname":"echo.echo-tr.svc.cluster.local","name":"transit-backend","port":8080,"routing":{"rules":[{"route":{"serviceDestination":{"host":"echo-tr/echo.echo-tr.svc.cluster.local","port":80}}}]}}],"workloadSelector":{"labels":{"app":"echo-tr-gateway"},"namespace":"echo-tr"}}}
+    xcp.tetrate.io/contentHash: 10af31798eef741f3f4fb250cd766b74
+  creationTimestamp: "2026-05-28T15:04:37Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: transit-backend-gg
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:configPatches: {}
+        f:priority: {}
+        f:workloadSelector:
+          .: {}
+          f:labels:
+            .: {}
+            f:app: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:37Z"
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-28T15:04:40Z"
+  name: default-allow-transit-backend-gw-external-batch0
+  namespace: echo-tr
+  resourceVersion: "324387"
+  uid: 2c4b828b-2f76-4f02-9a1f-6068fa64f3ef
+spec:
+  configPatches:
+  - applyTo: HTTP_FILTER
+    match:
+      context: GATEWAY
+      listener:
+        filterChain:
+          filter:
+            name: envoy.filters.network.http_connection_manager
+            subFilter:
+              name: envoy.filters.http.rbac
+        portNumber: 8080
+      proxy:
+        proxyVersion: ^1\.(22|24|28)(\.\d+)?(-.*)?$
+    patch:
+      operation: MERGE
+      value:
+        name: envoy.filters.http.rbac
+        typed_config:
+          '@type': type.googleapis.com/envoy.extensions.filters.http.rbac.v3.RBAC
+          rules:
+            policies:
+              echo-tr-transit-backend-gw-transit-backend:
+                permissions:
+                - and_rules:
+                    rules:
+                    - or_rules:
+                        rules:
+                        - header:
+                            name: :authority
+                            string_match:
+                              exact: echo.echo-tr.svc.cluster.local
+                              ignore_case: true
+                        - header:
+                            name: :authority
+                            string_match:
+                              exact: echo.echo-tr.svc.cluster.local:8080
+                              ignore_case: true
+                    - or_rules:
+                        rules:
+                        - destination_port: 8080
+                principals:
+                - and_ids:
+                    ids:
+                    - any: true
+  priority: -2000
+  workloadSelector:
+    labels:
+      app: echo-tr-gateway
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133

@@ -1,0 +1,33 @@
+2026-06-01T16:18:31+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Scheduled	Successfully assigned echo/echo-6d455455d9-lhl8r to cluster-1-control-plane
+2026-06-01T16:18:31+05:30	Normal	Deployment/echo	ScalingReplicaSet	Scaled up replica set echo-6d455455d9 from 0 to 1
+2026-06-01T16:18:31+05:30	Normal	Certificate/echo-tls	Issuing	The certificate has been successfully issued
+2026-06-01T16:18:31+05:30	Normal	Certificate/echo-tls	Requested	Created new CertificateRequest resource "echo-tls-96fm4"
+2026-06-01T16:18:31+05:30	Normal	Certificate/echo-tls	Generated	Stored new private key in temporary Secret resource "echo-tls-kgxxz"
+2026-06-01T16:18:31+05:30	Normal	Certificate/echo-tls	Issuing	Issuing certificate as Secret does not exist
+2026-06-01T16:18:31+05:30	Normal	CertificateRequest/echo-tls-96fm4	CertificateIssued	Certificate fetched from issuer successfully
+2026-06-01T16:18:31+05:30	Normal	CertificateRequest/echo-tls-96fm4	cert-manager.io	Certificate request has been approved by cert-manager.io
+2026-06-01T16:18:31+05:30	Normal	CertificateRequest/echo-tls-96fm4	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-06-01T16:18:31+05:30	Normal	CertificateRequest/echo-tls-96fm4	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-06-01T16:18:31+05:30	Normal	ReplicaSet/echo-6d455455d9	SuccessfulCreate	Created pod: echo-6d455455d9-lhl8r
+2026-06-01T16:18:31+05:30	Normal	CertificateRequest/echo-tls-96fm4	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-06-01T16:18:31+05:30	Normal	CertificateRequest/echo-tls-96fm4	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-06-01T16:18:31+05:30	Normal	CertificateRequest/echo-tls-96fm4	WaitingForApproval	Not signing CertificateRequest until it is Approved
+2026-06-01T16:18:32+05:30	Warning	Pod/echo-gateway-5f4f69f4cf-vnhvw	Unhealthy	Readiness probe failed: Get "http://10.20.0.55:15021/healthz/ready": dial tcp 10.20.0.55:15021: connect: connection refused
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-vnhvw	Scheduled	Successfully assigned echo/echo-gateway-5f4f69f4cf-vnhvw to cluster-1-control-plane
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-vnhvw	Created	Created container: istio-proxy
+2026-06-01T16:18:32+05:30	Normal	ReplicaSet/echo-gateway-5f4f69f4cf	SuccessfulCreate	Created pod: echo-gateway-5f4f69f4cf-vnhvw
+2026-06-01T16:18:32+05:30	Normal	Deployment/echo-gateway	ScalingReplicaSet	Scaled up replica set echo-gateway-5f4f69f4cf from 0 to 1
+2026-06-01T16:18:32+05:30	Normal	Service/echo-gateway	IPAllocated	Assigned IP ["172.18.255.176"]
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-vnhvw	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 14ms (14ms including waiting). Image size: 58863518 bytes.
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-vnhvw	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-gateway-5f4f69f4cf-vnhvw	Started	Started container istio-proxy
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Created	Created container: istio-init
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Started	Started container istio-init
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Started	Started container istio-proxy
+2026-06-01T16:18:32+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Created	Created container: istio-proxy
+2026-06-01T16:18:33+05:30	Normal	Service/echo-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"
+2026-06-01T16:18:34+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Pulled	Container image "docker.io/traefik/whoami:v1.10" already present on machine
+2026-06-01T16:18:34+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Created	Created container: whoami
+2026-06-01T16:18:34+05:30	Normal	Pod/echo-6d455455d9-lhl8r	Started	Started container whoami

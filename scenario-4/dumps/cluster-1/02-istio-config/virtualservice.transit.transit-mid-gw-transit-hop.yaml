@@ -1,0 +1,70 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"transit-mid-gg","xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-mid-gw","namespace":"xcp-system"},"spec":{"http":[{"hostname":"echo.echo-tr.svc.cluster.local","name":"transit-hop","routing":{"rules":[{"route":{"clusterDestination":{"clusters":[{"name":"cluster-2","weight":100}]}}}]},"transit":true}],"workloadSelector":{"labels":{"app":"transit-tier1-gateway"},"namespace":"transit"}}}
+    xcp.tetrate.io/contentHash: 6e757503d4abbf3ecab9234ea76f80c0
+  creationTimestamp: "2026-05-28T15:04:36Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: transit-mid-gg
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:exportTo: {}
+        f:gateways: {}
+        f:hosts: {}
+        f:http: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:36Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-28T15:04:37Z"
+  name: transit-mid-gw-transit-hop
+  namespace: transit
+  resourceVersion: "972527"
+  uid: 6a27433b-a7a6-44e1-a1ed-161c0ccfbd30
+spec:
+  exportTo:
+  - .
+  gateways:
+  - transit/transit-mid-gw
+  hosts:
+  - echo.echo-tr.svc.cluster.local
+  http:
+  - match:
+    - port: 15443
+    name: transit-mid-gw-transit-hop-internal-0
+    route:
+    - destination:
+        host: echo.echo-tr.svc.cluster.local
+        port:
+          number: 80
+        subset: transit-mid-gw-transit-hop-internal-0
+      weight: 100
+status:
+  observedGeneration: "1"

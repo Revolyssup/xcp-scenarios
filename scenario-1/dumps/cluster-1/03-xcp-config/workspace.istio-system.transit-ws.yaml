@@ -1,0 +1,36 @@
+apiVersion: xcp.tetrate.io/v2
+kind: Workspace
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"xcp.tetrate.io/v2","kind":"Workspace","metadata":{"annotations":{},"name":"transit-ws","namespace":"xcp-system"},"spec":{"namespaceSelector":{"names":["cluster-0/client-tr","cluster-1/transit","cluster-2/echo-tr"]}}}
+    xcp.tetrate.io/contentHash: dbdd93afb66264cecc987666482448b0
+  creationTimestamp: "2026-05-28T15:04:36Z"
+  generation: 1
+  managedFields:
+  - apiVersion: xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+      f:spec:
+        .: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:36Z"
+  name: transit-ws
+  namespace: istio-system
+  resourceVersion: "972494"
+  uid: 327f894f-cbd8-4f89-9495-8a32fdb944fd
+spec:
+  namespaceSelector:
+    names:
+    - cluster-0/client-tr
+    - cluster-1/transit
+    - cluster-2/echo-tr

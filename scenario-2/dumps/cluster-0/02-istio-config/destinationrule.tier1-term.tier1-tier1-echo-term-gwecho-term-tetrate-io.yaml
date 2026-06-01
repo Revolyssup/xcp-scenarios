@@ -1,0 +1,95 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Tier1Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"tier1-term-gg","xcp.tetrate.io/workspace":"term-ws"},"name":"tier1-echo-term-gw","namespace":"xcp-system"},"spec":{"externalServers":[{"clusters":[{"name":"cluster-1","weight":100}],"hostname":"echo-term.tetrate.io","name":"echo","port":18443,"tls":{"mode":"SIMPLE","secretName":"echo-term-edge-tls"}}],"workloadSelector":{"labels":{"app":"tier1-term-gateway"},"namespace":"tier1-term"}}}
+    xcp.tetrate.io/contentHash: d63c85310d507455399f6cf1709b4784
+  creationTimestamp: "2026-06-01T10:49:19Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: tier1-term-gg
+    xcp.tetrate.io/workspace: term-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:exportTo: {}
+        f:host: {}
+        f:subsets: {}
+        f:workloadSelector:
+          .: {}
+          f:matchLabels:
+            .: {}
+            f:app: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-06-01T10:49:19Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-06-01T10:49:20Z"
+  name: tier1-tier1-echo-term-gwecho-term-tetrate-io
+  namespace: tier1-term
+  resourceVersion: "2088384"
+  uid: 0a3196c6-d9b4-4e7e-933a-ece0a8a625c1
+spec:
+  exportTo:
+  - .
+  host: echo-term.tetrate.io
+  subsets:
+  - labels:
+      xcp.tetrate.io/cluster: cluster-1
+      xcp.tetrate.io/svc-port-80: "true"
+    name: tier1-echo-term-gw-echo-external-0
+    trafficPolicy:
+      portLevelSettings:
+      - connectionPool:
+          http:
+            useClientProtocol: true
+        loadBalancer:
+          localityLbSetting:
+            enabled: true
+            failoverPriority:
+            - topology.kubernetes.io/region
+            - topology.istio.io/network
+            - topology.kubernetes.io/zone
+            - topology.istio.io/subzone
+        outlierDetection:
+          consecutiveGatewayErrors: 10
+          maxEjectionPercent: 100
+        port:
+          number: 80
+        tls:
+          mode: ISTIO_MUTUAL
+          sni: echo-term.tetrate.io
+  workloadSelector:
+    matchLabels:
+      app: tier1-term-gateway
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0174/
+    level: WARNING
+    type:
+      code: IST0174
