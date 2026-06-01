@@ -1,0 +1,83 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 1ce9fb73106c3d6943d638f775a828d3
+  creationTimestamp: "2026-06-01T10:49:27Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:addresses: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-06-01T10:49:27Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:exportTo: {}
+        f:hosts: {}
+        f:location: {}
+        f:ports:
+          .: {}
+          k:{"name":"http"}:
+            .: {}
+            f:name: {}
+            f:number: {}
+            f:protocol: {}
+        f:resolution: {}
+        f:subjectAltNames: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-06-01T10:49:27Z"
+  name: global-gateway-echo-term-tetrate-io
+  namespace: xcp-multicluster
+  resourceVersion: "1544297"
+  uid: 1ee3f0a6-368e-4677-ac0c-26d3fe314f34
+spec:
+  endpoints:
+  - address: 10.255.20.221
+    labels:
+      xcp.tetrate.io/cluster: cluster-1
+      xcp.tetrate.io/hops: "0"
+      xcp.tetrate.io/service: echo-term-gateway.echo-term.svc.cluster.local
+      xcp.tetrate.io/serviceType: localGateway
+      xcp.tetrate.io/svc-port-80: "true"
+    locality: us-east1/us-east1-B/subzone-x
+    network: nw-cluster-1
+    ports:
+      http: 15443
+  exportTo:
+  - '*'
+  hosts:
+  - echo-term.tetrate.io
+  location: MESH_INTERNAL
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  resolution: STATIC
+  subjectAltNames:
+  - spiffe://cluster.local/ns/echo-term/sa/echo-term-gateway-service-account
+status:
+  addresses:
+  - host: echo-term.tetrate.io
+    value: 240.240.0.16
+  - host: echo-term.tetrate.io
+    value: 2001:2::10

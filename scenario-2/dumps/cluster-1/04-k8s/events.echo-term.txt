@@ -1,0 +1,23 @@
+2026-06-01T16:19:17+05:30	Normal	ReplicaSet/echo-term-58c79569c6	SuccessfulCreate	Created pod: echo-term-58c79569c6-mqc2d
+2026-06-01T16:19:17+05:30	Normal	Deployment/echo-term	ScalingReplicaSet	Scaled up replica set echo-term-58c79569c6 from 0 to 1
+2026-06-01T16:19:17+05:30	Normal	Service/echo-term-gateway	IPAllocated	Assigned IP ["172.18.255.176"]
+2026-06-01T16:19:17+05:30	Normal	Deployment/echo-term-gateway	ScalingReplicaSet	Scaled up replica set echo-term-gateway-6bc8b5ffdd from 0 to 1
+2026-06-01T16:19:17+05:30	Normal	ReplicaSet/echo-term-gateway-6bc8b5ffdd	SuccessfulCreate	Created pod: echo-term-gateway-6bc8b5ffdd-j92kt
+2026-06-01T16:19:17+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Scheduled	Successfully assigned echo-term/echo-term-58c79569c6-mqc2d to cluster-1-control-plane
+2026-06-01T16:19:17+05:30	Normal	Pod/echo-term-gateway-6bc8b5ffdd-j92kt	Scheduled	Successfully assigned echo-term/echo-term-gateway-6bc8b5ffdd-j92kt to cluster-1-control-plane
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Created	Created container: istio-proxy
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-gateway-6bc8b5ffdd-j92kt	Created	Created container: istio-proxy
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-06-01T16:19:18+05:30	Normal	Service/echo-term-gateway	nodeAssigned	announcing from node "cluster-1-control-plane" with protocol "layer2"
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Started	Started container istio-proxy
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-gateway-6bc8b5ffdd-j92kt	Pulling	Pulling image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless"
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-gateway-6bc8b5ffdd-j92kt	Pulled	Successfully pulled image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" in 10ms (10ms including waiting). Image size: 58863518 bytes.
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Created	Created container: istio-init
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-gateway-6bc8b5ffdd-j92kt	Started	Started container istio-proxy
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Pulled	Container image "localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless" already present on machine
+2026-06-01T16:19:18+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Started	Started container istio-init
+2026-06-01T16:19:20+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Created	Created container: whoami
+2026-06-01T16:19:20+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Pulled	Container image "docker.io/traefik/whoami:v1.10" already present on machine
+2026-06-01T16:19:20+05:30	Normal	Pod/echo-term-58c79569c6-mqc2d	Started	Started container whoami
+2026-06-01T16:19:32+05:30	Warning	HorizontalPodAutoscaler/echo-term-gateway	FailedGetResourceMetric	failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+2026-06-01T16:19:32+05:30	Warning	HorizontalPodAutoscaler/echo-term-gateway	FailedComputeMetricsReplicas	invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: no metrics returned from resource metrics API

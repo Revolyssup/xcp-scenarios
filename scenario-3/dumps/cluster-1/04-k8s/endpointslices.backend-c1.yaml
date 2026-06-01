@@ -1,0 +1,66 @@
+items:
+- addressType: IPv4
+  endpoints:
+  - addresses:
+    - 10.20.0.58
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: cluster-1-control-plane
+    targetRef:
+      kind: Pod
+      name: backend-86f5b4bc7b-67flh
+      namespace: backend-c1
+      uid: e865c2ca-02cd-4893-b519-3a03c24eb9ae
+    zone: us-east1-B
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-06-01T10:50:05Z"
+    creationTimestamp: "2026-06-01T10:50:01Z"
+    generateName: backend-
+    generation: 3
+    labels:
+      app: backend
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: backend
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"345e79cb-7787-43ea-a20d-06de91db603a"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-06-01T10:50:05Z"
+    name: backend-9xvgj
+    namespace: backend-c1
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: backend
+      uid: 345e79cb-7787-43ea-a20d-06de91db603a
+    resourceVersion: "1544595"
+    uid: 23d55a8c-d189-4cff-be71-f34501e49ee7
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+metadata:
+  resourceVersion: "1544638"

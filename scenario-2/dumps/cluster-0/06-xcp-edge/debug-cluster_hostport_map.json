@@ -1,0 +1,11 @@
+{
+  "cluster-1": {
+    "echo-term.tetrate.io": {
+      "8080": "HTTP"
+    },
+    "echo.echo-tr.svc.cluster.local": {
+      "80": "HTTP"
+    }
+  },
+  "cluster-2": {}
+}

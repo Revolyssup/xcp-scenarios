@@ -1,0 +1,39 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: GatewayGroup
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"GatewayGroup","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-backend-gg","namespace":"xcp-system"},"spec":{"configMode":"BRIDGED","namespaceSelector":{"names":["cluster-2/echo-tr"]}}}
+    xcp.tetrate.io/contentHash: 1f7b836756957aa33cd372324ccd4cc4
+  creationTimestamp: "2026-05-28T15:04:36Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:36Z"
+  name: transit-backend-gg
+  namespace: istio-system
+  resourceVersion: "324347"
+  uid: 011667c5-ca41-4692-b80f-6b38b90103e7
+spec:
+  namespaceSelector:
+    names:
+    - cluster-2/echo-tr

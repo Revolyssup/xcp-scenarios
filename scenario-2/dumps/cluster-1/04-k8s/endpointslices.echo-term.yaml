@@ -1,0 +1,66 @@
+items:
+- addressType: IPv4
+  endpoints:
+  - addresses:
+    - 10.20.0.56
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: cluster-1-control-plane
+    targetRef:
+      kind: Pod
+      name: echo-term-58c79569c6-mqc2d
+      namespace: echo-term
+      uid: bab8405f-8b80-45e7-9165-b86287a4936d
+    zone: us-east1-B
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-06-01T10:49:21Z"
+    creationTimestamp: "2026-06-01T10:49:17Z"
+    generateName: echo-term-
+    generation: 3
+    labels:
+      app: echo-term
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: echo-term
+    managedFields:
+    - apiVersion: discovery.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:addressType: {}
+        f:endpoints: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:endpoints.kubernetes.io/last-change-trigger-time: {}
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:endpointslice.kubernetes.io/managed-by: {}
+            f:kubernetes.io/service-name: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"492d4bf2-e984-4dbb-9255-a0a39c414376"}: {}
+        f:ports: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-06-01T10:49:21Z"
+    name: echo-term-5pm8x
+    namespace: echo-term
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: echo-term
+      uid: 492d4bf2-e984-4dbb-9255-a0a39c414376
+    resourceVersion: "1544271"
+    uid: 752c6a53-c931-4366-9c03-392a29bcd311
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+metadata:
+  resourceVersion: "1544321"

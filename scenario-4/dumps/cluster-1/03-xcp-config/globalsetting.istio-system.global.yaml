@@ -1,0 +1,40 @@
+apiVersion: xcp.tetrate.io/v2
+kind: GlobalSetting
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"xcp.tetrate.io/v2","kind":"GlobalSetting","metadata":{"annotations":{},"name":"global","namespace":"xcp-system"},"spec":{"networkSettings":{"networkReachability":{"nw-cluster-0":"nw-cluster-1","nw-cluster-1":"nw-cluster-0,nw-cluster-2","nw-cluster-2":"nw-cluster-1"}}}}
+    xcp.tetrate.io/contentHash: e11b65fd434466d8deb9b52f9aabc186
+  creationTimestamp: "2026-05-28T15:04:36Z"
+  generation: 1
+  managedFields:
+  - apiVersion: xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+      f:spec:
+        .: {}
+        f:networkSettings:
+          .: {}
+          f:networkReachability:
+            .: {}
+            f:nw-cluster-0: {}
+            f:nw-cluster-1: {}
+            f:nw-cluster-2: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:36Z"
+  name: global
+  namespace: istio-system
+  resourceVersion: "972495"
+  uid: 69ae05dc-dc6f-4639-8487-406a011f2642
+spec:
+  networkSettings:
+    networkReachability:
+      nw-cluster-0: nw-cluster-1
+      nw-cluster-1: nw-cluster-0,nw-cluster-2
+      nw-cluster-2: nw-cluster-1

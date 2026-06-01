@@ -1,0 +1,57 @@
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"backend"},"name":"backend","namespace":"backend-c1"},"spec":{"ports":[{"name":"http","port":80,"protocol":"TCP","targetPort":8080}],"selector":{"app":"backend"}}}
+  creationTimestamp: "2026-06-01T10:50:01Z"
+  labels:
+    app: backend
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-06-01T10:50:01Z"
+  name: backend
+  namespace: backend-c1
+  resourceVersion: "1544495"
+  uid: 345e79cb-7787-43ea-a20d-06de91db603a
+spec:
+  clusterIP: 10.255.20.211
+  clusterIPs:
+  - 10.255.20.211
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: backend
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

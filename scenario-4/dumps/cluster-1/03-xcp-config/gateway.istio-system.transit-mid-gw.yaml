@@ -1,0 +1,57 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: Gateway
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"transit-mid-gg","xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-mid-gw","namespace":"xcp-system"},"spec":{"http":[{"hostname":"echo.echo-tr.svc.cluster.local","name":"transit-hop","routing":{"rules":[{"route":{"clusterDestination":{"clusters":[{"name":"cluster-2","weight":100}]}}}]},"transit":true}],"workloadSelector":{"labels":{"app":"transit-tier1-gateway"},"namespace":"transit"}}}
+    xcp.tetrate.io/contentHash: 54590379babf8f1ab203cec86195f04b
+  creationTimestamp: "2026-05-28T15:04:36Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/gatewayGroup: transit-mid-gg
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:http: {}
+        f:workloadSelector:
+          .: {}
+          f:labels:
+            .: {}
+            f:app: {}
+          f:namespace: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:36Z"
+  name: transit-mid-gw
+  namespace: istio-system
+  resourceVersion: "972492"
+  uid: fca9e354-fd94-4c7e-a223-2c89c9a4f41c
+spec:
+  http:
+  - hostname: echo.echo-tr.svc.cluster.local
+    name: transit-hop
+    routing:
+      rules:
+      - route:
+          clusterDestination:
+            clusters:
+            - name: cluster-2
+              weight: 100
+    transit: true
+  workloadSelector:
+    labels:
+      app: transit-tier1-gateway
+    namespace: transit

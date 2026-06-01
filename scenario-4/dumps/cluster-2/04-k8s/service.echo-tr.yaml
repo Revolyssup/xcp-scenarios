@@ -1,0 +1,57 @@
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"echo"},"name":"echo","namespace":"echo-tr"},"spec":{"ports":[{"name":"http","port":80,"protocol":"TCP","targetPort":8080}],"selector":{"app":"echo"}}}
+  creationTimestamp: "2026-05-28T15:04:35Z"
+  labels:
+    app: echo
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:internalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-28T15:04:35Z"
+  name: echo
+  namespace: echo-tr
+  resourceVersion: "324278"
+  uid: 2f97f44f-60b5-459e-91d3-9ddf36dfc38d
+spec:
+  clusterIP: 10.255.30.38
+  clusterIPs:
+  - 10.255.30.38
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: echo
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

@@ -1,0 +1,16 @@
+{
+  "GatewayInfo": [
+    {
+      "WorkloadSelector": {
+        "app": "transit-tier1-gateway"
+      },
+      "Hosts": [
+        "echo.echo-tr.svc.cluster.local"
+      ],
+      "Protocol": "HTTP",
+      "Port": 0,
+      "GatewayName": "transit-mid-gw",
+      "GatewayType": "xcp gateway"
+    }
+  ]
+}

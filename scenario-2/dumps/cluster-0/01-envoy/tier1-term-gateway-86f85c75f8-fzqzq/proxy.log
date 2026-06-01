@@ -1,0 +1,80 @@
+2026-06-01T10:49:18.321944Z	info	FLAG: --concurrency="0"
+2026-06-01T10:49:18.321959Z	info	FLAG: --domain="tier1-term.svc.cluster.local"
+2026-06-01T10:49:18.321961Z	info	FLAG: --help="false"
+2026-06-01T10:49:18.321962Z	info	FLAG: --log_as_json="false"
+2026-06-01T10:49:18.321963Z	info	FLAG: --log_caller=""
+2026-06-01T10:49:18.321963Z	info	FLAG: --log_output_level="default:info"
+2026-06-01T10:49:18.321964Z	info	FLAG: --log_stacktrace_level="default:none"
+2026-06-01T10:49:18.321969Z	info	FLAG: --log_target="[stdout]"
+2026-06-01T10:49:18.321970Z	info	FLAG: --meshConfig="./etc/istio/config/mesh"
+2026-06-01T10:49:18.321971Z	info	FLAG: --outlierLogPath=""
+2026-06-01T10:49:18.321971Z	info	FLAG: --profiling="true"
+2026-06-01T10:49:18.321972Z	info	FLAG: --proxyComponentLogLevel="misc:error"
+2026-06-01T10:49:18.321973Z	info	FLAG: --proxyLogLevel="warning"
+2026-06-01T10:49:18.321973Z	info	FLAG: --serviceCluster="istio-proxy"
+2026-06-01T10:49:18.321974Z	info	FLAG: --stsPort="0"
+2026-06-01T10:49:18.321974Z	info	FLAG: --templateFile=""
+2026-06-01T10:49:18.321975Z	info	FLAG: --tokenManagerPlugin=""
+2026-06-01T10:49:18.321977Z	info	FLAG: --vklog="0"
+2026-06-01T10:49:18.321979Z	info	Version 1.28.3-3b82a7d635-3b82a7d6352fc165489aa5c5be1077c6b705b4c9-Clean
+2026-06-01T10:49:18.322144Z	info	Proxy role	ips=[10.10.0.80] type=router id=tier1-term-gateway-86f85c75f8-fzqzq.tier1-term domain=tier1-term.svc.cluster.local
+2026-06-01T10:49:18.322176Z	info	Apply proxy config from env {"discoveryAddress":"istiod-stable.istio-system.svc:15012","tracing":{"customTags":{"cluster":{"literal":{"value":"cluster-0"}}}},"proxyMetadata":{"EXIT_ON_ZERO_ACTIVE_CONNECTIONS":"true","ISTIO_META_DNS_CAPTURE":"true","ISTIO_META_XCP_FILTER_EAST_WEST_GATEWAY_CLUSTER_CONFIG":"true","ISTIO_PROXY_READINESS_PROBE_TIMEOUT":"10s"},"holdApplicationUntilProxyStarts":true}
+
+2026-06-01T10:49:18.322925Z	info	Apply proxy config from annotation 
+discoveryAddress: istiod-stable.istio-system.svc:15012
+holdApplicationUntilProxyStarts: true
+
+tracing:
+  
+  
+proxyMetadata:
+  
+  
+  ISTIO_META_XCP_FILTER_EAST_WEST_GATEWAY_CLUSTER_CONFIG: "true"
+  ISTIO_PROXY_READINESS_PROBE_TIMEOUT: 10s
+2026-06-01T10:49:18.322976Z	info	cpu limit detected as 2, setting concurrency
+2026-06-01T10:49:18.323246Z	info	Effective config: binaryPath: /usr/local/bin/envoy
+concurrency: 2
+configPath: ./etc/istio/proxy
+controlPlaneAuthPolicy: MUTUAL_TLS
+discoveryAddress: istiod-stable.istio-system.svc:15012
+drainDuration: 45s
+holdApplicationUntilProxyStarts: true
+proxyAdminPort: 15000
+proxyMetadata:
+  EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+  ISTIO_META_DNS_CAPTURE: "true"
+  ISTIO_META_XCP_FILTER_EAST_WEST_GATEWAY_CLUSTER_CONFIG: "true"
+  ISTIO_PROXY_READINESS_PROBE_TIMEOUT: 10s
+serviceCluster: istio-proxy
+statNameLength: 189
+statusPort: 15020
+terminationDrainDuration: 5s
+tracing:
+  customTags:
+    cluster:
+      literal:
+        value: cluster-0
+
+2026-06-01T10:49:18.323254Z	info	JWT policy is third-party-jwt
+2026-06-01T10:49:18.323255Z	info	using credential fetcher of JWT type in cluster.local trust domain
+2026-06-01T10:49:18.526961Z	info	Starting default Istio SDS Server
+2026-06-01T10:49:18.526985Z	info	CA Endpoint istiod-stable.istio-system.svc:15012, provider Citadel
+2026-06-01T10:49:18.526997Z	info	Using CA istiod-stable.istio-system.svc:15012 cert with certs: var/run/secrets/istio/root-cert.pem
+2026-06-01T10:49:18.526968Z	info	Opening status port 15020
+2026-06-01T10:49:18.527568Z	info	xdsproxy	Initializing with upstream address "istiod-stable.istio-system.svc:15012" and cluster "cluster-0"
+2026-06-01T10:49:18.528598Z	info	Pilot SAN: [istiod-stable.istio-system.svc]
+2026-06-01T10:49:18.529233Z	info	Starting proxy agent
+2026-06-01T10:49:18.529258Z	info	Envoy command: [-c etc/istio/proxy/envoy-rev.json --drain-time-s 45 --drain-strategy immediate --local-address-ip-version v4 --file-flush-interval-msec 1000 --disable-hot-restart --allow-unknown-static-fields -l warning --component-log-level misc:error --skip-deprecated-logs --concurrency 2]
+2026-06-01T10:49:18.531628Z	info	sds	Starting SDS grpc server
+2026-06-01T10:49:18.531652Z	info	sds	Starting SDS server for workload certificates, will listen on "var/run/secrets/workload-spiffe-uds/socket"
+2026-06-01T10:49:18.564926Z	info	xdsproxy	connected to delta upstream XDS server: istiod-stable.istio-system.svc:15012	id=1
+2026-06-01T10:49:18.600300Z	info	cache	generated new workload certificate	resourceName=default latency=70.673625ms ttl=23h59m59.399704906s
+2026-06-01T10:49:18.600327Z	info	cache	Root cert has changed, start rotating root cert
+2026-06-01T10:49:18.600349Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.399650781s
+2026-06-01T10:49:19.444339Z	info	Readiness succeeded in 1.124755959s
+2026-06-01T10:49:19.444572Z	info	Envoy proxy is ready
+2026-06-01T10:49:27.834780Z	info	ads	ADS: new connection for node:1
+2026-06-01T10:49:27.834832Z	info	cache	returned workload certificate from cache	ttl=23h59m50.165169625s
+2026-06-01T10:49:27.835048Z	info	ads	ADS: new connection for node:2
+2026-06-01T10:49:27.835090Z	info	cache	returned workload trust anchor from cache	ttl=23h59m50.164911208s

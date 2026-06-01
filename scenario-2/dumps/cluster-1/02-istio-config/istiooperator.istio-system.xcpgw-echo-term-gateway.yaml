@@ -1,0 +1,354 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: fe55dbbb316cdc981568b30a72431cb8
+    xcp.tetrate.io/created-by-installer: "true"
+    xcp.tetrate.io/gateway-owner: echo-term-gateway
+  creationTimestamp: "2026-06-01T10:49:17Z"
+  generation: 1
+  labels:
+    install.xcp.tetrate.io/owner-kind: GatewayDeployment
+    install.xcp.tetrate.io/owner-name: echo-term-gateway
+    install.xcp.tetrate.io/owner-version: v1alpha1
+    platform.xcp.tetrate.io/application: istio-operator
+    platform.xcp.tetrate.io/component: gateways
+    platform.xcp.tetrate.io/plane: data
+  managedFields:
+  - apiVersion: install.istio.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:xcp.tetrate.io/contentHash: {}
+          f:xcp.tetrate.io/created-by-installer: {}
+          f:xcp.tetrate.io/gateway-owner: {}
+        f:labels:
+          f:install.xcp.tetrate.io/owner-kind: {}
+          f:install.xcp.tetrate.io/owner-name: {}
+          f:install.xcp.tetrate.io/owner-version: {}
+          f:platform.xcp.tetrate.io/application: {}
+          f:platform.xcp.tetrate.io/component: {}
+          f:platform.xcp.tetrate.io/plane: {}
+        f:ownerReferences:
+          k:{"uid":"daca19ad-77f9-4440-b7d3-e13b9aa9803f"}: {}
+      f:spec:
+        .: {}
+        f:components:
+          .: {}
+          f:ingressGateways: {}
+        f:hub: {}
+        f:meshConfig:
+          .: {}
+          f:accessLogFile: {}
+          f:accessLogFormat: {}
+          f:defaultConfig:
+            .: {}
+            f:discoveryAddress: {}
+            f:holdApplicationUntilProxyStarts: {}
+            f:proxyMetadata:
+              .: {}
+              f:EXIT_ON_ZERO_ACTIVE_CONNECTIONS: {}
+              f:ISTIO_META_DNS_CAPTURE: {}
+            f:tracing:
+              .: {}
+              f:custom_tags:
+                .: {}
+                f:cluster:
+                  .: {}
+                  f:literal:
+                    .: {}
+                    f:value: {}
+          f:defaultProviders:
+            .: {}
+            f:metrics: {}
+          f:discoverySelectors: {}
+          f:enableEnvoyAccessLogService: {}
+          f:rootNamespace: {}
+          f:trustDomain: {}
+          f:trustDomainAliases: {}
+        f:profile: {}
+        f:revision: {}
+        f:tag: {}
+        f:values:
+          .: {}
+          f:gateways:
+            .: {}
+            f:istio-egressgateway:
+              .: {}
+              f:injectionTemplate: {}
+            f:istio-ingressgateway:
+              .: {}
+              f:injectionTemplate: {}
+          f:global:
+            .: {}
+            f:istioNamespace: {}
+            f:istiod:
+              .: {}
+              f:enableAnalysis: {}
+            f:multiCluster:
+              .: {}
+              f:clusterName: {}
+              f:enabled: {}
+            f:network: {}
+            f:proxy:
+              .: {}
+              f:image: {}
+            f:proxy_init:
+              .: {}
+              f:image: {}
+          f:pilot: {}
+          f:sidecarInjectorWebhook:
+            .: {}
+            f:defaultTemplates: {}
+            f:templates: {}
+          f:telemetry:
+            .: {}
+            f:v2:
+              .: {}
+              f:enabled: {}
+    manager: xcp-operator-manager
+    operation: Apply
+    time: "2026-06-01T10:49:17Z"
+  - apiVersion: install.istio.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:status: {}
+    manager: operator
+    operation: Update
+    subresource: status
+    time: "2026-06-01T10:49:17Z"
+  name: xcpgw-echo-term-gateway
+  namespace: istio-system
+  ownerReferences:
+  - apiVersion: install.xcp.tetrate.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: GatewayDeployment
+    name: echo-term-gateway
+    uid: daca19ad-77f9-4440-b7d3-e13b9aa9803f
+  resourceVersion: "1544205"
+  uid: 07c860dc-94df-4c9d-a242-7683946a3a86
+spec:
+  components:
+    ingressGateways:
+    - enabled: true
+      k8s:
+        env:
+        - name: ISTIO_META_ROUTER_MODE
+          value: standard
+        - name: TERMINATION_DRAIN_DURATION_SECONDS
+          value: "5"
+        hpaSpec:
+          maxReplicas: 10
+          metrics:
+          - resource:
+              name: cpu
+              target:
+                averageUtilization: 75
+                type: Utilization
+            type: Resource
+          minReplicas: 1
+          scaleTargetRef:
+            apiVersion: apps/v1
+            kind: Deployment
+            name: echo-term-gateway
+        overlays:
+        - apiVersion: apps/v1
+          kind: Deployment
+          name: echo-term-gateway
+          patches:
+          - path: metadata.labels
+            value:
+              app: echo-term-gateway
+              platform.tetrate.io/component: gateways
+              platform.tetrate.io/eastwest: enabled
+              platform.tetrate.io/egress: enabled
+              platform.tetrate.io/gateway-type: unified
+              platform.tetrate.io/ingress: enabled
+              platform.xcp.tetrate.io/application: xcp-unified-gateway
+              platform.xcp.tetrate.io/component: gateways
+              platform.xcp.tetrate.io/plane: data
+          - path: spec.template.spec.containers[name:istio-proxy].securityContext
+            value: null
+          - path: spec.template.spec.terminationGracePeriodSeconds
+            value: 10
+        - apiVersion: autoscaling/v2beta1
+          kind: HorizontalPodAutoscaler
+          name: echo-term-gateway
+          patches:
+          - path: metadata.labels
+            value:
+              app: echo-term-gateway
+              platform.tetrate.io/component: gateways
+              platform.tetrate.io/eastwest: enabled
+              platform.tetrate.io/egress: enabled
+              platform.tetrate.io/gateway-type: unified
+              platform.tetrate.io/ingress: enabled
+              platform.xcp.tetrate.io/application: xcp-unified-gateway
+              platform.xcp.tetrate.io/component: gateways
+              platform.xcp.tetrate.io/plane: data
+        - apiVersion: policy/v1beta1
+          kind: PodDisruptionBudget
+          name: echo-term-gateway
+          patches:
+          - path: metadata.labels
+            value:
+              app: echo-term-gateway
+              platform.tetrate.io/component: gateways
+              platform.tetrate.io/eastwest: enabled
+              platform.tetrate.io/egress: enabled
+              platform.tetrate.io/gateway-type: unified
+              platform.tetrate.io/ingress: enabled
+              platform.xcp.tetrate.io/application: xcp-unified-gateway
+              platform.xcp.tetrate.io/component: gateways
+              platform.xcp.tetrate.io/plane: data
+        - apiVersion: rbac.authorization.k8s.io/v1
+          kind: Role
+          name: echo-term-gateway-sds
+          patches:
+          - path: metadata.labels
+            value:
+              app: echo-term-gateway
+              platform.tetrate.io/component: gateways
+              platform.tetrate.io/eastwest: enabled
+              platform.tetrate.io/egress: enabled
+              platform.tetrate.io/gateway-type: unified
+              platform.tetrate.io/ingress: enabled
+              platform.xcp.tetrate.io/application: xcp-unified-gateway
+              platform.xcp.tetrate.io/component: gateways
+              platform.xcp.tetrate.io/plane: data
+        - apiVersion: rbac.authorization.k8s.io/v1
+          kind: RoleBinding
+          name: echo-term-gateway-sds
+          patches:
+          - path: metadata.labels
+            value:
+              app: echo-term-gateway
+              platform.tetrate.io/component: gateways
+              platform.tetrate.io/eastwest: enabled
+              platform.tetrate.io/egress: enabled
+              platform.tetrate.io/gateway-type: unified
+              platform.tetrate.io/ingress: enabled
+              platform.xcp.tetrate.io/application: xcp-unified-gateway
+              platform.xcp.tetrate.io/component: gateways
+              platform.xcp.tetrate.io/plane: data
+        - apiVersion: v1
+          kind: Service
+          name: echo-term-gateway
+          patches:
+          - path: metadata.labels
+            value:
+              app: echo-term-gateway
+              platform.tetrate.io/component: gateways
+              platform.tetrate.io/eastwest: enabled
+              platform.tetrate.io/egress: enabled
+              platform.tetrate.io/gateway-type: unified
+              platform.tetrate.io/ingress: enabled
+              platform.xcp.tetrate.io/application: xcp-unified-gateway
+              platform.xcp.tetrate.io/component: gateways
+              platform.xcp.tetrate.io/plane: data
+              topology.istio.io/network: nw-cluster-1
+        - apiVersion: v1
+          kind: ServiceAccount
+          name: echo-term-gateway-service-account
+          patches:
+          - path: imagePullSecrets
+            value: null
+          - path: metadata.labels
+            value:
+              app: echo-term-gateway
+              platform.tetrate.io/component: gateways
+              platform.tetrate.io/eastwest: enabled
+              platform.tetrate.io/egress: enabled
+              platform.tetrate.io/gateway-type: unified
+              platform.tetrate.io/ingress: enabled
+              platform.xcp.tetrate.io/application: xcp-unified-gateway
+              platform.xcp.tetrate.io/component: gateways
+              platform.xcp.tetrate.io/plane: data
+        podAnnotations:
+          proxy.istio.io/config: "\ndiscoveryAddress: istiod-stable.istio-system.svc:15012\nholdApplicationUntilProxyStarts:
+            true\n\ntracing:\n  \n  \nproxyMetadata:\n  \n  \n  ISTIO_META_XCP_FILTER_EAST_WEST_GATEWAY_CLUSTER_CONFIG:
+            \"true\"\n  ISTIO_PROXY_READINESS_PROBE_TIMEOUT: 10s"
+        replicaCount: 1
+        service:
+          ports:
+          - name: tls-istio-mtls
+            port: 15443
+            targetPort: 15443
+          - name: status-port
+            port: 15021
+            targetPort: 15021
+          type: LoadBalancer
+        strategy:
+          rollingUpdate:
+            maxUnavailable: 0
+          type: RollingUpdate
+      label:
+        app: echo-term-gateway
+      name: echo-term-gateway
+      namespace: echo-term
+  hub: localhost:5000
+  meshConfig:
+    accessLogFile: /dev/stdout
+    accessLogFormat: |
+      [%START_TIME%] "%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%" %RESPONSE_CODE% %RESPONSE_FLAGS% %RESPONSE_CODE_DETAILS% %CONNECTION_TERMINATION_DETAILS% "%UPSTREAM_TRANSPORT_FAILURE_REASON%" %BYTES_RECEIVED% %BYTES_SENT% %DURATION% %RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)% "%REQ(X-FORWARDED-FOR)%" "%REQ(USER-AGENT)%" "%REQ(X-REQUEST-ID)%" "%REQ(:AUTHORITY)%" "%UPSTREAM_HOST%" %UPSTREAM_CLUSTER% %UPSTREAM_LOCAL_ADDRESS% %DOWNSTREAM_LOCAL_ADDRESS% %DOWNSTREAM_REMOTE_ADDRESS% %REQUESTED_SERVER_NAME% %ROUTE_NAME%
+    defaultConfig:
+      discoveryAddress: istiod-stable.istio-system.svc:15012
+      holdApplicationUntilProxyStarts: true
+      proxyMetadata:
+        EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "true"
+        ISTIO_META_DNS_CAPTURE: "true"
+      tracing:
+        custom_tags:
+          cluster:
+            literal:
+              value: cluster-1
+    defaultProviders:
+      metrics:
+      - prometheus
+    discoverySelectors:
+    - matchLabels:
+        istio.io/rev: stable
+    - matchLabels:
+        tetrate.io/rev: stable
+    - matchExpressions:
+      - key: istio.io/rev
+        operator: DoesNotExist
+    enableEnvoyAccessLogService: true
+    rootNamespace: istio-system
+    trustDomain: cluster.local
+    trustDomainAliases:
+    - cluster.local
+  profile: empty
+  revision: stable
+  tag: 1.28.3-9aa2ee3271-distroless
+  values:
+    gateways:
+      istio-egressgateway:
+        injectionTemplate: gateway
+      istio-ingressgateway:
+        injectionTemplate: gateway
+    global:
+      istioNamespace: istio-system
+      istiod:
+        enableAnalysis: true
+      multiCluster:
+        clusterName: cluster-1
+        enabled: false
+      network: nw-cluster-1
+      proxy:
+        image: localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless
+      proxy_init:
+        image: localhost:5000/proxyv2:1.28.3-9aa2ee3271-distroless
+    pilot: {}
+    sidecarInjectorWebhook:
+      defaultTemplates: []
+      templates: {}
+    telemetry:
+      v2:
+        enabled: false
+status:
+  status: HEALTHY

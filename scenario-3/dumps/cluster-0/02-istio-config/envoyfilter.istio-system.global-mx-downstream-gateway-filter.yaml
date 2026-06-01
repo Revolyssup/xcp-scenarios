@@ -1,0 +1,97 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: b7161f8ba09a24719050ab3fc50a8bef
+    xcp.tetrate.io/created-by-installer: "true"
+  creationTimestamp: "2026-05-20T18:17:32Z"
+  generation: 1
+  labels:
+    install.xcp.tetrate.io/owner-kind: EdgeXcp
+    install.xcp.tetrate.io/owner-name: edgexcp
+    install.xcp.tetrate.io/owner-version: v1alpha1
+    istio.io/rev: stable
+  managedFields:
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:xcp.tetrate.io/contentHash: {}
+          f:xcp.tetrate.io/created-by-installer: {}
+        f:labels:
+          f:install.xcp.tetrate.io/owner-kind: {}
+          f:install.xcp.tetrate.io/owner-name: {}
+          f:install.xcp.tetrate.io/owner-version: {}
+          f:istio.io/rev: {}
+        f:ownerReferences:
+          k:{"uid":"6bff1010-9580-42d7-807d-3156050aef87"}: {}
+      f:spec:
+        f:configPatches: {}
+        f:workloadSelector:
+          f:labels:
+            f:istio: {}
+    manager: xcp-operator-manager
+    operation: Apply
+    time: "2026-05-20T18:17:32Z"
+  - apiVersion: networking.istio.io/v1alpha3
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:observedGeneration: {}
+        f:validationMessages: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-20T18:17:36Z"
+  name: global-mx-downstream-gateway-filter
+  namespace: istio-system
+  ownerReferences:
+  - apiVersion: install.xcp.tetrate.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: EdgeXcp
+    name: edgexcp
+    uid: 6bff1010-9580-42d7-807d-3156050aef87
+  resourceVersion: "2775"
+  uid: 80fef9cd-0e8b-450d-a009-b0a392c4ddf2
+spec:
+  configPatches:
+  - applyTo: HTTP_FILTER
+    match:
+      listener:
+        filterChain:
+          filter:
+            name: envoy.filters.network.http_connection_manager
+            subFilter:
+              name: istio.metadata_exchange
+        portNumber: 15443
+      proxy:
+        proxyVersion: ^1\.(20|[2-9][0-9])(\.\d+)?(-.*)?$
+    patch:
+      operation: MERGE
+      value:
+        name: istio.metadata_exchange
+        typedConfig:
+          '@type': type.googleapis.com/udpa.type.v1.TypedStruct
+          typeUrl: type.googleapis.com/io.istio.http.peer_metadata.Config
+          value:
+            downstream_discovery:
+            - istio_headers: {}
+            downstream_propagation:
+            - istio_headers: {}
+            upstream_discovery:
+            - istio_headers: {}
+            upstream_propagation:
+            - istio_headers: {}
+  workloadSelector:
+    labels:
+      istio: ingressgateway
+status:
+  observedGeneration: "1"
+  validationMessages:
+  - documentationUrl: https://istio.io/v1.28/docs/reference/config/analysis/ist0133/
+    level: WARNING
+    type:
+      code: IST0133

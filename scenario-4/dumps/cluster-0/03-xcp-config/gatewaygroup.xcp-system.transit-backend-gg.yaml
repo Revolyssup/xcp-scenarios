@@ -1,0 +1,39 @@
+apiVersion: gateway.xcp.tetrate.io/v2
+kind: GatewayGroup
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"GatewayGroup","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-backend-gg","namespace":"xcp-system"},"spec":{"configMode":"BRIDGED","namespaceSelector":{"names":["cluster-2/echo-tr"]}}}
+  creationTimestamp: "2026-05-28T15:04:35Z"
+  generation: 1
+  labels:
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: gateway.xcp.tetrate.io/v2
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:configMode: {}
+        f:namespaceSelector:
+          .: {}
+          f:names: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-28T15:04:35Z"
+  name: transit-backend-gg
+  namespace: xcp-system
+  resourceVersion: "1315755"
+  uid: 3572d76d-8a53-497c-86a5-18577c709ee5
+spec:
+  configMode: BRIDGED
+  namespaceSelector:
+    names:
+    - cluster-2/echo-tr

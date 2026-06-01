@@ -1,0 +1,58 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"gateway.xcp.tetrate.io/v2","kind":"Gateway","metadata":{"annotations":{},"labels":{"xcp.tetrate.io/gatewayGroup":"transit-backend-gg","xcp.tetrate.io/workspace":"transit-ws"},"name":"transit-backend-gw","namespace":"xcp-system"},"spec":{"http":[{"hostname":"echo.echo-tr.svc.cluster.local","name":"transit-backend","port":8080,"routing":{"rules":[{"route":{"serviceDestination":{"host":"echo-tr/echo.echo-tr.svc.cluster.local","port":80}}}]}}],"workloadSelector":{"labels":{"app":"echo-tr-gateway"},"namespace":"echo-tr"}}}
+    xcp.tetrate.io/contentHash: 3e15a6d93897e06504fd32eb0094b3d3
+  creationTimestamp: "2026-05-28T15:04:37Z"
+  generation: 1
+  labels:
+    istio.io/rev: global
+    xcp.tetrate.io/gatewayGroup: transit-backend-gg
+    xcp.tetrate.io/workspace: transit-ws
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+          f:xcp.tetrate.io/gatewayGroup: {}
+          f:xcp.tetrate.io/workspace: {}
+      f:spec:
+        .: {}
+        f:exportTo: {}
+        f:gateways: {}
+        f:hosts: {}
+        f:http: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:37Z"
+  name: vs-echo-echo-tr-svc-cluster-local
+  namespace: echo-tr
+  resourceVersion: "324360"
+  uid: f37e3083-f9df-452b-bf46-4abbf7e6ddb4
+spec:
+  exportTo:
+  - .
+  gateways:
+  - echo-tr/transit-backend-gw
+  hosts:
+  - echo.echo-tr.svc.cluster.local
+  http:
+  - match:
+    - port: 8080
+    - port: 15443
+    name: transit-backend-gw-transit-backend-external-0
+    route:
+    - destination:
+        host: echo.echo-tr.svc.cluster.local
+        port:
+          number: 80
+      weight: 100

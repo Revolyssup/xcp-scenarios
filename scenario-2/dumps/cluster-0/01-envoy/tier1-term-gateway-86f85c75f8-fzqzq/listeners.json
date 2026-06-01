@@ -1,0 +1,31 @@
+{
+ "listener_statuses": [
+  {
+   "name": "0.0.0.0_15090",
+   "local_address": {
+    "socket_address": {
+     "address": "0.0.0.0",
+     "port_value": 15090
+    }
+   }
+  },
+  {
+   "name": "0.0.0.0_15021",
+   "local_address": {
+    "socket_address": {
+     "address": "0.0.0.0",
+     "port_value": 15021
+    }
+   }
+  },
+  {
+   "name": "0.0.0.0_18443",
+   "local_address": {
+    "socket_address": {
+     "address": "0.0.0.0",
+     "port_value": 18443
+    }
+   }
+  }
+ ]
+}

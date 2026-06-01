@@ -1,0 +1,85 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  annotations:
+    xcp.tetrate.io/contentHash: 06da86e5925435082a65dfcce4efe322
+  creationTimestamp: "2026-05-28T15:04:37Z"
+  generation: 2
+  labels:
+    istio.io/rev: global
+  managedFields:
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        .: {}
+        f:addresses: {}
+    manager: pilot-discovery
+    operation: Update
+    subresource: status
+    time: "2026-05-28T15:04:37Z"
+  - apiVersion: networking.istio.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:xcp.tetrate.io/contentHash: {}
+        f:labels:
+          .: {}
+          f:istio.io/rev: {}
+      f:spec:
+        .: {}
+        f:endpoints: {}
+        f:exportTo: {}
+        f:hosts: {}
+        f:location: {}
+        f:ports:
+          .: {}
+          k:{"name":"http"}:
+            .: {}
+            f:name: {}
+            f:number: {}
+            f:protocol: {}
+        f:resolution: {}
+        f:subjectAltNames: {}
+    manager: xcpd
+    operation: Update
+    time: "2026-05-28T15:04:41Z"
+  name: global-gateway-echo-echo-tr-svc-cluster-local
+  namespace: xcp-multicluster
+  resourceVersion: "972540"
+  uid: ba462209-14d1-42b4-96e7-754c484ed182
+spec:
+  endpoints:
+  - address: 172.18.255.195
+    labels:
+      xcp.tetrate.io/cluster: cluster-2
+      xcp.tetrate.io/hops: "0"
+      xcp.tetrate.io/service: echo-tr-gateway.echo-tr.svc.cluster.local
+      xcp.tetrate.io/serviceType: remoteGateway
+      xcp.tetrate.io/svc-port-80: "true"
+      xcp.tetrate.io/transit-hop-sv-cl: "true"
+      xcp.tetrate.io/transit-mid-gw-gw-cl: "true"
+    locality: us-west1/us-west1-A/subzone-1
+    network: nw-cluster-2
+    ports:
+      http: 15443
+  exportTo:
+  - '*'
+  hosts:
+  - echo.echo-tr.svc.cluster.local
+  location: MESH_INTERNAL
+  ports:
+  - name: http
+    number: 80
+    protocol: HTTP
+  resolution: STATIC
+  subjectAltNames:
+  - spiffe://cluster.local/ns/echo-tr/sa/echo-tr-gateway-service-account
+status:
+  addresses:
+  - host: echo.echo-tr.svc.cluster.local
+    value: 240.240.0.14
+  - host: echo.echo-tr.svc.cluster.local
+    value: 2001:2::e
